@@ -7,6 +7,10 @@ import logging
 This api is for handling authentication for users who are already registered.
 """
 
+# TODO database stuff
+
+
+# endpoint
 auth_service = Blueprint('simple_page', __name__, template_folder='templates')
 
 @auth_service.route('/login', methods = ["GET", "POST"])
