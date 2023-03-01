@@ -12,7 +12,6 @@ from bson.errors import InvalidId
 This file based on MongoDB tutorial at https://www.mongodb.com/compatibility/setting-up-flask-with-mongodb
 """
 
-
 def get_db():
     """
     Configuration method to return db instance
