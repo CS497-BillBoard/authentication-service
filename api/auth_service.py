@@ -3,7 +3,7 @@ from jinja2 import TemplateNotFound
 from flask import Response
 import requests
 import logging
-from api.db import db
+from api.db.db import get_user_acc_collection
 
 """
 This api is for handling authentication for users who are already registered.
@@ -20,8 +20,8 @@ def login():
     # placeholder response
     return Response("asdf", 200)
 
-@auth_service.route('/test-add-to-db', methods = ["GET", "POST"])
-def test_add():
+@auth_service.route('/test-get-collection', methods = ["GET", "POST"])
+def test_get_collection():
     """
     Inserts a comment into the comments collection, with the following fields:
 
@@ -34,7 +34,6 @@ def test_add():
     Name and email must be retrieved from the "user" object.
     """
     
-    # TODO
-    # comment_doc = { 'movie_id' : "movie_id_here", 'name' : "shitty name", 'email' : "asdf@example.com",'text' : "mid movie", 'date' : "January 20th"}
-    # return db.comments.insert_one(comment_doc)
+    print("ACCOUNT COLLECTION: ", get_user_acc_collection())
+    return Response("hi!", 200) # TODO
 

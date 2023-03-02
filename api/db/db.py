@@ -21,9 +21,16 @@ def get_db():
     if db is None:
 
         db = g._database = PyMongo(current_app).db
-       
+    
     return db
 
 
 # Use LocalProxy to read the global db instance with just `db`
 db = LocalProxy(get_db)
+
+def get_user_acc_collection():
+    """
+    returns the userAccount collection
+    """
+    collection = db['userAccounts']
+    return collection
