@@ -6,4 +6,4 @@ application = Flask(__name__)
 
 @application.route('/sign-up', methods = ["GET", "POST"])
 def signUp():
-    return
+    return "hi"
