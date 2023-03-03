@@ -3,7 +3,7 @@ from jinja2 import TemplateNotFound
 from flask import Response
 import requests
 import logging
-from api.db.db import get_user_acc_collection
+from db.db import get_user_acc_collection
 
 """
 This api is for handling authentication for users who are already registered.
