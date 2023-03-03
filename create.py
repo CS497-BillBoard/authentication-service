@@ -8,6 +8,7 @@ from bson import json_util, ObjectId
 from datetime import datetime, timedelta
 
 from api.auth_service import auth_service
+from api.bills_service import bill_service
 
 """
 Classes for creating app and encoding data, copied from the mongodb/flask tutorial
@@ -32,7 +33,8 @@ def create_app():
                 )
     CORS(app)
     app.json_encoder = MongoJsonEncoder
-    app.register_blueprint(auth_service)  # TODO asdf
+    app.register_blueprint(auth_service)
+    app.register_blueprint(bills_service)
 
     @app.route('/', defaults={'path': ''})
     @app.route('/<path:path>')
