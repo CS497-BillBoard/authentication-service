@@ -8,7 +8,7 @@ from bson import json_util, ObjectId
 from datetime import datetime, timedelta
 
 from api.auth_service import auth_service
-from api.bills_service import bill_service
+from api.bills_service import bills_service
 
 """
 Classes for creating app and encoding data, copied from the mongodb/flask tutorial
