@@ -1,11 +1,13 @@
+from typing import Dict
 from flask import Flask, Blueprint, jsonify, render_template, abort
-from flask_pymongo import DESCENDING
 from jinja2 import TemplateNotFound
 from flask import Response
 import requests
 import json
 import logging
 from db.db import get_bills
+from utils.bill_summary import get_plain_bill_text
+from urllib.parse import urljoin
 
 """
 This api is for fetching a list of bills
@@ -21,24 +23,52 @@ def bills():
     TODO allow returning older bills
     """
     
-    # for now, just request bills from api.openparliament.ca, TODO eventually store in db
-    # TODO currently the filter is hardcoded for bills since 2023 january 1st
+    # get a list of bills
+    OPENPARLIAMENT_BASE_URL = "https://api.openparliament.ca"
+    
     params = {'format': 'json',
               'version': 'v1',
               'introduced__gte':'2023-01-01'}
-    r = requests.get('https://api.openparliament.ca/bills/', params=params)
+    r = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, 'bills'), params=params)
     
-    # status codes above 400 indicate an error
-    if (r.status_code >= 400):
+    if (r.status_code >= 400):  # status codes above 400 indicate an error
         print(r.reason)
         return Response(f"{r.reason}", r.status_code)
     
-    # parse to get data about the bills
-    bills_data = r.json()['objects']
+    # return a list of bills. each bill is a dictionary with params "name", "summary", "introduced"
+    returned_bill_data = []
     
-    # sort descending by date
-    sorted_bills = sorted(bills_data, key=lambda x: x["introduced"], reverse=True)
-    return jsonify(sorted_bills)
+    # parse to get data about the bills
+    sorted_bills_data = sorted(r.json()['objects'], key=lambda x: x["introduced"], reverse=True)
+    
+    # get a summary for each bill
+    for bill in sorted_bills_data:
+        bill_url = bill['url']
+        
+        single_bill_params = {'format': 'json', 'version': 'v1'}
+        resp_bill = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, bill_url), params=single_bill_params)
+        if (resp_bill.status_code >= 400):  # status codes above 400 indicate an error
+            print(r.reason)
+            return Response(f'{r.reason}', r.status_code)
+        
+        bill_info = resp_bill.json()
+        
+        # parse bill summary
+        summary, text = get_plain_bill_text(bill_info['text_url'])
+        
+        # bill name
+        bill_name = bill_info['short_title']['en'] if bill_info['short_title']['en'] != "" else bill_info['name']['en']
+        
+        # add the short title if it exists
+        returned_bill_data.append(
+            {
+                "name": bill_name,
+                "summary": summary,
+                "introduced": bill_info['introduced']
+            }
+        )    
+    
+    return jsonify(returned_bill_data)
 
 
 def fetch_new_bills():
