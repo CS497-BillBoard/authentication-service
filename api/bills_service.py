@@ -5,7 +5,7 @@ from flask import Response
 import requests
 import json
 import logging
-from db.db import get_user_acc_collection
+from db.db import get_bills
 
 """
 This api is for fetching a list of bills
@@ -23,7 +23,9 @@ def bills():
     
     # for now, just request bills from api.openparliament.ca, TODO eventually store in db
     # TODO currently the filter is hardcoded for bills since 2023 january 1st
-    params = {'format': 'json', 'version': 'v1', 'introduced__gt': '2023-01-01'}
+    params = {'format': 'json',
+              'version': 'v1',
+              'introduced__gte':'2023-01-01'}
     r = requests.get('https://api.openparliament.ca/bills/', params=params)
     
     # status codes above 400 indicate an error
@@ -36,7 +38,16 @@ def bills():
     
     # sort descending by date
     sorted_bills = sorted(bills_data, key=lambda x: x["introduced"], reverse=True)
-    
-    # placeholder response
     return jsonify(sorted_bills)
+
+
+def fetch_new_bills():
+    """
+    fetch new bills from https://openparliament.ca/api/
+    TODO eventually this will update the list of bills in the db
+    """
+    bills_list = [i for i in get_bills()]
+    print("BILLS: ", bills_list)
+    
+    return
 
