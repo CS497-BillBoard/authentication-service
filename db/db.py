@@ -13,7 +13,7 @@ from bson.objectid import ObjectId
 from bson.errors import InvalidId
 
 """
-This file based on MongoDB tutorial at https://www.mongodb.com/compatibility/setting-up-flask-with-mongodb
+This file has code from the MongoDB tutorial at https://www.mongodb.com/compatibility/setting-up-flask-with-mongodb
 """
 
 def get_db():
