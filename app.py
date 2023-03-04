@@ -8,11 +8,6 @@ from jinja2 import TemplateNotFound
 from api.auth_service import auth_service
 from create import create_app
 
-app = Flask(__name__)
-app.register_blueprint(auth_service)
-# TODO add register service
-
-
 config = configparser.ConfigParser()
 config.read(os.path.abspath(os.path.join(".ini")))
 
