@@ -7,7 +7,7 @@
 ## Running the server
 run the cmd: `python main.py`
 
-as a sanity check, you can visit `http://localhost:5000/` on your web browser to check its running. The page
+as a sanity check, you can visit `http://localhost:5000/bills` (or the url displayed in your terminal) on your web browser to check its running. The page
 should say `Hello, World!`
 
 ## Generate Certs
