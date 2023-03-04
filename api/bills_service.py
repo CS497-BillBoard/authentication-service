@@ -1,4 +1,5 @@
-from flask import Flask, Blueprint, render_template, abort
+from flask import Flask, Blueprint, jsonify, render_template, abort
+from flask_pymongo import DESCENDING
 from jinja2 import TemplateNotFound
 from flask import Response
 import requests
@@ -21,11 +22,21 @@ def bills():
     """
     
     # for now, just request bills from api.openparliament.ca, TODO eventually store in db
-    params = {'format': 'json', 'version': 'v1'}
+    # TODO currently the filter is hardcoded for bills since 2023 january 1st
+    params = {'format': 'json', 'version': 'v1', 'introduced__gt': '2023-01-01'}
     r = requests.get('https://api.openparliament.ca/bills/', params=params)
+    
+    # status codes above 400 indicate an error
+    if (r.status_code >= 400):
+        print(r.reason)
+        return Response(f"{r.reason}", r.status_code)
+    
+    # parse to get data about the bills
     bills_data = r.json()['objects']
-    print("First bill: ", bills_data[0]['name']['en'])
+    
+    # sort descending by date
+    sorted_bills = sorted(bills_data, key=lambda x: x["introduced"], reverse=True)
     
     # placeholder response
-    return Response(f"First bill: {bills_data[0]['name']['en']}", 200)
+    return jsonify(sorted_bills)
 
