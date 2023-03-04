@@ -11,14 +11,10 @@ from create import create_app
 config = configparser.ConfigParser()
 config.read(os.path.abspath(os.path.join(".ini")))
 
-if __name__ == "__main__":
-    # TODO, this wasn't working for me, so ive commented it out
-    # context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-    # context.load_cert_chain('cert.pem', 'private.pem')
-    
-    app = create_app()
-    app.config['DEBUG'] = True
-    app.config['MONGO_URI'] = config['PROD']['DB_URI']
+app = create_app()
+app.config['DEBUG'] = True
+app.config['MONGO_URI'] = config['PROD']['DB_URI']
 
+if __name__ == "__main__":
     app.run()
 

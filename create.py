@@ -36,6 +36,7 @@ def create_app():
     app.register_blueprint(auth_service)
     app.register_blueprint(bills_service)
 
+    # TODO: remove this test route later or convert it into a health check
     @app.route('/', defaults={'path': ''})
     @app.route('/<path:path>')
     def test_route(path):
