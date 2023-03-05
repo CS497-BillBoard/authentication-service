@@ -1,3 +1,4 @@
+from msilib.schema import Error
 from typing import Dict
 from flask import Flask, Blueprint, jsonify, render_template, abort
 from jinja2 import TemplateNotFound
@@ -5,7 +6,7 @@ from flask import Response
 import requests
 import json
 import logging
-from db.db import get_bills
+from db.db import get_bills, store_new_bills
 from utils.bill_summary import get_plain_bill_text
 from urllib.parse import urljoin
 
@@ -78,7 +79,30 @@ def bills():
     Returns a list of the most recent bills in JSON format
     TODO allow returning older bills
     """
-    
     return jsonify(list_of_bills)
 
+@bills_service.route('/test-store-bills', methods = ["GET"])
+def test_store_bills():
+    """
+    TODO DELETE THIS AND MAKE IT BETTER
+    Temporary function to store new bills into mongodb
+    """
+    try:
+        store_new_bills(list_of_bills)
+    except Error as e:
+        print(e)
+        return Response("something went wrong :(", 500)
+        
+    return Response("stored bills!", 200)
+
+@bills_service.route('/test-get-bills-db', methods = ["GET"])
+def test_get_bills_db():
+    """
+    TODO DELETE THIS AND MAKE IT BETTER
+    Temporary function try fetching data from mongoDB
+    """
+    data_cursor = get_bills()
+    bills = sorted(list(data_cursor), key= lambda x: x['introduced'], reverse=True)
+    
+    return bills
 
