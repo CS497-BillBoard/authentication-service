@@ -11,7 +11,6 @@ This api is for handling authentication for users who are already registered.
 
 # TODO database stuff
 
-
 # endpoint
 auth_service = Blueprint('auth_page', __name__, template_folder='templates')
 
