@@ -1,4 +1,4 @@
-from typing import Collection
+from typing import Collection, Dict, List
 import bson
 
 from flask import current_app, g
@@ -61,18 +61,6 @@ def get_bills():
     return bills
 
 # store new bills in the db
-def store_new_bill():
-    new_bill = {
-        "introduced": "2023-02-16",
-        "legisinfo_id": 12237277,
-        "name": {
-        "en": "An Act to amend the Criminal Code, to make consequential amendments to other Acts and to repeal a regulation (miscarriage of justice reviews)",
-        "fr": "Loi modifiant le Code criminel et d'autres lois en cons\u00e9quence et abrogeant un r\u00e8glement (examen des erreurs judiciaires)"
-        },
-        "number": "C-40",
-        "session": "44-1",
-        "url": "/bills/44-1/C-40/"
-    }
-    
+def store_new_bills(bills: List[Dict]):
     collection: Collection = db_bills['bills']
-    collection.insert_one(new_bill)
+    collection.insert_many(bills)
