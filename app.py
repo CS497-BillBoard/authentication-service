@@ -14,7 +14,7 @@ from create import create_app
 logging.basicConfig(level=logging.INFO)
 logging.info("(app.py) logging level set to INFO")
 
-if os.environ['LOGGING_LEVEL_DEBUG'] == 'True':
+if os.environ.get('LOGGING_LEVEL_DEBUG') == 'True':
     logging.basicConfig(level=logging.DEBUG)
     logging.info("(app.py) logging level set to DEBUG")
 
