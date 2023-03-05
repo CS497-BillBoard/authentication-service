@@ -13,16 +13,11 @@ from urllib.parse import urljoin
 This api is for fetching a list of bills
 """
 
-# endpoint
-bills_service = Blueprint('bills_page', __name__, template_folder='templates')
-
-@bills_service.route('/bills', methods = ["GET"])
-def bills():
+def fetch_new_bills():
     """
-    Returns a list of the most recent bills in JSON format
-    TODO allow returning older bills
+    fetch new bills from https://openparliament.ca/api/
+    TODO eventually this will fetch bills from the db instead of the API
     """
-    
     # get a list of bills
     OPENPARLIAMENT_BASE_URL = "https://api.openparliament.ca"
     
@@ -68,16 +63,20 @@ def bills():
             }
         )    
     
-    return jsonify(returned_bill_data)
+    return returned_bill_data
 
+list_of_bills = fetch_new_bills()
 
-def fetch_new_bills():
+# endpoint
+bills_service = Blueprint('bills_page', __name__, template_folder='templates')
+
+@bills_service.route('/bills', methods = ["GET"])
+def bills():
     """
-    fetch new bills from https://openparliament.ca/api/
-    TODO eventually this will update the list of bills in the db
+    Returns a list of the most recent bills in JSON format
+    TODO allow returning older bills
     """
-    bills_list = [i for i in get_bills()]
-    print("BILLS: ", bills_list)
     
-    return
+    return jsonify(list_of_bills)
+
 
