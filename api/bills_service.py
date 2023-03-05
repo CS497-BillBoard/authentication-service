@@ -22,6 +22,7 @@ def bills():
     Returns a list of the most recent bills in JSON format
     TODO allow returning older bills
     """
+    logging.info("(bills_service.py) /bills endpoint hit")
     
     # get a list of bills
     OPENPARLIAMENT_BASE_URL = "https://api.openparliament.ca"

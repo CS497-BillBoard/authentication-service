@@ -6,4 +6,6 @@ application = Flask(__name__)
 
 @application.route('/sign-up', methods = ["GET", "POST"])
 def signUp():
+    logging.info("(register.py) /sign-up endpoint hit")
+
     return "hi"

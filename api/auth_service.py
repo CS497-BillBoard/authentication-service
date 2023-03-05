@@ -18,6 +18,8 @@ auth_service = Blueprint('auth_page', __name__, template_folder='templates')
 @auth_service.route('/login', methods = ["GET", "POST"])
 def login():
     # placeholder response
+    logging.info("(auth_service.py) /login endpoint hit")
+
     return Response("asdf", 200)
 
 @auth_service.route('/test-get-collection', methods = ["GET", "POST"])
@@ -33,7 +35,8 @@ def test_get_collection():
 
     Name and email must be retrieved from the "user" object.
     """
-    
+    logging.info("(auth_service.py) /test-get-collection endpoint hit")
+
     print("ACCOUNT COLLECTION: ", get_user_acc_collection())
     return Response("hi!", 200) # TODO
 
