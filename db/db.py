@@ -60,7 +60,16 @@ def get_bills():
     bills = collection.find(query)
     return bills
 
-# store new bills in the db
 def store_new_bills(bills: List[Dict]):
+    """
+    Given a list of bills, stores all of them into the db if they don't exist yet
+    """
     collection: Collection = db_bills['bills']
-    collection.insert_many(bills)
+    inserted_bills = []
+    for bill in bills:
+        # only insert bills that dont already exist
+        if collection.find_one({'legisinfo_id': bill['legisinfo_id']}) == None:
+            inserted_bills.append(bill)
+    
+    if len(inserted_bills) > 0:
+        collection.insert_many(inserted_bills)

@@ -35,6 +35,9 @@ def create_app():
     app.json_encoder = MongoJsonEncoder
     app.register_blueprint(auth_service)
     app.register_blueprint(bills_service)
+    
+    # TODO on startup, simultaneously fetch from the openparliament api and db
+    
 
     # TODO: remove this test route later or convert it into a health check
     @app.route('/', defaults={'path': ''})

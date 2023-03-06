@@ -1,4 +1,3 @@
-from msilib.schema import Error
 from typing import Dict
 from flask import Flask, Blueprint, jsonify, render_template, abort
 from jinja2 import TemplateNotFound
@@ -58,6 +57,8 @@ def fetch_new_bills():
         # add the short title if it exists
         returned_bill_data.append(
             {
+                "legisinfo_id": bill_info['legisinfo_id'],
+                "full_text_url": bill_info['text_url'],
                 "name": bill_name,
                 "summary": summary,
                 "introduced": bill_info['introduced']
@@ -87,7 +88,7 @@ def test_store_bills():
     """
     try:
         store_new_bills(list_of_bills)
-    except Error as e:
+    except Exception as e:
         print(e)
         return Response("something went wrong :(", 500)
         
