@@ -77,6 +77,8 @@ def bills():
     TODO allow returning older bills
     """
     
-    return jsonify(list_of_bills)
+    # return jsonify(list_of_bills)
+
+    return get_bills(), 200
 
 

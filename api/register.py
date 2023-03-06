@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from flask import Flask, Blueprint, render_template, abort, jsonify, request
+from flask import Flask, Blueprint, render_template, abort, jsonify, request, Response
 import requests
 import logging
 import bcrypt
@@ -20,10 +20,11 @@ def signUp():
 
         password_hash = bcrypt.hashpw(bytePassword, salt)
 
-        user = {"email": body["email"], "password_hash": password_hash}
+        user = {"email": body["email"], "password_hash": password_hash, "verified": False}
 
-        insert_new_user(user)
+        insert_result = insert_new_user(user)
 
-        
+        if insert_result == -1:
+            return Response("Email already registered to an account", 400)
 
     return "hi"
