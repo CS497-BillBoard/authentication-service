@@ -17,7 +17,7 @@ This api is for handling authentication for users who are already registered.
 auth_service = Blueprint("auth_page", __name__, template_folder="templates")
 
 
-@auth_service.route("/login", methods=["GET", "POST"])
+@auth_service.route("/login", methods=["GET", "POST", "PUT"])
 def login():
     # placeholder response
 
@@ -34,10 +34,20 @@ def login():
         if passwordMatch:
 
             access_token = create_access_token(identity=user["email"])
-            return {"token": access_token, "user_id": user["email"], "verified": user["verified"]}, 200
+            return {
+                "token": access_token,
+                "user_id": user["email"],
+                "verified": user["verified"],
+            }, 200
             print(access_token)
 
-    return Response("invalid password", 400)
+    if request.method == "PUT":
+        
+        print(request.get_json)
+
+        return {"data": "LOL"}, 200
+
+    return {"data": "invalid password"}, 400
 
 
 @auth_service.route("/test-get-collection", methods=["GET", "POST"])

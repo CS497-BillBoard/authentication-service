@@ -27,4 +27,4 @@ def signUp():
         if insert_result == -1:
             return Response("Email already registered to an account", 400)
 
-    return "hi"
+        return {"email": body["email"]}, 200
