@@ -61,10 +61,11 @@ def insert_new_user(user):
     Collection = get_user_acc_collection()
 
     try:
-        Collection.insert_one(document=user)    
+        Collection.insert_one(document=user)
     except pymongo.errors.DuplicateKeyError as e:
 
         print(e)
+        return -1
 
 
 def get_bills():

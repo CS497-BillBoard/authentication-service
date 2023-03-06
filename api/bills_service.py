@@ -80,7 +80,10 @@ def bills():
     Returns a list of the most recent bills in JSON format
     TODO allow returning older bills
     """
-    return jsonify(list_of_bills)
+    
+    # return jsonify(list_of_bills)
+
+    return get_bills(), 200
 
 @bills_service.route('/test-store-bills', methods = ["GET"])
 def test_store_bills():

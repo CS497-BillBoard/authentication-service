@@ -4,6 +4,8 @@ from flask import Response
 import requests
 import logging
 from db.db import get_user_acc_collection, get_single_user
+from flask_jwt_extended import create_access_token
+import bcrypt
 
 """
 This api is for handling authentication for users who are already registered.
@@ -22,10 +24,21 @@ def login():
 
     if request.method == "POST":
         print(request.get_json()["email"])
-        test = get_single_user(request.get_json()["email"])
-        print(test)
+        user = get_single_user(request.get_json()["email"])
+        if user is None:
+            return Response("No account found with email", 401)
 
-    return Response("asdf", 200)
+        passwordMatch = bcrypt.checkpw(
+            request.get_json()["password"].encode("UTF-8"), user["password_hash"]
+        )
+
+        if passwordMatch:
+
+            access_token = create_access_token(identity=user["email"])
+            return {"token": access_token, "user_id": user["email"], "verified": user["verified"]}, 200
+            print(access_token)
+
+    return Response("invalid password", 400)
 
 
 @auth_service.route("/test-get-collection", methods=["GET", "POST"])

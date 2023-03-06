@@ -5,6 +5,7 @@ import ssl
 from flask import Flask
 from flask import Blueprint, render_template, abort
 from jinja2 import TemplateNotFound
+from flask_jwt_extended import JWTManager
 
 from api.auth_service import auth_service
 from create import create_app
@@ -31,6 +32,9 @@ app.config['DEBUG'] = True
 app.config['MONGO_URI'] = config['PROD']['DB_URI']
 logging.info("(app.py) mongo uri added to app config")
 
+app.config["JWT_SECRET_KEY"] = config['PROD']['SECRET_KEY']
+
+jwt = JWTManager(app)
 
 '''
  note: 
