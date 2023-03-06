@@ -28,7 +28,7 @@ def fetch_new_bills():
     
     if (r.status_code >= 400):  # status codes above 400 indicate an error
         print(r.reason)
-        return Response(f"{r.reason}", r.status_code)
+        return f"{r.reason}", r.status_code
     
     # return a list of bills. each bill is a dictionary with params "name", "summary", "introduced"
     returned_bill_data = []
@@ -44,7 +44,7 @@ def fetch_new_bills():
         resp_bill = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, bill_url), params=single_bill_params)
         if (resp_bill.status_code >= 400):  # status codes above 400 indicate an error
             print(r.reason)
-            return Response(f'{r.reason}', r.status_code)
+            return f'{r.reason}', r.status_code
         
         bill_info = resp_bill.json()
         
@@ -67,7 +67,7 @@ def fetch_new_bills():
     
     return returned_bill_data
 
-list_of_bills = fetch_new_bills()
+list_of_bills = fetch_new_bills()  # TODO fetch from db and then compare with api
 
 # endpoint
 bills_service = Blueprint('bills_page', __name__, template_folder='templates')
@@ -78,7 +78,9 @@ def bills():
     Returns a list of the most recent bills in JSON format
     TODO allow returning older bills
     """
-    return jsonify(list_of_bills)
+    
+    # return jsonify(list_of_bills)
+    return list_of_bills, 200
 
 @bills_service.route('/test-store-bills', methods = ["GET"])
 def test_store_bills():
@@ -90,9 +92,9 @@ def test_store_bills():
         store_new_bills(list_of_bills)
     except Exception as e:
         print(e)
-        return Response("something went wrong :(", 500)
+        return {"something went wrong :(": ""}, 500
         
-    return Response("stored bills!", 200)
+    return {"stored bills!": ""}, 200
 
 @bills_service.route('/test-get-bills-db', methods = ["GET"])
 def test_get_bills_db():
