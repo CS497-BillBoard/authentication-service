@@ -79,7 +79,7 @@ def get_bills():
 
 
 # store new bills in the db
-def store_new_bill(bills: List[Dict]):
+def store_new_bills(bills: List[Dict]):
     collection: Collection = get_bills_db()["bills"]
     inserted_bills = []
     for bill in bills:

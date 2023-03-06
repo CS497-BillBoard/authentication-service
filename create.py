@@ -46,7 +46,7 @@ def create_app():
     def test_route(path):
         
         # temporary test
-        return Response("Hello, World!", 200)
+        return {"Hello, World!": ""}, 200
 
     return app
 

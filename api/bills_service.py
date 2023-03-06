@@ -30,7 +30,7 @@ def fetch_new_bills():
     
     if (r.status_code >= 400):  # status codes above 400 indicate an error
         print(r.reason)
-        return Response(f"{r.reason}", r.status_code)
+        return {'reason': f'{r.reason}'}, r.status_code
     
     # return a list of bills. each bill is a dictionary with params "name", "summary", "introduced"
     returned_bill_data = []
@@ -46,7 +46,7 @@ def fetch_new_bills():
         resp_bill = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, bill_url), params=single_bill_params)
         if (resp_bill.status_code >= 400):  # status codes above 400 indicate an error
             print(r.reason)
-            return Response(f'{r.reason}', r.status_code)
+            return {'reason': f'{r.reason}'}, r.status_code
         
         bill_info = resp_bill.json()
         
@@ -80,10 +80,8 @@ def bills():
     Returns a list of the most recent bills in JSON format
     TODO allow returning older bills
     """
-    
-    # return jsonify(list_of_bills)
 
-    return get_bills(), 200
+    return list_of_bills, 200
 
 @bills_service.route('/test-store-bills', methods = ["GET"])
 def test_store_bills():
@@ -95,9 +93,9 @@ def test_store_bills():
         store_new_bills(list_of_bills)
     except Exception as e:
         print(e)
-        return Response("something went wrong :(", 500)
+        return {"error_msg: ": "something went wrong :("}, 500
         
-    return Response("stored bills!", 200)
+    return {"stored bills!": ""}, 200
 
 @bills_service.route('/test-get-bills-db', methods = ["GET"])
 def test_get_bills_db():
@@ -108,5 +106,5 @@ def test_get_bills_db():
     data_cursor = get_bills()
     bills = sorted(list(data_cursor), key= lambda x: x['introduced'], reverse=True)
     
-    return bills
+    return {bills}, 200
 
