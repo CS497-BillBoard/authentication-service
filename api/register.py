@@ -22,6 +22,10 @@ def signUp():
         password_hash = bcrypt.hashpw(bytePassword, salt)
 
         user = {"email": body["email"], "password_hash": password_hash, "verified": False}
+        
+        # validate form data
+        # TODO: check if email is valid and not duplicate
+        # TODO: check if password is valid (not empty, etc.)
 
         insert_result = insert_new_user(user)
 
