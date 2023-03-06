@@ -22,7 +22,7 @@ def login():
     # placeholder response
 
     if request.method == "POST":
-        print(request.get_json()["email"])
+        logging.info(request.get_json()["email"])
         user = get_single_user(request.get_json()["email"])
         if user is None:
             return Response("No account found with email", 401)
@@ -35,7 +35,7 @@ def login():
 
             access_token = create_access_token(identity=user["email"])
             return {"token": access_token, "user_id": user["email"], "verified": user["verified"]}, 200
-            print(access_token)
+            logging.info(access_token)
 
     return Response("invalid password", 400)
 
@@ -54,5 +54,5 @@ def test_get_collection():
     Name and email must be retrieved from the "user" object.
     """
 
-    print("ACCOUNT COLLECTION: ", get_user_acc_collection())
+    logging.info("ACCOUNT COLLECTION: ", get_user_acc_collection())
     return Response("hi!", 200)  # TODO
