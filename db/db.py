@@ -5,7 +5,7 @@ from flask import current_app, g
 from gridfs import Database
 from werkzeug.local import LocalProxy
 from flask_pymongo import PyMongo
-
+import logging
 from pymongo.errors import DuplicateKeyError, OperationFailure
 from typing import TypedDict
 from pymongo.collection import Collection
@@ -102,21 +102,79 @@ def store_new_bills(bills: list[dict]):
         collection.insert_many(inserted_bills)
 
 
+def get_single_verification_request(email):
+
+    Collection = get_verification_requests_collection()
+
+    return Collection.find_one({"email": email})
+
+
 def add_verification_request(verification_request: dict):
     """
     Adds a verification request to the database
     """
     # get the verificationRequests collection
     collection = get_verification_requests_collection()
+
+    #TODO: update "imageUploaded" field in accountsDatabase collection
     
     
     # insert the verification request into the db
     try:
-        print("inserting verification request")
+        logging.info("inserting verification request")
         collection.insert_one(document=verification_request)
-        print("inserted verification request")
+        logging.info("inserted verification request")
     except pymongo.errors.DuplicateKeyError as e:
         print(e)
-        return -1
+        return e
+    
+    return 1
+
+def remove_verification_request(email: str):
+    """
+    Removes a verification request from the database
+    """
+    # get the verificationRequests collection
+    collection = get_verification_requests_collection()
+
+    # remove the verification request from the db
+    try:
+        result = collection.delete_one({"email": email})
+
+        if result.deleted_count == 0:
+            logging.info("remove_verification_request(): no verification request found for email: " + email)
+            return -1
+        elif result.deleted_count > 1:
+            logging.info("remove_verification_request(): multiple verification requests found for email: " + email)
+            return -2
+
+    except Exception as e:
+        logging.error(e)
+        return e
+        
+    return 1
+
+def update_verification_status_to_approved(email: str, drivers_license_hash: str):
+    """
+    Updates the verification status of a user to approved
+    """
+    # get the userAccounts collection
+    userAccountsCollection = get_user_acc_collection()
+    
+    # update the user's verification status to approved and store the drivers license hash
+    try:
+        result = userAccountsCollection.update_one({"email": email}, {"$set": {"verified": True, "drivers_license_hash": drivers_license_hash}})
+        
+        if result.modified_count != 1:
+            return -1
+    except Exception as e:
+        logging.error(e)
+        return e
+
+    # remove the verification request from the db
+    result = remove_verification_request(email)
+
+    if type(result) == Exception:
+        logging.error(result)
     
     return 1

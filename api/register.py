@@ -46,6 +46,10 @@ def verificationRequest():
 
         if body.get("email") is None or body.get("email") == "":
             return {"error" : "No email provided"}, 400
+        
+        # check if user exists
+        if db.get_single_user(body["email"]) is None:
+            return {"error" : "No account found with email"}, 400
 
         if body.get("driversLicenseImage") is None or body.get("driversLicenseImage") == "":
             return {"error" : "No drivers license provided"}, 400
@@ -64,10 +68,67 @@ def verificationRequest():
 
         #TODO: need to add policy to db that documents that still exist after 30 days are deleted (to ensure user data privacy)
 
-        if dbResponse == -1:
-            return {"error" : "Verification request associated with this email already exists"}, 400
+        if type(dbResponse) == Exception:
+            return {"error" : "Verification request associated with this email already exists: " + str(dbResponse)}, 400
 
     
     return {"status" : "success"}, 200
-    
 
+@register_service.route("/update-verification-status", methods = ["POST"])
+def updateVerificationStatus():
+    """
+    sample request body (approved request):
+    {
+        "email": "test@test.com",
+        "status": true
+        "driversLicenseNumber": "123456789"
+    }
+
+    sample request body (rejected request):
+    {
+        "email": "test@test.com",
+        "status": false
+    }
+    
+    """
+    logging.info("(register.py) /update-verification-status endpoint hit")
+
+    if request.method == "POST":
+        body = request.get_json()
+
+        if body.get("email") is None or body.get("email") == "":
+            return {"error" : "No email provided"}, 400
+        
+        # check if user exists
+        if db.get_single_user(body["email"]) is None:
+            return {"error" : "No account found with email"}, 400
+        
+        # check if verification request exists
+        if db.get_single_verification_request(body["email"]) is None:
+            return {"error" : "No verification request found with email"}, 400
+
+        if body.get("status") is None or body.get("status") == "":
+            return {"error" : "No status provided"}, 400
+
+        if body.get("status") == False:
+            result = db.remove_verification_request(body["email"])
+
+            if type(result) == Exception:
+                return {"error" : "Error removing verification request from db: " + str(result)}, 400
+            return {"status" : "success", "msg": "rejected verification - removed request from db"}, 200
+
+        if body.get("driversLicenseNumber") is None or body.get("driversLicenseNumber") == "":
+            return {"error" : "No drivers license number provided"}, 400
+        
+        email = body["email"]
+
+
+        # get driver's license number and salt+hash it
+        byteDriversLicenseNumber = body["driversLicenseNumber"].encode('UTF-8')
+        salt = bcrypt.gensalt()
+        driversLicenseNumberHash = bcrypt.hashpw(byteDriversLicenseNumber, salt)
+
+        db.update_verification_status_to_approved(email, driversLicenseNumberHash)
+
+    return {"status" : "success"}, 200
+    
