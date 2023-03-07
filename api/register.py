@@ -15,14 +15,19 @@ def signUp():
     if request.method == "POST":
         body = request.get_json()
 
-        bytePassword = body["password"].encode('UTF-8')
+        bytePassword = body["password"].encode("UTF-8")
 
         salt = bcrypt.gensalt()
 
         password_hash = bcrypt.hashpw(bytePassword, salt)
 
-        user = {"email": body["email"], "password_hash": password_hash, "verified": False}
-        
+        user = {
+            "email": body["email"],
+            "password_hash": password_hash,
+            "verified": False,
+            "submittedVerificationPhoto": False,
+        }
+
         # validate form data
         # TODO: check if email is valid and not duplicate
         # TODO: check if password is valid (not empty, etc.)
@@ -32,4 +37,4 @@ def signUp():
         if insert_result == -1:
             return {"data": "Email already registered to an account"}, 400
 
-    return {"data": ""}
+    return {"data": ""}, 200
