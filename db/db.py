@@ -1,4 +1,4 @@
-from typing import Collection, Dict, List
+from typing import Collection
 import bson
 
 from flask import current_app, g
@@ -42,12 +42,23 @@ def get_bills_db():
 def get_user_acc_db():
     return db["accountsDatabase"]
 
+def get_verification_db():
+    return db["verificationDatabase"]
+
 def get_user_acc_collection():
     """
     returns the userAccount collection
     """
 
     collection: Collection = get_user_acc_db()["userAccounts"]
+    return collection
+
+def get_verification_requests_collection():
+    """
+    returns the verificationRequests collection
+    """
+
+    collection: Collection = get_verification_db()["verificationRequests"]
     return collection
 
 
@@ -79,7 +90,7 @@ def get_bills():
 
 
 # store new bills in the db
-def store_new_bills(bills: List[Dict]):
+def store_new_bills(bills: list[dict]):
     collection: Collection = get_bills_db()["bills"]
     inserted_bills = []
     for bill in bills:
@@ -89,3 +100,23 @@ def store_new_bills(bills: List[Dict]):
     
     if len(inserted_bills) > 0:
         collection.insert_many(inserted_bills)
+
+
+def add_verification_request(verification_request: dict):
+    """
+    Adds a verification request to the database
+    """
+    # get the verificationRequests collection
+    collection = get_verification_requests_collection()
+    
+    
+    # insert the verification request into the db
+    try:
+        print("inserting verification request")
+        collection.insert_one(document=verification_request)
+        print("inserted verification request")
+    except pymongo.errors.DuplicateKeyError as e:
+        print(e)
+        return -1
+    
+    return 1
