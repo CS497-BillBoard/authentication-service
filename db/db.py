@@ -78,6 +78,22 @@ def insert_new_user(user):
         print(e)
         return -1
 
+def update_user(email: str, updateFieldsDict: dict):
+    collection = get_user_acc_collection()
+
+    try:
+        result = collection.update_one({"email": email}, {"$set": updateFieldsDict})
+
+        if result.modified_count != 1:
+            logging.info("update_user(): updated unexpected number of modified documents: " + str(result.modified_count))
+            return -1
+    except Exception as e:
+        logging.info("update_user(): error updating user: " + str(e))
+        return e
+    
+    return 1
+
+
 
 def get_bills():
     collection: Collection = get_bills_db()["bills"]
@@ -114,20 +130,23 @@ def add_verification_request(verification_request: dict):
     Adds a verification request to the database
     """
     # get the verificationRequests collection
-    collection = get_verification_requests_collection()
-
-    #TODO: update "imageUploaded" field in accountsDatabase collection
-    
+    verificationRequestsCollection = get_verification_requests_collection()
     
     # insert the verification request into the db
     try:
         logging.info("inserting verification request")
-        collection.insert_one(document=verification_request)
+        verificationRequestsCollection.insert_one(document=verification_request)
         logging.info("inserted verification request")
     except pymongo.errors.DuplicateKeyError as e:
         print(e)
         return e
     
+    # update "submittedVerificationPhoto" field in accountsDatabase collection
+    result = update_user(verification_request["email"], {"submittedVerificationPhoto": True})
+    if type(result) == Exception:
+        logging.error(result)
+        return result
+
     return 1
 
 def remove_verification_request(email: str):
@@ -166,6 +185,7 @@ def update_verification_status_to_approved(email: str, drivers_license_hash: str
         result = userAccountsCollection.update_one({"email": email}, {"$set": {"verified": True, "drivers_license_hash": drivers_license_hash}})
         
         if result.modified_count != 1:
+            logging.info("update_verification_status_to_approved(): updated unexpected number of modified documents: " + str(result.modified_count))
             return -1
     except Exception as e:
         logging.error(e)
