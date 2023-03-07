@@ -5,7 +5,7 @@ from flask import Response
 import requests
 import json
 import logging
-from db.db import get_bills
+from db.db import get_bills, store_new_bills
 from utils.bill_summary import get_plain_bill_text
 from urllib.parse import urljoin
 
@@ -13,14 +13,10 @@ from urllib.parse import urljoin
 This api is for fetching a list of bills
 """
 
-# endpoint
-bills_service = Blueprint('bills_page', __name__, template_folder='templates')
-
-@bills_service.route('/bills', methods = ["GET"])
-def bills():
+def fetch_new_bills():
     """
-    Returns a list of the most recent bills in JSON format
-    TODO allow returning older bills
+    fetch new bills from https://openparliament.ca/api/
+    TODO eventually this will fetch bills from the db instead of the API
     """
     logging.info("(bills_service.py) /bills endpoint hit")
     
@@ -34,7 +30,7 @@ def bills():
     
     if (r.status_code >= 400):  # status codes above 400 indicate an error
         print(r.reason)
-        return Response(f"{r.reason}", r.status_code)
+        return {'data': f'{r.reason}'}, r.status_code
     
     # return a list of bills. each bill is a dictionary with params "name", "summary", "introduced"
     returned_bill_data = []
@@ -50,7 +46,7 @@ def bills():
         resp_bill = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, bill_url), params=single_bill_params)
         if (resp_bill.status_code >= 400):  # status codes above 400 indicate an error
             print(r.reason)
-            return Response(f'{r.reason}', r.status_code)
+            return {'data': f'{r.reason}'}, r.status_code
         
         bill_info = resp_bill.json()
         
@@ -63,22 +59,52 @@ def bills():
         # add the short title if it exists
         returned_bill_data.append(
             {
+                "legisinfo_id": bill_info['legisinfo_id'],
+                "full_text_url": bill_info['text_url'],
                 "name": bill_name,
                 "summary": summary,
                 "introduced": bill_info['introduced']
             }
         )    
     
-    return jsonify(returned_bill_data)
+    return returned_bill_data
 
+list_of_bills = fetch_new_bills()
 
-def fetch_new_bills():
+# endpoint
+bills_service = Blueprint('bills_page', __name__, template_folder='templates')
+
+@bills_service.route('/bills', methods = ["GET"])
+def bills():
     """
-    fetch new bills from https://openparliament.ca/api/
-    TODO eventually this will update the list of bills in the db
+    Returns a list of the most recent bills in JSON format
+    TODO allow returning older bills
     """
-    bills_list = [i for i in get_bills()]
-    print("BILLS: ", bills_list)
+
+    return list_of_bills, 200
+
+@bills_service.route('/test-store-bills', methods = ["GET"])
+def test_store_bills():
+    """
+    TODO DELETE THIS AND MAKE IT BETTER
+    Temporary function to store new bills into mongodb
+    """
+    try:
+        store_new_bills(list_of_bills)
+    except Exception as e:
+        print(e)
+        return {"data": "something went wrong :("}, 500
+        
+    return {"data": "stored bills!"}, 200
+
+@bills_service.route('/test-get-bills-db', methods = ["GET"])
+def test_get_bills_db():
+    """
+    TODO DELETE THIS AND MAKE IT BETTER
+    Temporary function try fetching data from mongoDB
+    """
+    data_cursor = get_bills()
+    bills = sorted(list(data_cursor), key= lambda x: x['introduced'], reverse=True)
     
-    return
+    return {bills}, 200
 

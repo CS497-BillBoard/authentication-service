@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 
 from api.auth_service import auth_service
 from api.bills_service import bills_service
+from api.register import register_service
 
 """
 Classes for creating app and encoding data, copied from the mongodb/flask tutorial
@@ -35,6 +36,9 @@ def create_app():
     app.json_encoder = MongoJsonEncoder
     app.register_blueprint(auth_service)
     app.register_blueprint(bills_service)
+    app.register_blueprint(register_service)
+    
+    # TODO on startup, simultaneously fetch from the openparliament api and db
 
     # TODO: remove this test route later or convert it into a health check
     @app.route('/', defaults={'path': ''})
@@ -42,7 +46,7 @@ def create_app():
     def test_route(path):
         
         # temporary test
-        return Response("Hello, World!", 200)
+        return {"data": "Hello, World!"}, 200
 
     return app
 
