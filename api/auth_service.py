@@ -25,7 +25,7 @@ def login():
         logging.info(request.get_json()["email"])
         user = get_single_user(request.get_json()["email"])
         if user is None:
-            return {"No account found with email": ""}, 401
+            return {"data": "No account found with email"}, 401
 
         passwordMatch = bcrypt.checkpw(
             request.get_json()["password"].encode("UTF-8"), user["password_hash"]
@@ -36,7 +36,7 @@ def login():
             access_token = create_access_token(identity=user["email"])
             return {"token": access_token, "user_id": user["email"], "verified": user["verified"]}, 200
 
-    return {"invalid password": ""}, 400
+    return {"data": "invalid password"}, 400
 
 
 @auth_service.route("/test-get-collection", methods=["GET", "POST"])
@@ -55,4 +55,4 @@ def test_get_collection():
     logging.info("(auth_service.py) /test-get-collection endpoint hit")
 
     logging.info("ACCOUNT COLLECTION: ", get_user_acc_collection())
-    return {"hi!": ""}, 200  # TODO
+    return {"data": ""}, 200  # TODO

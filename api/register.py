@@ -30,6 +30,6 @@ def signUp():
         insert_result = insert_new_user(user)
 
         if insert_result == -1:
-            return {"msg": "Email already registered to an account"}, 400
+            return {"data": "Email already registered to an account"}, 400
 
-    return {"hi": ""}
+    return {"data": ""}
