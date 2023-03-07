@@ -35,7 +35,12 @@ def login():
         if passwordMatch:
 
             access_token = create_access_token(identity=user["email"])
-            return {"token": access_token, "user_id": user["email"], "verified": user["verified"]}, 200
+            return {
+                "token": access_token,
+                "user_id": user["email"],
+                "verified": user["verified"],
+                "submittedVerificationPhoto": user["submittedVerificationPhoto"],
+            }, 200
 
     return {"data": "invalid password"}, 400
 
