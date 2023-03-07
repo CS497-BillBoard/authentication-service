@@ -2,7 +2,8 @@ from flask import Flask, Blueprint, render_template, abort, jsonify, request
 from jinja2 import TemplateNotFound
 import requests
 import logging
-from db.db import get_user_acc_collection, get_single_user
+# from db.db import get_user_acc_collection, get_single_user
+from db import db
 from flask_jwt_extended import create_access_token
 import bcrypt
 
@@ -23,7 +24,7 @@ def login():
 
     if request.method == "POST":
         logging.info(request.get_json()["email"])
-        user = get_single_user(request.get_json()["email"])
+        user = db.get_single_user(request.get_json()["email"])
         if user is None:
             return {"data": "No account found with email"}, 401
 
@@ -58,6 +59,6 @@ def test_get_collection():
     Name and email must be retrieved from the "user" object.
     """
     logging.info("(auth_service.py) /test-get-collection endpoint hit")
-
-    logging.info("ACCOUNT COLLECTION: ", get_user_acc_collection())
+    
+    logging.info("ACCOUNT COLLECTION: ", db.get_user_acc_collection())
     return {"data": ""}, 200  # TODO
