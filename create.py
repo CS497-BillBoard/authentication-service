@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 from api.auth_service import auth_service
 from api.bills_service import bills_service
 from api.register import register_service
+from db.db import get_bills
 
 """
 Classes for creating app and encoding data, copied from the mongodb/flask tutorial
@@ -39,6 +40,10 @@ def create_app():
     app.register_blueprint(register_service)
     
     # TODO on startup, simultaneously fetch from the openparliament api and db
+    @app.before_first_request
+    def before_first_request_func():
+        print("running the thing before any requests")
+        get_bills()
 
     # TODO: remove this test route later or convert it into a health check
     @app.route('/', defaults={'path': ''})

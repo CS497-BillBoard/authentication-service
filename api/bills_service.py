@@ -69,10 +69,12 @@ def fetch_new_bills():
     
     return returned_bill_data
 
-list_of_bills = fetch_new_bills()
-
 # endpoint
 bills_service = Blueprint('bills_page', __name__, template_folder='templates')
+
+# # TODO fetch from db, get new bills, then combine together
+# existing_bills = get_bills()
+list_of_bills = fetch_new_bills()
 
 @bills_service.route('/bills', methods = ["GET"])
 def bills():
@@ -103,8 +105,10 @@ def test_get_bills_db():
     TODO DELETE THIS AND MAKE IT BETTER
     Temporary function try fetching data from mongoDB
     """
-    data_cursor = get_bills()
-    bills = sorted(list(data_cursor), key= lambda x: x['introduced'], reverse=True)
+    # data_cursor = get_bills()
+    # bills = sorted(list(data_cursor), key= lambda x: x['introduced'], reverse=True)
     
-    return {bills}, 200
+    # return {bills}, 200
+    get_bills()
 
+    return "test", 200

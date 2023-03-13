@@ -26,7 +26,7 @@ def get_db():
     db = getattr(g, "_database", None)
 
     if db is None:
-        db = MongoClient(current_app.config["MONGO_URI"])
+        db = g._database = MongoClient(current_app.config["MONGO_URI"])
 
     return db
 
@@ -101,16 +101,20 @@ def update_user(email: str, updateFieldsDict: dict):
     return 1
 
 
-
 def get_bills():
-    collection: Collection = get_bills_db()["bills"]
-
-    # get all bills from the db more recent than a certain date
+    # TODO call this after setup
+    bills_collection = getattr(g, "_db_bills", None)
+    
+    # fetch bills from db if we havent already
+    if bills_collection is None:
+        bills_collection = g._db_bills = get_bills_db()["bills"]
+    
     query = {"introduced": {"$gte": "2023-01-01"}}
-
-    bills = collection.find(query)
-    return bills
-
+    bills = bills_collection.find(query)
+    
+    print("BILLS::: ", list(bills))
+    
+    return dict(bills)
 
 # store new bills in the db
 def store_new_bills(bills: list[dict]):
