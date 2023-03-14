@@ -173,6 +173,24 @@ def remove_verification_request(email: str):
         
     return 1
 
+def update_verification_request(email: str, updatedFields: dict):
+    """
+    Updates verification request
+    """
+    # get the verificationRequests collection
+    collection = get_verification_requests_collection()
+    
+    # update the user's verification status to approved and store the drivers license hash
+    try:
+        result = collection.update_one({"email": email}, {"$set": updatedFields})
+        
+        if result.modified_count != 1:
+            logging.info("update_verification_request(): updated unexpected number of modified documents: " + str(result.modified_count))
+            return -1
+    except Exception as e:
+        logging.error(e)
+        return e
+
 def update_verification_status_to_approved(email: str, drivers_license_hash: str):
     """
     Updates the verification status of a user to approved
