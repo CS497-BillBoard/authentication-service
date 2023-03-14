@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, render_template, abort, jsonify, request
 from jinja2 import TemplateNotFound
 import requests
 import logging
+
 # from db.db import get_user_acc_collection, get_single_user
 from db import db
 from flask_jwt_extended import create_access_token
@@ -35,11 +36,14 @@ def login():
         if passwordMatch:
 
             access_token = create_access_token(identity=user["email"])
+            is_admin = user.get("is_admin", False)
+
             return {
                 "token": access_token,
                 "user_id": user["email"],
                 "verified": user["verified"],
                 "submittedVerificationPhoto": user["submittedVerificationPhoto"],
+                "is_admin": is_admin,
             }, 200
 
     return {"data": "invalid password"}, 400
@@ -59,6 +63,6 @@ def test_get_collection():
     Name and email must be retrieved from the "user" object.
     """
     logging.info("(auth_service.py) /test-get-collection endpoint hit")
-    
+
     logging.info("ACCOUNT COLLECTION: ", db.get_user_acc_collection())
     return {"data": ""}, 200  # TODO
