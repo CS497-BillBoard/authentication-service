@@ -134,11 +134,46 @@ def updateVerificationStatus():
     
 @register_service.route("/verification-request/drivers-license-info", methods = ["POST"])
 def driversLicenseInfo():
+    """
+    sample request body:
+    {
+      "email": "test@test.com",
+      "driversLicenseBase64": "base64 string"
+    }
+    """
     logging.info("(register.py) /verification-request/drivers-license-info endpoint hit")
+
+    AZURE_CUSTOM_AI_BUILDER_MODEL_URL = "https://prod-16.canadacentral.logic.azure.com:443/workflows/e1f01f174d674c23b55390ae3d620421/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=WpPWTMZJz05Q6Yc19jabyjtYY3Q6zXLrbBXgEAtvHps"
 
     if request.method == "POST":
         body = request.get_json()
 
+        if body.get("email") is None or body.get("email") == "":
+            return {"error" : "No email provided"}, 400
+        
+        if body.get("driversLicenseBase64") is None or body.get("driversLicenseBase64") == "":
+            return {"error" : "No drivers license image provided"}, 400
+        
+        request_body = { 
+            "emailAddress": body["email"],
+            "driversLicenseBase64": body["driversLicenseBase64"]
+        }
+
+        # TODO: remove the line below once testing of this endpoint is complete 
         db.update_verification_request(body["email"], {"mongo-trigger": True})
+
+        response = requests.post(AZURE_CUSTOM_AI_BUILDER_MODEL_URL, json=request_body)
+
+        if response.status_code != 200:
+            return {"error" : "Error calling custom AI builder model: " + str(response.status_code)}, 400
+        
+        response_body = response.json()
+
+        response_body.pop("emailAddress")
+        predictedDriversLicenseInfo = {
+            "predicted-drivers-license-info": response_body
+        }
+
+        db.update_verification_request(body["email"], predictedDriversLicenseInfo)
     
     return {"status" : "success"}, 200
