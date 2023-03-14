@@ -48,21 +48,3 @@ def login():
 
     return {"data": "invalid password"}, 400
 
-
-@auth_service.route("/test-get-collection", methods=["GET", "POST"])
-def test_get_collection():
-    """
-    Inserts a comment into the comments collection, with the following fields:
-
-    - "name"
-    - "email"
-    - "movie_id"
-    - "text"
-    - "date"
-
-    Name and email must be retrieved from the "user" object.
-    """
-    logging.info("(auth_service.py) /test-get-collection endpoint hit")
-
-    logging.info("ACCOUNT COLLECTION: ", db.get_user_acc_collection())
-    return {"data": ""}, 200  # TODO

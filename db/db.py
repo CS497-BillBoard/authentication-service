@@ -111,7 +111,7 @@ def get_bills():
     if bills_list is None:
         print("fetching from db!")
         bills_collection = get_bills_db()["bills"]
-        bills_list = session._bills_list = list(bills_collection.find())
+        bills_list = session._bills_list = list(bills_collection.find({}))
     
     return bills_list
 
