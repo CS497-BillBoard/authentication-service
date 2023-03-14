@@ -196,7 +196,13 @@ def remove_verification_request(email: str):
     except Exception as e:
         logging.error(e)
         return e
-
+    
+    # update "submittedVerificationPhoto" field in accountsDatabase collection
+    result = update_user(email, {"submittedVerificationPhoto": False})
+    if type(result) == Exception:
+        logging.error(result)
+        return result
+        
     return 1
 
 def update_verification_request(email: str, updatedFields: dict):
