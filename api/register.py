@@ -54,7 +54,7 @@ def verificationRequest():
         if body.get("driversLicenseImage") is None or body.get("driversLicenseImage") == "":
             return {"error" : "No drivers license provided"}, 400
         
-        if body.get("selfieImage") is None or body.get("selfieImage") == "":
+        if body.get("selfieImage") is None or body.get("selfieImage") == "": 
             return {"error" : "No user photo provided"}, 400
         
         verification_request = {
@@ -132,3 +132,13 @@ def updateVerificationStatus():
 
     return {"status" : "success"}, 200
     
+@register_service.route("/verification-request/drivers-license-info", methods = ["POST"])
+def driversLicenseInfo():
+    logging.info("(register.py) /verification-request/drivers-license-info endpoint hit")
+
+    if request.method == "POST":
+        body = request.get_json()
+
+        db.update_verification_request(body["email"], {"mongo-trigger": True})
+    
+    return {"status" : "success"}, 200
