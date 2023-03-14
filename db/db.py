@@ -1,7 +1,7 @@
 from typing import Collection
 import bson
 
-from flask import current_app, g
+from flask import current_app, session, g
 from gridfs import Database
 from werkzeug.local import LocalProxy
 from flask_pymongo import PyMongo
@@ -102,19 +102,18 @@ def update_user(email: str, updateFieldsDict: dict):
 
 
 def get_bills():
-    # TODO call this after setup
-    bills_collection = getattr(g, "_db_bills", None)
+    # TODO make this faster, caching?
+    
+    # fetch the bills list from the db a single time, all subsequent calls skip this step
+    bills_list = getattr(session, "_bills_list", None)
     
     # fetch bills from db if we havent already
-    if bills_collection is None:
-        bills_collection = g._db_bills = get_bills_db()["bills"]
+    if bills_list is None:
+        print("fetching from db!")
+        bills_collection = get_bills_db()["bills"]
+        bills_list = session._bills_list = list(bills_collection.find())
     
-    query = {"introduced": {"$gte": "2023-01-01"}}
-    bills = bills_collection.find(query)
-    
-    print("BILLS::: ", list(bills))
-    
-    return dict(bills)
+    return bills_list
 
 # store new bills in the db
 def store_new_bills(bills: list[dict]):

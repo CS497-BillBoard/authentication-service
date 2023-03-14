@@ -42,7 +42,7 @@ def create_app():
     # TODO on startup, simultaneously fetch from the openparliament api and db
     @app.before_first_request
     def before_first_request_func():
-        print("running the thing before any requests")
+        "before first request called!"
         get_bills()
 
     # TODO: remove this test route later or convert it into a health check

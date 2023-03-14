@@ -54,16 +54,16 @@ def fetch_new_bills():
         summary, text = get_plain_bill_text(bill_info['text_url'])
         
         # bill name
+        # add the short title if it exists, otherwise use the regular name
         bill_name = bill_info['short_title']['en'] if bill_info['short_title']['en'] != "" else bill_info['name']['en']
         
-        # add the short title if it exists
         returned_bill_data.append(
             {
                 "legisinfo_id": bill_info['legisinfo_id'],
                 "full_text_url": bill_info['text_url'],
                 "name": bill_name,
                 "summary": summary,
-                "introduced": bill_info['introduced']
+                "introduced": bill_info['introduced'],
             }
         )    
     
@@ -72,10 +72,6 @@ def fetch_new_bills():
 # endpoint
 bills_service = Blueprint('bills_page', __name__, template_folder='templates')
 
-# # TODO fetch from db, get new bills, then combine together
-# existing_bills = get_bills()
-list_of_bills = fetch_new_bills()
-
 @bills_service.route('/bills', methods = ["GET"])
 def bills():
     """
@@ -83,7 +79,7 @@ def bills():
     TODO allow returning older bills
     """
 
-    return list_of_bills, 200
+    return get_bills(), 200
 
 @bills_service.route('/test-store-bills', methods = ["GET"])
 def test_store_bills():
@@ -92,7 +88,7 @@ def test_store_bills():
     Temporary function to store new bills into mongodb
     """
     try:
-        store_new_bills(list_of_bills)
+        store_new_bills(get_bills())  # TODO, store new comments/like/dislike
     except Exception as e:
         print(e)
         return {"data": "something went wrong :("}, 500
@@ -105,10 +101,6 @@ def test_get_bills_db():
     TODO DELETE THIS AND MAKE IT BETTER
     Temporary function try fetching data from mongoDB
     """
-    # data_cursor = get_bills()
-    # bills = sorted(list(data_cursor), key= lambda x: x['introduced'], reverse=True)
-    
-    # return {bills}, 200
     get_bills()
 
-    return "test", 200
+    return get_bills(), 200
