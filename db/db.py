@@ -30,8 +30,10 @@ def get_db():
 
     return db
 
+
 # Use LocalProxy to read the global db instance with just `db`
 db = LocalProxy(get_db)
+
 
 def get_bills_db():
     """
@@ -39,11 +41,14 @@ def get_bills_db():
     """
     return db["billsDatabase"]
 
+
 def get_user_acc_db():
     return db["accountsDatabase"]
 
+
 def get_verification_db():
     return db["verificationDatabase"]
+
 
 def get_user_acc_collection():
     """
@@ -52,6 +57,7 @@ def get_user_acc_collection():
 
     collection: Collection = get_user_acc_db()["userAccounts"]
     return collection
+
 
 def get_verification_requests_collection():
     """
@@ -67,6 +73,7 @@ def get_single_user(emails):
     Collection = get_user_acc_collection()
 
     return Collection.find_one({"email": emails})
+
 
 def insert_new_user(user):
     Collection = get_user_acc_collection()
@@ -111,9 +118,9 @@ def store_new_bills(bills: list[dict]):
     inserted_bills = []
     for bill in bills:
         # only insert bills that dont already exist
-        if collection.find_one({'legisinfo_id': bill['legisinfo_id']}) == None:
+        if collection.find_one({"legisinfo_id": bill["legisinfo_id"]}) == None:
             inserted_bills.append(bill)
-    
+
     if len(inserted_bills) > 0:
         collection.insert_many(inserted_bills)
 
@@ -123,6 +130,18 @@ def get_single_verification_request(email):
     Collection = get_verification_requests_collection()
 
     return Collection.find_one({"email": email})
+
+
+def get_all_verification_requests():
+    Collection = get_verification_requests_collection()
+
+    requests = []
+
+    cur = Collection.find({})
+    for request in cur:
+        requests.append(request)
+
+    return requests
 
 
 def add_verification_request(verification_request: dict):
@@ -149,6 +168,7 @@ def add_verification_request(verification_request: dict):
 
     return 1
 
+
 def remove_verification_request(email: str):
     """
     Removes a verification request from the database
@@ -161,16 +181,22 @@ def remove_verification_request(email: str):
         result = collection.delete_one({"email": email})
 
         if result.deleted_count == 0:
-            logging.info("remove_verification_request(): no verification request found for email: " + email)
+            logging.info(
+                "remove_verification_request(): no verification request found for email: "
+                + email
+            )
             return -1
         elif result.deleted_count > 1:
-            logging.info("remove_verification_request(): multiple verification requests found for email: " + email)
+            logging.info(
+                "remove_verification_request(): multiple verification requests found for email: "
+                + email
+            )
             return -2
 
     except Exception as e:
         logging.error(e)
         return e
-        
+
     return 1
 
 def update_verification_request(email: str, updatedFields: dict):
@@ -197,11 +223,14 @@ def update_verification_status_to_approved(email: str, drivers_license_hash: str
     """
     # get the userAccounts collection
     userAccountsCollection = get_user_acc_collection()
-    
+
     # update the user's verification status to approved and store the drivers license hash
     try:
-        result = userAccountsCollection.update_one({"email": email}, {"$set": {"verified": True, "drivers_license_hash": drivers_license_hash}})
-        
+        result = userAccountsCollection.update_one(
+            {"email": email},
+            {"$set": {"verified": True, "drivers_license_hash": drivers_license_hash}},
+        )
+
         if result.modified_count != 1:
             logging.info("update_verification_status_to_approved(): updated unexpected number of modified documents: " + str(result.modified_count))
             return -1
@@ -214,5 +243,5 @@ def update_verification_status_to_approved(email: str, drivers_license_hash: str
 
     if type(result) == Exception:
         logging.error(result)
-    
+
     return 1
