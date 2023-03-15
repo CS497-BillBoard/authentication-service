@@ -108,7 +108,7 @@ def get_bills():
 
 def get_one_bill(legisinfo_id):
     logging.info(f"fetching bill with id {legisinfo_id} from the db")
-    bills_collection = get_bills_db()["bills"]
+    bills_collection: Collection = get_bills_db()["bills"]
     return bills_collection.find_one({"legisinfo_id": legisinfo_id})
 
 # store new bills in the db

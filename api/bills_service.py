@@ -25,9 +25,17 @@ def bills(bill_id):
     bill is returned, including all of its comments.
     """
     logging.info("(bills_service.py) /bills endpoint hit")
+    try:
+        bill_id = int(bill_id)
+    except ValueError:
+        return {"data": "invalid id passed"}, 400
+        
     if not bill_id:
         return get_all_bills()
     return get_one_bill(bill_id)
+
+# TODO put endpoint if the user upvotes or downvotes or comments
+
 
 
 def fetch_new_bills():
@@ -128,6 +136,7 @@ def get_one_bill(bill_id):
     Returns information about a specific bill, include all comments
     """
     bill = db.get_one_bill(bill_id)
+    print("bill: ", bill)
     
     if bill is None:
         return {"data": "no bill found with the given id"}, 400
