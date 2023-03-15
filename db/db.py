@@ -102,21 +102,19 @@ def update_user(email: str, updateFieldsDict: dict):
 
 
 def get_bills():
-    # TODO make this faster, caching?
-    
-    # fetch the bills list from the db a single time, all subsequent calls skip this step
-    bills_list = getattr(session, "_bills_list", None)
-    
-    # fetch bills from db if we havent already
-    if bills_list is None:
-        print("fetching from db!")
-        bills_collection = get_bills_db()["bills"]
-        bills_list = session._bills_list = list(bills_collection.find({}))
-    
-    return bills_list
+    logging.info("fetching bills from the db")
+    bills_collection = get_bills_db()["bills"]
+    return list(bills_collection.find({}))  # return all bills
+
+def get_one_bill(legisinfo_id):
+    logging.info(f"fetching bill with id {legisinfo_id} from the db")
+    bills_collection = get_bills_db()["bills"]
+    return bills_collection.find_one({"legisinfo_id": legisinfo_id})
 
 # store new bills in the db
 def store_new_bills(bills: list[dict]):
+    logging.info("storing new bills")
+    
     collection: Collection = get_bills_db()["bills"]
     inserted_bills = []
     for bill in bills:
