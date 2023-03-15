@@ -111,8 +111,10 @@ def get_one_bill(legisinfo_id):
     bills_collection: Collection = get_bills_db()["bills"]
     return bills_collection.find_one({"legisinfo_id": legisinfo_id})
 
-# store new bills in the db
 def store_new_bills(bills: list[dict]):
+    """
+    store all new bills in the db, where they don't exist yet
+    """
     logging.info("storing new bills")
     
     collection: Collection = get_bills_db()["bills"]
@@ -124,6 +126,24 @@ def store_new_bills(bills: list[dict]):
 
     if len(inserted_bills) > 0:
         collection.insert_many(inserted_bills)
+
+def perform_update(legisinfo_id, user_id, vote, comment):
+    """
+    update a single bill with a user's vote and/or comment
+    """
+    # TODO
+    collection: Collection = get_bills_db()["bills"]
+    bill = collection.find_one({"legisinfo_id": legisinfo_id})
+    
+    if vote is not None:
+        # check if the user has already voted
+        pass
+    
+    if comment is not None:
+        # check if the user has already commented
+        pass    
+    
+    # todo return updated bill
 
 
 def get_single_verification_request(email):

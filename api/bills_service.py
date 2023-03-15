@@ -34,8 +34,37 @@ def bills(bill_id):
         return get_all_bills()
     return get_one_bill(bill_id)
 
-# TODO put endpoint if the user upvotes or downvotes or comments
-
+# endpoint if the user upvotes or downvotes or comments
+@bills_service.route('/bills/<bill_id>', methods=["PUT", "POST"])
+def update_bill(bill_id):
+    """
+    Endpoint for a single user to upvote/downvote or add a comment
+    Takes in a json containing:
+     - user_id (required)
+     - vote (optional)
+     - comment (optional)
+    """
+    if bill_id is None:
+        return {"data": "no bill id given"}, 400
+    try:
+        data: Dict = request.get_json()
+        if data is None:
+            raise Exception()
+    except Exception as e:
+        return {"data": "data invalid"}, 400
+    
+    user_id = data.get("user_id", None)
+    if user_id is None:
+        return {"data": "user_id invalid"}, 400
+    
+    user_vote = data.get("vote", None)
+    user_comment = data.get("comment", None)
+    
+    updated_bill = db.perform_update(bill_id, user_id, user_vote, user_comment)
+    if updated_bill is None:
+        return {"data": "bill does not exist"}, 400
+    
+    return updated_bill, 200
 
 
 def fetch_new_bills():
