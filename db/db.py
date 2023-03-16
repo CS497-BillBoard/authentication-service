@@ -151,6 +151,7 @@ def perform_update(legisinfo_id, user_id, vote=None, comment=None):
     # TODO
     collection: Collection = get_bills_db()["bills"]
     bill = collection.find_one({"legisinfo_id": legisinfo_id})
+    user_id = str(user_id)  # mongodb only accepts strings as keys for documents
     
     if vote is not None:
         # set user's vote

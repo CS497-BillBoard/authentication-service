@@ -23,18 +23,25 @@ def bills(bill_id):
     Returns a list of the most recent bills in JSON format.
     bill_id is the legisinfo_id of the bill. if passed in, only a specific
     bill is returned, including all of its comments.
+    optional json body: user_id. If passed, will return that user's "view" of the bill
     """
     logging.info("(bills_service.py) /bills endpoint hit")
     
     # TODO if user id is passed, must be authenticated
-    # TODO user must be authenticated/exist
-    user_id = request.args.get("user_id", None)
+    user_id = None
+    try:
+        data: Dict = request.get_json()
+        user_id = data.get("user_id", None)  # TODO user must be authenticated/exist
+        if user_id is not None and type(user_id) != str:
+            return {"data": "user_id must be string"}, 400
+    except Exception as e:  # no user_id passed, but this is fine
+        pass
     
-    # no bill id passed
+    # no bill id passed, so just return all bills
     if bill_id is None:
         return get_all_bills(user_id)
 
-    # yes bill id passed
+    # bill id passed, check it
     try:
         bill_id = int(bill_id)
     except Exception:
@@ -55,21 +62,22 @@ def update_bill(bill_id):
     logging.info("(bills_service.py) /bills update endpoint hit")
     
     ### checking passed input
-    if bill_id is None:
-        return {"data": "no bill id given"}, 400
     try:
         bill_id = int(bill_id)
     except Exception:
         return {"data": "invalid id passed"}, 400
+    
     try:
         data: Dict = request.get_json()
         if data is None:
             raise Exception()
     except Exception as e:
-        return {"data": "data invalid"}, 400
+        return {"data": "invalid json body"}, 400
     user_id = data.get("user_id", None)  # TODO user must be authenticated/exist
     if user_id is None:
         return {"data": "user_id invalid or not present"}, 400
+    if type(user_id) != str:
+        return {"data": "user_id must be string"}, 400
     
     ### parsing input
     user_vote = data.get("vote", None)
@@ -82,7 +90,7 @@ def update_bill(bill_id):
     if updated_bill is None:
         return {"data": "bill does not exist"}, 400
     
-    return updated_bill, 200
+    return return_info_one_bill(updated_bill, user_id), 200
 
 
 def fetch_new_bills():
@@ -100,7 +108,7 @@ def fetch_new_bills():
     r = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, 'bills'), params=params)
     
     if (r.status_code >= 400):  # status codes above 400 indicate an error
-        print(r.reason)
+        logging.info(r.reason)
         return {'data': f'{r.reason}'}, r.status_code
     
     # return a list of bills. each bill is a dictionary with params "name", "summary", "introduced"
@@ -116,7 +124,7 @@ def fetch_new_bills():
         single_bill_params = {'format': 'json', 'version': 'v1'}
         resp_bill = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, bill_url), params=single_bill_params)
         if (resp_bill.status_code >= 400):  # status codes above 400 indicate an error
-            print(r.reason)
+            logging.info(r.reason)
             return {'data': f'{r.reason}'}, r.status_code
         
         bill_info = resp_bill.json()
@@ -153,14 +161,33 @@ def fetch_and_store_bills():
     try:
         db.store_new_bills(fetch_new_bills())
     except Exception as e:
-        print(e)
+        logging.info(e)
         return {"data": "something went wrong :("}, 500
         
     return {"data": "stored bills!"}, 200
 
+def hide_users_ids_comments(comments: Dict, user_id=None):
+    """
+    Hides the user ids from the comments, except for a possibly
+    signed-in user who can see what they've commented
+    @param comments: the "comments" object on a bill
+    """
+    # change comments if user signed in
+    # structure: [ {(anonymous user | You): "comment"}, ... ]
+    if user_id is None:
+        hidden_comments = {
+                "anonymous user": comment
+                for _, comment in comments.items()
+            }
+    else:
+        hidden_comments = {
+                "anonymous user" if user != user_id else "You": comment
+                for user, comment in comments.items()
+            }
+    return hidden_comments
+
 def get_all_bills(user_id=None):
     bills = db.get_bills()
-    
     returned_info = [
         {
             "legisinfo_id": bill["legisinfo_id"],
@@ -172,39 +199,17 @@ def get_all_bills(user_id=None):
             "total_downvotes": bill["total_downvotes"],
             "total_comments": bill["total_comments"],
             # user upvote/downvote status, if provided
-            "user_vote": bill["votes"]["user_id"] if user_id in bill["votes"] else 0
+            "user_vote": bill["votes"][user_id] if user_id is not None and user_id in bill["votes"] else 0
         } for bill in bills
     ]
     return returned_info, 200
     
-
-def get_one_bill(bill_id, user_id=None):
+def return_info_one_bill(bill, user_id=None):
     """
-    Returns information about a specific bill, include all comments
-    if user_id is provided, it will show the vote ("agree/disagree") state and also what they commented
+    Helper function to only return neccessary fields from one bill
     """
-    bill = db.get_one_bill(bill_id)
-    
-    if bill is None:
-        return {"data": "no bill found with the given id"}, 400
-    
-    # change comments if user signed in
-    # structure: [ {(anonymous user | You): "comment"}, ... ]
-    if user_id is None:
-        comments = [
-            {
-                "anonymous user": comment["comment_text"]
-            }
-            for comment in bill["comments"]
-        ]
-    else:
-        comments = [
-            {
-                "anonymous user" if comment[user_id] != user_id else "You": comment["comment_text"]
-            }
-            for comment in bill["comments"]
-        ]
-    
+    print("USER ID: ", user_id)
+    print("comments: ", bill["comments"])
     returned_info = {
         "legisinfo_id": bill["legisinfo_id"],
         "full_text_url": bill["full_text_url"],
@@ -214,9 +219,18 @@ def get_one_bill(bill_id, user_id=None):
         "total_upvotes": bill["total_upvotes"],
         "total_downvotes": bill["total_downvotes"],
         "total_comments": bill["total_comments"],
-        "comments": comments,
-        "user_vote": bill["votes"]["user_id"] if user_id in bill["votes"] else 0
+        "comments": hide_users_ids_comments(bill["comments"], user_id),
+        "user_vote": bill["votes"][user_id] if user_id is not None and user_id in bill["votes"] else 0
     }
-    
-    return returned_info, 200
+    return returned_info
+
+def get_one_bill(bill_id, user_id=None):
+    """
+    Returns information about a specific bill, include all comments
+    if user_id is provided, it will show the vote ("agree/disagree") state and also what they commented
+    """
+    bill = db.get_one_bill(bill_id)
+    if bill is None:
+        return {"data": "no bill found with the given id"}, 400
+    return return_info_one_bill(bill, user_id), 200
 
