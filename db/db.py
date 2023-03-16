@@ -127,23 +127,51 @@ def store_new_bills(bills: list[dict]):
     if len(inserted_bills) > 0:
         collection.insert_many(inserted_bills)
 
-def perform_update(legisinfo_id, user_id, vote, comment):
+def recalc_votes(up_total: int, down_total: int, prev: int, new: int):
     """
-    update a single bill with a user's vote and/or comment
+    Helper function to recalculate the total based on a new vote
+    returns: a tuple of total_upvotes, total_downvotes
+    """
+    if abs(prev) > 1 or abs(new) > 1:
+        return ValueError
+    up_total -= 1 if prev == 1 else 0
+    down_total -= 1 if prev == -1 else 0
+    up_total += 1 if new == 1 else 0
+    down_total += 1 if new == -1 else 0
+    return up_total, down_total
+    
+def perform_update(legisinfo_id, user_id, vote=None, comment=None):
+    """
+    Update a single bill with a user's vote and/or comment
+    @param legisinfo_id: the id of the bill
+    @param user_id: the id of the user voting/commenting
+    @param vote: the vote of the user, if none, then the user hasn't changed their vote
+    @param comment: a new comment, if any. this will override the user's last comment
     """
     # TODO
     collection: Collection = get_bills_db()["bills"]
     bill = collection.find_one({"legisinfo_id": legisinfo_id})
     
     if vote is not None:
-        # check if the user has already voted
-        pass
-    
+        # set user's vote
+        previous_vote = bill["votes"][user_id] if user_id in bill["votes"] else 0
+        bill["votes"][user_id] = vote
+        # update total_upvotes and downvotes
+        bill["total_upvotes"], bill["total_downvotes"] = recalc_votes(bill["total_upvotes"], bill["total_downvotes"], previous_vote, vote)
+            
     if comment is not None:
-        # check if the user has already commented
-        pass    
+        # TODO check if the user has already commented, remove existing comment subtract total_comments if they have
+        if user_id in bill["comments"]:
+            bill["total_comments"] -= 1
     
-    # todo return updated bill
+        # add new comment, update total_comments
+        bill["comments"][user_id] = comment
+        bill["total_comments"] += 1
+    
+    # update db, TODO maybe asyncrhonously and with update_one instead of replace_one?
+    collection.replace_one({"legisinfo_id": legisinfo_id}, bill)
+    return bill
+    
 
 
 def get_single_verification_request(email):

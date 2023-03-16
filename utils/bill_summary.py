@@ -5,7 +5,7 @@ from lxml.html.clean import clean
 from urllib.parse import urljoin
 
 """
-Functions to get the bill summary from https://github.com/michaelmulley/openparliament
+Functions to get the bill summary referenced from https://github.com/michaelmulley/openparliament
 """
 
 def get_bill_text_xml(bill_or_url):

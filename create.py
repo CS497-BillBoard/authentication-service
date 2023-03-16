@@ -44,7 +44,7 @@ def create_app():
     @app.before_first_request
     def before_first_request_func():
         logging.info("before first request called!")
-        # fetch_and_store_bills()  TODO uncomment this
+        # fetch_and_store_bills()  # TODO uncomment this
         
 
     # TODO: remove this test route later or convert it into a health check
