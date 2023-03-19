@@ -64,7 +64,7 @@ def update_bill(bill_id):
     try:
         bill_id = int(bill_id)
     except Exception:
-        return {"data": "invalid id passed"}, 400
+        return {"data": "passed id param not an integer"}, 400
     
     try:
         data: Dict = request.get_json()
