@@ -28,7 +28,6 @@ def bills(bill_id):
     logging.info("(bills_service.py) /bills endpoint hit")
     
     # TODO if user id is passed, must be authenticated
-    user_id = None
     try:
         data: Dict = request.get_json()
         user_id = data.get("user_id", None)  # TODO user must be authenticated/exist
