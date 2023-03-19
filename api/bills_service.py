@@ -1,35 +1,110 @@
 from typing import Dict
-from flask import Flask, Blueprint, jsonify, render_template, abort
+from flask import Flask, Blueprint, jsonify, render_template, abort, request
 from jinja2 import TemplateNotFound
 from flask import Response
 import requests
 import json
 import logging
-from db.db import get_bills, store_new_bills
+from db import db
 from utils.bill_summary import get_plain_bill_text
 from urllib.parse import urljoin
 
 """
-This api is for fetching a list of bills
+This api is for fetching bills, either a list of them or a specific bill, with a user_id optionally
 """
+
+# endpoint
+bills_service = Blueprint('bills_page', __name__, template_folder='templates')
+
+@bills_service.route('/bills', defaults={'bill_id': None}, methods=["GET"])
+@bills_service.route('/bills/<bill_id>', methods=["GET"])
+def bills(bill_id=None):
+    """
+    Returns a list of the most recent bills in JSON format.
+    bill_id is the legisinfo_id of the bill. if passed in, only a specific
+    bill is returned, including all of its comments.
+    optional json body: user_id. If passed, will return that user's "view" of the bill
+    """
+    logging.info("(bills_service.py) /bills endpoint hit")
+    
+    try:
+        data: Dict = request.get_json()
+        user_id = data.get("user_id", None)  # TODO user must be authenticated/exist if passed
+        if user_id is not None and type(user_id) != str:
+            return {"data": "user_id must be string"}, 400
+    except Exception as e:  # no user_id passed -> unverified user
+        user_id = None  # set this in case data is None
+    
+    # no bill id passed, so just return all bills
+    if bill_id is None:
+        return get_all_bills(user_id)
+
+    # bill id passed, check it
+    try:
+        bill_id = int(bill_id)
+    except Exception:
+        return {"data": "invalid id passed"}, 400
+        
+    return get_one_bill(bill_id, user_id)
+
+# endpoint if the user upvotes or downvotes or comments
+@bills_service.route('/bills/<bill_id>', methods=["PUT", "POST"])
+def update_bill(bill_id):
+    """
+    Endpoint for a single user to upvote/downvote or add a comment
+    Takes in a json containing:
+     - user_id (required)
+     - vote (optional)
+     - comment (optional)
+    TODO must also take in a JWT
+    """
+    logging.info("(bills_service.py) /bills update endpoint hit")
+    
+    ### checking passed input
+    try:
+        bill_id = int(bill_id)
+    except Exception:
+        return {"data": "passed id param not an integer"}, 400
+    
+    data: Dict = request.get_json()
+    if data is None:
+        return {"data": "invalid json body"}, 400
+    user_id = data.get("user_id", None)  # TODO user must be authenticated/exist
+    if user_id is None:
+        return {"data": "user_id invalid or not present"}, 400
+    if type(user_id) != str:
+        return {"data": "user_id must be string"}, 400
+    
+    ### parsing input
+    user_vote = data.get("vote", None)
+    user_comment = data.get("comment", None)
+    if user_vote is not None:
+        if abs(user_vote) > 1:  # sanity check on the vote, it must be -1, 0, or 1
+            return {"data": "invalid argument for vote"}, 400
+    
+    updated_bill = db.perform_update(bill_id, user_id, user_vote, user_comment)
+    if updated_bill is None:
+        return {"data": "bill does not exist"}, 400
+    
+    return return_info_one_bill(updated_bill, user_id), 200
+
 
 def fetch_new_bills():
     """
     fetch new bills from https://openparliament.ca/api/
     TODO eventually this will fetch bills from the db instead of the API
     """
-    logging.info("(bills_service.py) /bills endpoint hit")
-    
     # get a list of bills
     OPENPARLIAMENT_BASE_URL = "https://api.openparliament.ca"
     
     params = {'format': 'json',
               'version': 'v1',
+              'limit': 30,
               'introduced__gte':'2023-01-01'}
     r = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, 'bills'), params=params)
     
     if (r.status_code >= 400):  # status codes above 400 indicate an error
-        print(r.reason)
+        logging.info(r.reason)
         return {'data': f'{r.reason}'}, r.status_code
     
     # return a list of bills. each bill is a dictionary with params "name", "summary", "introduced"
@@ -45,7 +120,7 @@ def fetch_new_bills():
         single_bill_params = {'format': 'json', 'version': 'v1'}
         resp_bill = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, bill_url), params=single_bill_params)
         if (resp_bill.status_code >= 400):  # status codes above 400 indicate an error
-            print(r.reason)
+            logging.info(r.reason)
             return {'data': f'{r.reason}'}, r.status_code
         
         bill_info = resp_bill.json()
@@ -54,57 +129,103 @@ def fetch_new_bills():
         summary, text = get_plain_bill_text(bill_info['text_url'])
         
         # bill name
+        # add the short title if it exists, otherwise use the regular name
         bill_name = bill_info['short_title']['en'] if bill_info['short_title']['en'] != "" else bill_info['name']['en']
         
-        # add the short title if it exists
         returned_bill_data.append(
             {
                 "legisinfo_id": bill_info['legisinfo_id'],
                 "full_text_url": bill_info['text_url'],
                 "name": bill_name,
                 "summary": summary,
-                "introduced": bill_info['introduced']
+                "introduced": bill_info['introduced'],
+                "total_upvotes": 0,
+                "total_downvotes": 0,
+                "total_comments": 0,
+                "comments": {},  # format of comments is {user_id: comment, user_id2: comment, ...}
+                "votes": {},  # format is {user_id: -1 | 0 | 1, user_id2: -1 | 0 | 1 ...}  to indicate they unvoted or downvoted this bill
+                              # if a user has never voted on the bill, they won't be here either
             }
         )    
     
     return returned_bill_data
 
-list_of_bills = fetch_new_bills()
-
-# endpoint
-bills_service = Blueprint('bills_page', __name__, template_folder='templates')
-
-@bills_service.route('/bills', methods = ["GET"])
-def bills():
+def fetch_and_store_bills():
     """
-    Returns a list of the most recent bills in JSON format
-    TODO allow returning older bills
-    """
-
-    return list_of_bills, 200
-
-@bills_service.route('/test-store-bills', methods = ["GET"])
-def test_store_bills():
-    """
-    TODO DELETE THIS AND MAKE IT BETTER
-    Temporary function to store new bills into mongodb
+    Store data that does not exist yet into mongodb
     """
     try:
-        store_new_bills(list_of_bills)
+        db.store_new_bills(fetch_new_bills())
     except Exception as e:
-        print(e)
+        logging.info(e)
         return {"data": "something went wrong :("}, 500
         
     return {"data": "stored bills!"}, 200
 
-@bills_service.route('/test-get-bills-db', methods = ["GET"])
-def test_get_bills_db():
+def hide_users_ids_comments(comments: Dict, user_id=None):
     """
-    TODO DELETE THIS AND MAKE IT BETTER
-    Temporary function try fetching data from mongoDB
+    Hides the user ids from the comments, except for a possibly
+    signed-in user who can see what they've commented
+    @param comments: the "comments" object on a bill
+    returns: a list of {user: comment}, where user is either "You, or "anonymous user"
     """
-    data_cursor = get_bills()
-    bills = sorted(list(data_cursor), key= lambda x: x['introduced'], reverse=True)
+    if user_id is None:
+        hidden_comments = [
+            { "anonymous user": comment }
+            for _, comment in comments.items()
+        ]
+    else:
+        hidden_comments = [
+            {"anonymous user" if user != user_id else "You": comment}
+            for user, comment in comments.items()
+        ]
+    return hidden_comments
+
+def get_all_bills(user_id=None):
+    bills = db.get_bills()
+    returned_info = [
+        {
+            "legisinfo_id": bill["legisinfo_id"],
+            "full_text_url": bill["full_text_url"],
+            "name": bill["name"],
+            "summary": bill["summary"],
+            "introduced": bill["introduced"],
+            "total_upvotes": bill["total_upvotes"],
+            "total_downvotes": bill["total_downvotes"],
+            "total_comments": bill["total_comments"],
+            # user upvote/downvote status, if provided
+            "user_vote": bill["votes"][user_id] if user_id is not None and user_id in bill["votes"] else 0
+        } for bill in bills
+    ]
+    return returned_info, 200
     
-    return {bills}, 200
+def return_info_one_bill(bill, user_id=None):
+    """
+    Helper function to only return neccessary fields from one bill
+    """
+    print("USER ID: ", user_id)
+    print("comments: ", bill["comments"])
+    returned_info = {
+        "legisinfo_id": bill["legisinfo_id"],
+        "full_text_url": bill["full_text_url"],
+        "name": bill["name"],
+        "summary": bill["summary"],
+        "introduced": bill["introduced"],
+        "total_upvotes": bill["total_upvotes"],
+        "total_downvotes": bill["total_downvotes"],
+        "total_comments": bill["total_comments"],
+        "comments": hide_users_ids_comments(bill["comments"], user_id),
+        "user_vote": bill["votes"][user_id] if user_id is not None and user_id in bill["votes"] else 0
+    }
+    return returned_info
+
+def get_one_bill(bill_id, user_id=None):
+    """
+    Returns information about a specific bill, include all comments
+    if user_id is provided, it will show the vote ("agree/disagree") state and also what they commented
+    """
+    bill = db.get_one_bill(bill_id)
+    if bill is None:
+        return {"data": "no bill found with the given id"}, 400
+    return return_info_one_bill(bill, user_id), 200
 
