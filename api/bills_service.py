@@ -18,7 +18,7 @@ bills_service = Blueprint('bills_page', __name__, template_folder='templates')
 
 @bills_service.route('/bills', defaults={'bill_id': None}, methods=["GET"])
 @bills_service.route('/bills/<bill_id>', methods=["GET"])
-def bills(bill_id):
+def bills(bill_id=None):
     """
     Returns a list of the most recent bills in JSON format.
     bill_id is the legisinfo_id of the bill. if passed in, only a specific
@@ -27,14 +27,13 @@ def bills(bill_id):
     """
     logging.info("(bills_service.py) /bills endpoint hit")
     
-    # TODO if user id is passed, must be authenticated
     try:
         data: Dict = request.get_json()
-        user_id = data.get("user_id", None)  # TODO user must be authenticated/exist
+        user_id = data.get("user_id", None)  # TODO user must be authenticated/exist if passed
         if user_id is not None and type(user_id) != str:
             return {"data": "user_id must be string"}, 400
-    except Exception as e:  # no user_id passed, but this is fine
-        pass
+    except Exception as e:  # no user_id passed -> unverified user
+        user_id = None  # set this in case data is None
     
     # no bill id passed, so just return all bills
     if bill_id is None:
@@ -57,6 +56,7 @@ def update_bill(bill_id):
      - user_id (required)
      - vote (optional)
      - comment (optional)
+    TODO must also take in a JWT
     """
     logging.info("(bills_service.py) /bills update endpoint hit")
     
@@ -66,11 +66,8 @@ def update_bill(bill_id):
     except Exception:
         return {"data": "passed id param not an integer"}, 400
     
-    try:
-        data: Dict = request.get_json()
-        if data is None:
-            raise Exception()
-    except Exception as e:
+    data: Dict = request.get_json()
+    if data is None:
         return {"data": "invalid json body"}, 400
     user_id = data.get("user_id", None)  # TODO user must be authenticated/exist
     if user_id is None:
@@ -170,19 +167,18 @@ def hide_users_ids_comments(comments: Dict, user_id=None):
     Hides the user ids from the comments, except for a possibly
     signed-in user who can see what they've commented
     @param comments: the "comments" object on a bill
+    returns: a list of {user: comment}, where user is either "You, or "anonymous user"
     """
-    # change comments if user signed in
-    # structure: [ {(anonymous user | You): "comment"}, ... ]
     if user_id is None:
-        hidden_comments = {
-                "anonymous user": comment
-                for _, comment in comments.items()
-            }
+        hidden_comments = [
+            { "anonymous user": comment }
+            for _, comment in comments.items()
+        ]
     else:
-        hidden_comments = {
-                "anonymous user" if user != user_id else "You": comment
-                for user, comment in comments.items()
-            }
+        hidden_comments = [
+            {"anonymous user" if user != user_id else "You": comment}
+            for user, comment in comments.items()
+        ]
     return hidden_comments
 
 def get_all_bills(user_id=None):
