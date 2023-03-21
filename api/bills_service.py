@@ -171,12 +171,18 @@ def hide_users_ids_comments(comments: Dict, user_id=None):
     """
     if user_id is None:
         hidden_comments = [
-            { "anonymous user": comment }
+            { 
+                "user": "anonymous user",
+                "comment": comment 
+            }
             for _, comment in comments.items()
         ]
     else:
         hidden_comments = [
-            {"anonymous user" if user != user_id else "You": comment}
+            {
+                "user": "anonymous user" if user != user_id else "You",
+                "comment": comment
+            }
             for user, comment in comments.items()
         ]
     return hidden_comments
