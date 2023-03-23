@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 from api.auth_service import auth_service
 from api.bills_service import bills_service
 from api.register import register_service
+from api.district_service import district_service
 
 """
 Classes for creating app and encoding data, copied from the mongodb/flask tutorial
@@ -37,6 +38,7 @@ def create_app():
     app.register_blueprint(auth_service)
     app.register_blueprint(bills_service)
     app.register_blueprint(register_service)
+    app.register_blueprint(district_service)
     
     # TODO on startup, simultaneously fetch from the openparliament api and db
 
