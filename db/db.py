@@ -289,7 +289,7 @@ def update_verification_request(email: str, updatedFields: dict):
         return e
 
 
-def update_verification_status_to_approved(email: str, drivers_license_hash: str):
+def update_verification_status_to_approved(email: str, driversLicenseHash: str, expiryDate: str, postalCode: str):
     """
     Updates the verification status of a user to approved
     """
@@ -299,7 +299,7 @@ def update_verification_status_to_approved(email: str, drivers_license_hash: str
     try:
         result = userAccountsCollection.update_one(
             {"email": email},
-            {"$set": {"verified": True, "drivers_license_hash": drivers_license_hash}},
+            {"$set": {"verified": True, "drivers_license_hash": driversLicenseHash, "expiry_date": expiryDate, "postal_code": postalCode}},
         )
 
         if result.modified_count != 1:
