@@ -1,0 +1,5338 @@
+{
+    "pagination": {
+        "next_url": null,
+        "limit": 338,
+        "previous_url": null,
+        "offset": 0
+    },
+    "objects": [
+        {
+            "url": "/politicians/ziad-aboultaif/",
+            "image": "/media/polpics/ziad-aboultaif.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Edmonton Manning"
+                }
+            },
+            "name": "Ziad Aboultaif",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/john-barlow/",
+            "image": "/media/polpics/john-barlow.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Foothills"
+                }
+            },
+            "name": "John Barlow",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/randy-boissonnault/",
+            "image": "/media/polpics/randy-boissonnault.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Edmonton Centre"
+                }
+            },
+            "name": "Randy Boissonnault",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/blaine-calkins/",
+            "image": "/media/polpics/blaine-calkins.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Red Deer\u2014Lacombe"
+                }
+            },
+            "name": "Blaine Calkins",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/george-chahal/",
+            "image": "/media/polpics/george-chahal.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Calgary Skyview"
+                }
+            },
+            "name": "George Chahal",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/michael-cooper/",
+            "image": "/media/polpics/michael-cooper.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "St. Albert\u2014Edmonton"
+                }
+            },
+            "name": "Michael Cooper",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/blake-desjarlais/",
+            "image": "/media/polpics/blake-desjarlais.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Edmonton Griesbach"
+                }
+            },
+            "name": "Blake Desjarlais",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/earl-dreeshen/",
+            "image": "/media/polpics/earl-dreeshen.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Red Deer\u2014Mountain View"
+                }
+            },
+            "name": "Earl Dreeshen",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/garnett-genuis/",
+            "image": "/media/polpics/garnett-genuis.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Sherwood Park\u2014Fort Saskatchewan"
+                }
+            },
+            "name": "Garnett Genuis",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/laila-goodridge/",
+            "image": "/media/polpics/laila-goodridge.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Fort McMurray\u2014Cold Lake"
+                }
+            },
+            "name": "Laila Goodridge",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jasraj-singh-hallan/",
+            "image": "/media/polpics/jasraj-singh-hallan.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Calgary Forest Lawn"
+                }
+            },
+            "name": "Jasraj Singh Hallan",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/matt-jeneroux/",
+            "image": "/media/polpics/matt-jeneroux.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Edmonton Riverbend"
+                }
+            },
+            "name": "Matt Jeneroux",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/pat-kelly/",
+            "image": "/media/polpics/pat-kelly.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Calgary Rocky Ridge"
+                }
+            },
+            "name": "Pat Kelly",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/tom-kmiec/",
+            "image": "/media/polpics/tom-kmiec.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Calgary Shepard"
+                }
+            },
+            "name": "Tom Kmiec",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/damien-kurek/",
+            "image": "/media/polpics/damien-kurek.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Battle River\u2014Crowfoot"
+                }
+            },
+            "name": "Damien Kurek",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/stephanie-kusie/",
+            "image": "/media/polpics/stephanie-kusie.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Calgary Midnapore"
+                }
+            },
+            "name": "Stephanie Kusie",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mike-lake/",
+            "image": "/media/polpics/mike-lake.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Edmonton\u2014Wetaskiwin"
+                }
+            },
+            "name": "Mike Lake",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ron-liepert/",
+            "image": "/media/polpics/ron-liepert.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Calgary Signal Hill"
+                }
+            },
+            "name": "Ron Liepert",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/dane-lloyd/",
+            "image": "/media/polpics/dane-lloyd.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Sturgeon River\u2014Parkland"
+                }
+            },
+            "name": "Dane Lloyd",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kelly-mccauley/",
+            "image": "/media/polpics/kelly-mccauley.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Edmonton West"
+                }
+            },
+            "name": "Kelly McCauley",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/greg-mclean/",
+            "image": "/media/polpics/greg-mclean.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Calgary Centre"
+                }
+            },
+            "name": "Greg McLean",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/heather-mcpherson/",
+            "image": "/media/polpics/heather-mcpherson.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Edmonton Strathcona"
+                }
+            },
+            "name": "Heather McPherson",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/glen-motz/",
+            "image": "/media/polpics/glen-motz.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Medicine Hat\u2014Cardston\u2014Warner"
+                }
+            },
+            "name": "Glen Motz",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/michelle-rempel/",
+            "image": "/media/polpics/michelle-rempel.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Calgary Nose Hill"
+                }
+            },
+            "name": "Michelle Rempel",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/blake-richards/",
+            "image": "/media/polpics/blake-richards.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Banff\u2014Airdrie"
+                }
+            },
+            "name": "Blake Richards",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/martin-shields/",
+            "image": "/media/polpics/martin-shields.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Bow River"
+                }
+            },
+            "name": "Martin Shields",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/gerald-soroka/",
+            "image": "/media/polpics/gerald-soroka.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Yellowhead"
+                }
+            },
+            "name": "Gerald Soroka",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/shannon-stubbs/",
+            "image": "/media/polpics/shannon-stubbs.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Lakeland"
+                }
+            },
+            "name": "Shannon Stubbs",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rachael-harder/",
+            "image": "/media/polpics/rachael-harder.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Lethbridge"
+                }
+            },
+            "name": "Rachael Thomas",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/tim-uppal/",
+            "image": "/media/polpics/606_1.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Edmonton Mill Woods"
+                }
+            },
+            "name": "Tim Uppal",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/arnold-viersen/",
+            "image": "/media/polpics/arnold-viersen.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Peace River\u2014Westlock"
+                }
+            },
+            "name": "Arnold Viersen",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/chris-warkentin/",
+            "image": "/media/polpics/chris-warkentin.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Grande Prairie\u2014Mackenzie"
+                }
+            },
+            "name": "Chris Warkentin",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/len-webber/",
+            "image": "/media/polpics/len-webber.jpg",
+            "current_riding": {
+                "province": "AB",
+                "name": {
+                    "en": "Calgary Confederation"
+                }
+            },
+            "name": "Len Webber",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/dan-albas/",
+            "image": "/media/polpics/dan-albas.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Central Okanagan\u2014Similkameen\u2014Nicola"
+                }
+            },
+            "name": "Dan Albas",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/john-aldag/",
+            "image": "/media/polpics/john-aldag.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Cloverdale\u2014Langley City"
+                }
+            },
+            "name": "John Aldag",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mel-arnold/",
+            "image": "/media/polpics/mel-arnold.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "North Okanagan\u2014Shuswap"
+                }
+            },
+            "name": "Mel Arnold",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/taylor-bachrach/",
+            "image": "/media/polpics/taylor-bachrach.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Skeena\u2014Bulkley Valley"
+                }
+            },
+            "name": "Taylor Bachrach",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/parm-bains/",
+            "image": "/media/polpics/parm-bains.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Steveston\u2014Richmond East"
+                }
+            },
+            "name": "Parm Bains",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/lisa-marie-barron/",
+            "image": "/media/polpics/lisa-marie-barron.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Nanaimo\u2014Ladysmith"
+                }
+            },
+            "name": "Lisa Marie Barron",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/terry-beech/",
+            "image": "/media/polpics/terry-beech.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Burnaby North\u2014Seymour"
+                }
+            },
+            "name": "Terry Beech",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rachel-blaney/",
+            "image": "/media/polpics/rachel-blaney.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "North Island\u2014Powell River"
+                }
+            },
+            "name": "Rachel Blaney",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/richard-cannings/",
+            "image": "/media/polpics/richard-cannings.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "South Okanagan\u2014West Kootenay"
+                }
+            },
+            "name": "Richard Cannings",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/frank-caputo/",
+            "image": "/media/polpics/frank-caputo.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Kamloops\u2014Thompson\u2014Cariboo"
+                }
+            },
+            "name": "Frank Caputo",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/laurel-collins/",
+            "image": "/media/polpics/laurel-collins.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Victoria"
+                }
+            },
+            "name": "Laurel Collins",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marc-dalton/",
+            "image": "/media/polpics/marc-dalton.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Pitt Meadows\u2014Maple Ridge"
+                }
+            },
+            "name": "Marc Dalton",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/don-davies/",
+            "image": "/media/polpics/don-davies.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Vancouver Kingsway"
+                }
+            },
+            "name": "Don Davies",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/sukh-dhaliwal/",
+            "image": "/media/polpics/sukh-dhaliwal.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Surrey\u2014Newton"
+                }
+            },
+            "name": "Sukh Dhaliwal",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/todd-doherty/",
+            "image": "/media/polpics/todd-doherty.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Cariboo\u2014Prince George"
+                }
+            },
+            "name": "Todd Doherty",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ed-fast/",
+            "image": "/media/polpics/ed-fast.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Abbotsford"
+                }
+            },
+            "name": "Ed Fast",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kerry-lynne-findlay/",
+            "image": "/media/polpics/9132_1.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "South Surrey\u2014White Rock"
+                }
+            },
+            "name": "Kerry-Lynne Findlay",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/hedy-fry/",
+            "image": "/media/polpics/hedy-fry.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Vancouver Centre"
+                }
+            },
+            "name": "Hedy Fry",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/randall-garrison/",
+            "image": "/media/polpics/randall-garrison.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Esquimalt\u2014Saanich\u2014Sooke"
+                }
+            },
+            "name": "Randall Garrison",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/tracy-gray/",
+            "image": "/media/polpics/tracy-gray.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Kelowna\u2014Lake Country"
+                }
+            },
+            "name": "Tracy Gray",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ken-hardie/",
+            "image": "/media/polpics/ken-hardie.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Fleetwood\u2014Port Kells"
+                }
+            },
+            "name": "Ken Hardie",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/gord-johns/",
+            "image": "/media/polpics/gord-johns.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Courtenay\u2014Alberni"
+                }
+            },
+            "name": "Gord Johns",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/peter-julian/",
+            "image": "/media/polpics/peter-julian.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "New Westminster\u2014Burnaby"
+                }
+            },
+            "name": "Peter Julian",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jenny-kwan/",
+            "image": "/media/polpics/jenny-kwan.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Vancouver East"
+                }
+            },
+            "name": "Jenny Kwan",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/alistair-macgregor/",
+            "image": "/media/polpics/alistair-macgregor.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Cowichan\u2014Malahat\u2014Langford"
+                }
+            },
+            "name": "Alistair MacGregor",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/elizabeth-may/",
+            "image": "/media/polpics/elizabeth-may_bhtrIjH.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Saanich\u2014Gulf Islands"
+                }
+            },
+            "name": "Elizabeth May",
+            "current_party": {
+                "short_name": {
+                    "en": "Green"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ron-mckinnon/",
+            "image": "/media/polpics/ron-mckinnon.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Coquitlam\u2014Port Coquitlam"
+                }
+            },
+            "name": "Ron McKinnon",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/wilson-miao/",
+            "image": "/media/polpics/wilson-miao.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Richmond Centre"
+                }
+            },
+            "name": "Wilson Miao",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rob-morrison/",
+            "image": "/media/polpics/rob-morrison.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Kootenay\u2014Columbia"
+                }
+            },
+            "name": "Rob Morrison",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/joyce-murray/",
+            "image": "/media/polpics/joyce-murray.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Vancouver Quadra"
+                }
+            },
+            "name": "Joyce Murray",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/taleeb-noormohamed/",
+            "image": "/media/polpics/taleeb-noormohamed.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Vancouver Granville"
+                }
+            },
+            "name": "Taleeb Noormohamed",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/carla-qualtrough/",
+            "image": "/media/polpics/carla-qualtrough.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Delta"
+                }
+            },
+            "name": "Carla Qualtrough",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/harjit-s-sajjan/",
+            "image": "/media/polpics/harjit-s-sajjan.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Vancouver South"
+                }
+            },
+            "name": "Harjit S. Sajjan",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/randeep-sarai/",
+            "image": "/media/polpics/randeep-sarai.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Surrey Centre"
+                }
+            },
+            "name": "Randeep Sarai",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jagmeet-singh/",
+            "image": "/media/polpics/jagmeet-singh.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Burnaby South"
+                }
+            },
+            "name": "Jagmeet Singh",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mark-strahl/",
+            "image": "/media/polpics/mark-strahl.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Chilliwack\u2014Hope"
+                }
+            },
+            "name": "Mark Strahl",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/tako-van-popta/",
+            "image": "/media/polpics/tako-van-popta.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Langley\u2014Aldergrove"
+                }
+            },
+            "name": "Tako Van Popta",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/brad-vis/",
+            "image": "/media/polpics/brad-vis.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Mission\u2014Matsqui\u2014Fraser Canyon"
+                }
+            },
+            "name": "Brad Vis",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/patrick-weiler/",
+            "image": "/media/polpics/patrick-weiler.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "West Vancouver\u2014Sunshine Coast\u2014Sea to Sky Country"
+                }
+            },
+            "name": "Patrick Weiler",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jonathan-wilkinson/",
+            "image": "/media/polpics/jonathan-wilkinson.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "North Vancouver"
+                }
+            },
+            "name": "Jonathan Wilkinson",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/bonita-zarrillo/",
+            "image": "/media/polpics/bonita-zarrillo.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Port Moody\u2014Coquitlam"
+                }
+            },
+            "name": "Bonita Zarrillo",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/bob-zimmer/",
+            "image": "/media/polpics/bob-zimmer.jpg",
+            "current_riding": {
+                "province": "BC",
+                "name": {
+                    "en": "Prince George\u2014Peace River\u2014Northern Rockies"
+                }
+            },
+            "name": "Bob Zimmer",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/niki-ashton/",
+            "image": "/media/polpics/niki-ashton.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Churchill\u2014Keewatinook Aski"
+                }
+            },
+            "name": "Niki Ashton",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/james-bezan/",
+            "image": "/media/polpics/james-bezan.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Selkirk\u2014Interlake\u2014Eastman"
+                }
+            },
+            "name": "James Bezan",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/daniel-blaikie/",
+            "image": "/media/polpics/daniel-blaikie.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Elmwood\u2014Transcona"
+                }
+            },
+            "name": "Daniel Blaikie",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/raquel-dancho/",
+            "image": "/media/polpics/raquel-dancho.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Kildonan\u2014St. Paul"
+                }
+            },
+            "name": "Raquel Dancho",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/terry-duguid/",
+            "image": "/media/polpics/terry-duguid.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Winnipeg South"
+                }
+            },
+            "name": "Terry Duguid",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ted-falk/",
+            "image": "/media/polpics/ted-falk.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Provencher"
+                }
+            },
+            "name": "Ted Falk",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/leah-gazan/",
+            "image": "/media/polpics/leah-gazan.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Winnipeg Centre"
+                }
+            },
+            "name": "Leah Gazan",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kevin-lamoureux/",
+            "image": "/media/polpics/kevin-lamoureux.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Winnipeg North"
+                }
+            },
+            "name": "Kevin Lamoureux",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/larry-maguire/",
+            "image": "/media/polpics/larry-maguire.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Brandon\u2014Souris"
+                }
+            },
+            "name": "Larry Maguire",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/dan-mazier/",
+            "image": "/media/polpics/dan-mazier.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Dauphin\u2014Swan River\u2014Neepawa"
+                }
+            },
+            "name": "Dan Mazier",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marty-morantz/",
+            "image": "/media/polpics/marty-morantz.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Charleswood\u2014St. James\u2014Assiniboia\u2014Headingley"
+                }
+            },
+            "name": "Marty Morantz",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/dan-vandal/",
+            "image": "/media/polpics/dan-vandal.jpg",
+            "current_riding": {
+                "province": "MB",
+                "name": {
+                    "en": "Saint Boniface\u2014Saint Vital"
+                }
+            },
+            "name": "Dan Vandal",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rene-arseneault/",
+            "image": "/media/polpics/rene-arseneault.jpg",
+            "current_riding": {
+                "province": "NB",
+                "name": {
+                    "en": "Madawaska\u2014Restigouche"
+                }
+            },
+            "name": "Ren\u00e9 Arseneault",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jenica-atwin/",
+            "image": "/media/polpics/jenica-atwin.jpg",
+            "current_riding": {
+                "province": "NB",
+                "name": {
+                    "en": "Fredericton"
+                }
+            },
+            "name": "Jenica Atwin",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/richard-bragdon/",
+            "image": "/media/polpics/richard-bragdon.jpg",
+            "current_riding": {
+                "province": "NB",
+                "name": {
+                    "en": "Tobique\u2014Mactaquac"
+                }
+            },
+            "name": "Richard Bragdon",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/serge-cormier/",
+            "image": "/media/polpics/serge-cormier.jpg",
+            "current_riding": {
+                "province": "NB",
+                "name": {
+                    "en": "Acadie\u2014Bathurst"
+                }
+            },
+            "name": "Serge Cormier",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/dominic-leblanc/",
+            "image": "/media/polpics/dominic-leblanc.jpg",
+            "current_riding": {
+                "province": "NB",
+                "name": {
+                    "en": "Beaus\u00e9jour"
+                }
+            },
+            "name": "Dominic LeBlanc",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/wayne-long/",
+            "image": "/media/polpics/wayne-long.jpg",
+            "current_riding": {
+                "province": "NB",
+                "name": {
+                    "en": "Saint John\u2014Rothesay"
+                }
+            },
+            "name": "Wayne Long",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rob-moore/",
+            "image": "/media/polpics/207_1.jpg",
+            "current_riding": {
+                "province": "NB",
+                "name": {
+                    "en": "Fundy Royal"
+                }
+            },
+            "name": "Rob Moore",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ginette-petitpas-taylor/",
+            "image": "/media/polpics/ginette-petitpas-taylor.jpg",
+            "current_riding": {
+                "province": "NB",
+                "name": {
+                    "en": "Moncton\u2014Riverview\u2014Dieppe"
+                }
+            },
+            "name": "Ginette Petitpas Taylor",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jake-stewart/",
+            "image": "/media/polpics/jake-stewart.jpg",
+            "current_riding": {
+                "province": "NB",
+                "name": {
+                    "en": "Miramichi\u2014Grand Lake"
+                }
+            },
+            "name": "Jake Stewart",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/john-williamson/",
+            "image": "/media/polpics/8446_1.jpg",
+            "current_riding": {
+                "province": "NB",
+                "name": {
+                    "en": "New Brunswick Southwest"
+                }
+            },
+            "name": "John Williamson",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/gudie-hutchings/",
+            "image": "/media/polpics/gudie-hutchings.jpg",
+            "current_riding": {
+                "province": "NL",
+                "name": {
+                    "en": "Long Range Mountains"
+                }
+            },
+            "name": "Gudie Hutchings",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/yvonne-jones/",
+            "image": "/media/polpics/yvonne-jones.jpg",
+            "current_riding": {
+                "province": "NL",
+                "name": {
+                    "en": "Labrador"
+                }
+            },
+            "name": "Yvonne Jones",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ken-mcdonald/",
+            "image": "/media/polpics/ken-mcdonald.jpg",
+            "current_riding": {
+                "province": "NL",
+                "name": {
+                    "en": "Avalon"
+                }
+            },
+            "name": "Ken McDonald",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/seamus-oregan/",
+            "image": "/media/polpics/seamus-oregan.jpg",
+            "current_riding": {
+                "province": "NL",
+                "name": {
+                    "en": "St. John's South\u2014Mount Pearl"
+                }
+            },
+            "name": "Seamus O'Regan",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/churence-rogers/",
+            "image": "/media/polpics/churence-rogers.jpg",
+            "current_riding": {
+                "province": "NL",
+                "name": {
+                    "en": "Bonavista\u2014Burin\u2014Trinity"
+                }
+            },
+            "name": "Churence Rogers",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/clifford-small/",
+            "image": "/media/polpics/clifford-small.jpg",
+            "current_riding": {
+                "province": "NL",
+                "name": {
+                    "en": "Coast of Bays\u2014Central\u2014Notre Dame"
+                }
+            },
+            "name": "Clifford Small",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/joanne-thompson/",
+            "image": "/media/polpics/joanne-thompson.jpg",
+            "current_riding": {
+                "province": "NL",
+                "name": {
+                    "en": "St. John's East"
+                }
+            },
+            "name": "Joanne Thompson",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jaime-battiste/",
+            "image": "/media/polpics/jaime-battiste.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "Sydney\u2014Victoria"
+                }
+            },
+            "name": "Jaime Battiste",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kody-blois/",
+            "image": "/media/polpics/kody-blois.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "Kings\u2014Hants"
+                }
+            },
+            "name": "Kody Blois",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/chris-dentremont/",
+            "image": "/media/polpics/chris-dentremont.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "West Nova"
+                }
+            },
+            "name": "Chris d'Entremont",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/lena-metlege-diab/",
+            "image": "/media/polpics/lena-metlege-diab.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "Halifax West"
+                }
+            },
+            "name": "Lena Metlege Diab",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/stephen-ellis/",
+            "image": "/media/polpics/stephen-ellis.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "Cumberland\u2014Colchester"
+                }
+            },
+            "name": "Stephen Ellis",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/andy-fillmore/",
+            "image": "/media/polpics/andy-fillmore.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "Halifax"
+                }
+            },
+            "name": "Andy Fillmore",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/darren-fisher/",
+            "image": "/media/polpics/darren-fisher.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "Dartmouth\u2014Cole Harbour"
+                }
+            },
+            "name": "Darren Fisher",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/sean-fraser/",
+            "image": "/media/polpics/sean-fraser.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "Central Nova"
+                }
+            },
+            "name": "Sean Fraser",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mike-kelloway/",
+            "image": "/media/polpics/mike-kelloway.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "Cape Breton\u2014Canso"
+                }
+            },
+            "name": "Mike Kelloway",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rick-perkins/",
+            "image": "/media/polpics/rick-perkins.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "South Shore\u2014St. Margarets"
+                }
+            },
+            "name": "Rick Perkins",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/darrell-samson/",
+            "image": "/media/polpics/darrell-samson.jpg",
+            "current_riding": {
+                "province": "NS",
+                "name": {
+                    "en": "Sackville\u2014Preston\u2014Chezzetcook"
+                }
+            },
+            "name": "Darrell Samson",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/michael-mcleod/",
+            "image": "/media/polpics/michael-mcleod.jpg",
+            "current_riding": {
+                "province": "NT",
+                "name": {
+                    "en": "Northwest Territories"
+                }
+            },
+            "name": "Michael McLeod",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/lori-idlout/",
+            "image": "/media/polpics/lori-idlout.jpg",
+            "current_riding": {
+                "province": "NU",
+                "name": {
+                    "en": "Nunavut"
+                }
+            },
+            "name": "Lori Idlout",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/scott-aitchison/",
+            "image": "/media/polpics/scott-aitchison.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Parry Sound\u2014Muskoka"
+                }
+            },
+            "name": "Scott Aitchison",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/omar-alghabra/",
+            "image": "/media/polpics/omar-alghabra.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Mississauga Centre"
+                }
+            },
+            "name": "Omar Alghabra",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/shafqat-ali/",
+            "image": "/media/polpics/shafqat-ali.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Brampton Centre"
+                }
+            },
+            "name": "Shafqat Ali",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/dean-allison/",
+            "image": "/media/polpics/dean-allison.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Niagara West"
+                }
+            },
+            "name": "Dean Allison",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/anita-anand/",
+            "image": "/media/polpics/anita-anand.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Oakville"
+                }
+            },
+            "name": "Anita Anand",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/gary-anandasangaree/",
+            "image": "/media/polpics/gary-anandasangaree.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Scarborough\u2014Rouge Park"
+                }
+            },
+            "name": "Gary Anandasangaree",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/charlie-angus/",
+            "image": "/media/polpics/charlie-angus.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Timmins\u2014James Bay"
+                }
+            },
+            "name": "Charlie Angus",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/chandra-arya/",
+            "image": "/media/polpics/chandra-arya.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Nepean"
+                }
+            },
+            "name": "Chandra Arya",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/vance-badawey/",
+            "image": "/media/polpics/vance-badawey.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Niagara Centre"
+                }
+            },
+            "name": "Vance Badawey",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/yvan-baker/",
+            "image": "/media/polpics/yvan-baker.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Etobicoke Centre"
+                }
+            },
+            "name": "Yvan Baker",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/tony-baldinelli/",
+            "image": "/media/polpics/tony-baldinelli.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Niagara Falls"
+                }
+            },
+            "name": "Tony Baldinelli",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/michael-barrett/",
+            "image": "/media/polpics/michael-barrett.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Leeds\u2014Grenville\u2014Thousand Islands and Rideau Lakes"
+                }
+            },
+            "name": "Michael Barrett",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/carolyn-bennett/",
+            "image": "/media/polpics/carolyn-bennett.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Toronto\u2014St. Paul's"
+                }
+            },
+            "name": "Carolyn Bennett",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/chris-bittle/",
+            "image": "/media/polpics/chris-bittle.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "St. Catharines"
+                }
+            },
+            "name": "Chris Bittle",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/bill-blair/",
+            "image": "/media/polpics/bill-blair.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Scarborough Southwest"
+                }
+            },
+            "name": "Bill Blair",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/valerie-bradford/",
+            "image": "/media/polpics/valerie-bradford.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Kitchener South\u2014Hespeler"
+                }
+            },
+            "name": "Valerie Bradford",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/john-brassard/",
+            "image": "/media/polpics/john-brassard.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Barrie\u2014Innisfil"
+                }
+            },
+            "name": "John Brassard",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/larry-brock/",
+            "image": "/media/polpics/larry-brock.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Brantford\u2014Brant"
+                }
+            },
+            "name": "Larry Brock",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/colin-carrie/",
+            "image": "/media/polpics/colin-carrie.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Oshawa"
+                }
+            },
+            "name": "Colin Carrie",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/bardish-chagger/",
+            "image": "/media/polpics/bardish-chagger.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Waterloo"
+                }
+            },
+            "name": "Bardish Chagger",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/adam-chambers/",
+            "image": "/media/polpics/adam-chambers.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Simcoe North"
+                }
+            },
+            "name": "Adam Chambers",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/shaun-chen/",
+            "image": "/media/polpics/shaun-chen.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Scarborough North"
+                }
+            },
+            "name": "Shaun Chen",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/paul-chiang/",
+            "image": "/media/polpics/paul-chiang.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Markham\u2014Unionville"
+                }
+            },
+            "name": "Paul Chiang",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/michael-chong/",
+            "image": "/media/polpics/michael-chong.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Wellington\u2014Halton Hills"
+                }
+            },
+            "name": "Michael Chong",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/chad-collins/",
+            "image": "/media/polpics/chad-collins.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Hamilton East\u2014Stoney Creek"
+                }
+            },
+            "name": "Chad Collins",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/michael-coteau/",
+            "image": "/media/polpics/michael-coteau.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Don Valley East"
+                }
+            },
+            "name": "Michael Coteau",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/julie-dabrusin/",
+            "image": "/media/polpics/julie-dabrusin.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Toronto\u2014Danforth"
+                }
+            },
+            "name": "Julie Dabrusin",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/pam-damoff/",
+            "image": "/media/polpics/pam-damoff.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Oakville North\u2014Burlington"
+                }
+            },
+            "name": "Pam Damoff",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/scot-davidson/",
+            "image": "/media/polpics/scot-davidson.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "York\u2014Simcoe"
+                }
+            },
+            "name": "Scot Davidson",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/han-dong/",
+            "image": "/media/polpics/han-dong.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Don Valley North"
+                }
+            },
+            "name": "Han Dong",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/terry-dowdall/",
+            "image": "/media/polpics/terry-dowdall.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Simcoe\u2014Grey"
+                }
+            },
+            "name": "Terry Dowdall",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/francis-drouin/",
+            "image": "/media/polpics/francis-drouin.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Glengarry\u2014Prescott\u2014Russell"
+                }
+            },
+            "name": "Francis Drouin",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kirsty-duncan/",
+            "image": "/media/polpics/kirsty-duncan.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Etobicoke North"
+                }
+            },
+            "name": "Kirsty Duncan",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/eric-duncan/",
+            "image": "/media/polpics/eric-duncan.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Stormont\u2014Dundas\u2014South Glengarry"
+                }
+            },
+            "name": "Eric Duncan",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/julie-dzerowicz/",
+            "image": "/media/polpics/julie-dzerowicz.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Davenport"
+                }
+            },
+            "name": "Julie Dzerowicz",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ali-ehsassi/",
+            "image": "/media/polpics/ali-ehsassi.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Willowdale"
+                }
+            },
+            "name": "Ali Ehsassi",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/dave-epp/",
+            "image": "/media/polpics/dave-epp.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Chatham-Kent\u2014Leamington"
+                }
+            },
+            "name": "Dave Epp",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/nathaniel-erskine-smith/",
+            "image": "/media/polpics/nathaniel-erskine-smith.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Beaches\u2014East York"
+                }
+            },
+            "name": "Nathaniel Erskine-Smith",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/michelle-ferreri/",
+            "image": "/media/polpics/michelle-ferreri.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Peterborough\u2014Kawartha"
+                }
+            },
+            "name": "Michelle Ferreri",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/peter-fonseca/",
+            "image": "/media/polpics/peter-fonseca.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Mississauga East\u2014Cooksville"
+                }
+            },
+            "name": "Peter Fonseca",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mona-fortier/",
+            "image": "/media/polpics/mona-fortier.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Ottawa\u2014Vanier"
+                }
+            },
+            "name": "Mona Fortier",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/peter-fragiskatos/",
+            "image": "/media/polpics/peter-fragiskatos.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "London North Centre"
+                }
+            },
+            "name": "Peter Fragiskatos",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/chrystia-freeland/",
+            "image": "/media/polpics/chrystia-freeland.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "University\u2014Rosedale"
+                }
+            },
+            "name": "Chrystia Freeland",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/iqwinder-gaheer/",
+            "image": "/media/polpics/iqwinder-gaheer.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Mississauga\u2014Malton"
+                }
+            },
+            "name": "Iqwinder Gaheer",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/cheryl-gallant/",
+            "image": "/media/polpics/cheryl-gallant.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Renfrew\u2014Nipissing\u2014Pembroke"
+                }
+            },
+            "name": "Cheryl Gallant",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mark-gerretsen/",
+            "image": "/media/polpics/mark-gerretsen.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Kingston and the Islands"
+                }
+            },
+            "name": "Mark Gerretsen",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marilyn-gladu/",
+            "image": "/media/polpics/marilyn-gladu.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Sarnia\u2014Lambton"
+                }
+            },
+            "name": "Marilyn Gladu",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/karina-gould/",
+            "image": "/media/polpics/karina-gould.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Burlington"
+                }
+            },
+            "name": "Karina Gould",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/matthew-green/",
+            "image": "/media/polpics/matthew-green.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Hamilton Centre"
+                }
+            },
+            "name": "Matthew Green",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/patty-hajdu/",
+            "image": "/media/polpics/patty-hajdu.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Thunder Bay\u2014Superior North"
+                }
+            },
+            "name": "Patty Hajdu",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/lisa-hepfner/",
+            "image": "/media/polpics/lisa-hepfner.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Hamilton Mountain"
+                }
+            },
+            "name": "Lisa Hepfner",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mark-holland/",
+            "image": "/media/polpics/mark-holland.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Ajax"
+                }
+            },
+            "name": "Mark Holland",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/carol-hughes/",
+            "image": "/media/polpics/carol-hughes.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Algoma\u2014Manitoulin\u2014Kapuskasing"
+                }
+            },
+            "name": "Carol Hughes",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ahmed-hussen/",
+            "image": "/media/polpics/ahmed-hussen.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "York South\u2014Weston"
+                }
+            },
+            "name": "Ahmed Hussen",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marci-ien/",
+            "image": "/media/polpics/marci-ien.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Toronto Centre"
+                }
+            },
+            "name": "Marci Ien",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/helena-jaczek/",
+            "image": "/media/polpics/helena-jaczek.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Markham\u2014Stouffville"
+                }
+            },
+            "name": "Helena Jaczek",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/majid-jowhari/",
+            "image": "/media/polpics/majid-jowhari.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Richmond Hill"
+                }
+            },
+            "name": "Majid Jowhari",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/arielle-kayabaga/",
+            "image": "/media/polpics/arielle-kayabaga.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "London West"
+                }
+            },
+            "name": "Arielle Kayabaga",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/iqra-khalid/",
+            "image": "/media/polpics/iqra-khalid.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Mississauga\u2014Erin Mills"
+                }
+            },
+            "name": "Iqra Khalid",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kamal-khera/",
+            "image": "/media/polpics/kamal-khera.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Brampton West"
+                }
+            },
+            "name": "Kamal Khera",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/shelby-kramp-neuman/",
+            "image": "/media/polpics/shelby-kramp-neuman.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Hastings\u2014Lennox and Addington"
+                }
+            },
+            "name": "Shelby Kramp-Neuman",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/irek-kusmierczyk/",
+            "image": "/media/polpics/irek-kusmierczyk.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Windsor\u2014Tecumseh"
+                }
+            },
+            "name": "Irek Kusmierczyk",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marie-france-lalonde/",
+            "image": "/media/polpics/marie-france-lalonde.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Orl\u00e9ans"
+                }
+            },
+            "name": "Marie-France Lalonde",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/melissa-lantsman/",
+            "image": "/media/polpics/melissa-lantsman.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Thornhill"
+                }
+            },
+            "name": "Melissa Lantsman",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/viviane-lapointe/",
+            "image": "/media/polpics/viviane-lapointe.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Sudbury"
+                }
+            },
+            "name": "Viviane LaPointe",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/philip-lawrence/",
+            "image": "/media/polpics/philip-lawrence.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Northumberland\u2014Peterborough South"
+                }
+            },
+            "name": "Philip Lawrence",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/leslyn-lewis/",
+            "image": "/media/polpics/leslyn-lewis.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Haldimand\u2014Norfolk"
+                }
+            },
+            "name": "Leslyn Lewis",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/chris-lewis/",
+            "image": "/media/polpics/chris-lewis.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Essex"
+                }
+            },
+            "name": "Chris Lewis",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ben-lobb/",
+            "image": "/media/polpics/ben-lobb.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Huron\u2014Bruce"
+                }
+            },
+            "name": "Ben Lobb",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/lloyd-longfield/",
+            "image": "/media/polpics/lloyd-longfield.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Guelph"
+                }
+            },
+            "name": "Lloyd Longfield",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/tim-louis/",
+            "image": "/media/polpics/tim-louis.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Kitchener\u2014Conestoga"
+                }
+            },
+            "name": "Tim Louis",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/james-maloney/",
+            "image": "/media/polpics/james-maloney.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Etobicoke\u2014Lakeshore"
+                }
+            },
+            "name": "James Maloney",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/brian-masse/",
+            "image": "/media/polpics/brian-masse.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Windsor West"
+                }
+            },
+            "name": "Brian Masse",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/lindsay-mathyssen/",
+            "image": "/media/polpics/lindsay-mathyssen.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "London\u2014Fanshawe"
+                }
+            },
+            "name": "Lindsay Mathyssen",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/bryan-may/",
+            "image": "/media/polpics/bryan-may.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Cambridge"
+                }
+            },
+            "name": "Bryan May",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/david-mcguinty/",
+            "image": "/media/polpics/david-mcguinty.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Ottawa South"
+                }
+            },
+            "name": "David McGuinty",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/john-mckay/",
+            "image": "/media/polpics/john-mckay.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Scarborough\u2014Guildwood"
+                }
+            },
+            "name": "John McKay",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/eric-melillo/",
+            "image": "/media/polpics/eric-melillo.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Kenora"
+                }
+            },
+            "name": "Eric Melillo",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marco-mendicino/",
+            "image": "/media/polpics/marco-mendicino.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Eglinton\u2014Lawrence"
+                }
+            },
+            "name": "Marco Mendicino",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mike-morrice/",
+            "image": "/media/polpics/mike-morrice.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Kitchener Centre"
+                }
+            },
+            "name": "Mike Morrice",
+            "current_party": {
+                "short_name": {
+                    "en": "Green"
+                }
+            }
+        },
+        {
+            "url": "/politicians/dan-muys/",
+            "image": "/media/polpics/dan-muys.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Flamborough\u2014Glanbrook"
+                }
+            },
+            "name": "Dan Muys",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/yasir-naqvi/",
+            "image": "/media/polpics/yasir-naqvi.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Ottawa Centre"
+                }
+            },
+            "name": "Yasir Naqvi",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/john-nater/",
+            "image": "/media/polpics/john-nater.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Perth\u2014Wellington"
+                }
+            },
+            "name": "John Nater",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mary-ng/",
+            "image": "/media/polpics/mary-ng.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Markham\u2014Thornhill"
+                }
+            },
+            "name": "Mary Ng",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jennifer-oconnell/",
+            "image": "/media/polpics/jennifer-oconnell.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Pickering\u2014Uxbridge"
+                }
+            },
+            "name": "Jennifer O'Connell",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rob-oliphant/",
+            "image": "/media/polpics/rob-oliphant.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Don Valley West"
+                }
+            },
+            "name": "Rob Oliphant",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/erin-otoole/",
+            "image": "/media/polpics/erin-otoole.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Durham"
+                }
+            },
+            "name": "Erin O'Toole",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/pierre-poilievre/",
+            "image": "/media/polpics/pierre-poilievre.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Carleton"
+                }
+            },
+            "name": "Pierre Poilievre",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marcus-powlowski/",
+            "image": "/media/polpics/marcus-powlowski.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Thunder Bay\u2014Rainy River"
+                }
+            },
+            "name": "Marcus Powlowski",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/scott-reid/",
+            "image": "/media/polpics/scott-reid.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Lanark\u2014Frontenac\u2014Kingston"
+                }
+            },
+            "name": "Scott Reid",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/anna-roberts/",
+            "image": "/media/polpics/anna-roberts.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "King\u2014Vaughan"
+                }
+            },
+            "name": "Anna Roberts",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/lianne-rood/",
+            "image": "/media/polpics/lianne-rood.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Lambton\u2014Kent\u2014Middlesex"
+                }
+            },
+            "name": "Lianne Rood",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/anthony-rota/",
+            "image": "/media/polpics/anthony-rota.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Nipissing\u2014Timiskaming"
+                }
+            },
+            "name": "Anthony Rota",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/alex-ruff/",
+            "image": "/media/polpics/alex-ruff.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Bruce\u2014Grey\u2014Owen Sound"
+                }
+            },
+            "name": "Alex Ruff",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ruby-sahota/",
+            "image": "/media/polpics/ruby-sahota.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Brampton North"
+                }
+            },
+            "name": "Ruby Sahota",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/yaara-saks/",
+            "image": "/media/polpics/yaara-saks.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "York Centre"
+                }
+            },
+            "name": "Ya'ara Saks",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jamie-schmale/",
+            "image": "/media/polpics/jamie-schmale.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Haliburton\u2014Kawartha Lakes\u2014Brock"
+                }
+            },
+            "name": "Jamie Schmale",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kyle-seeback/",
+            "image": "/media/polpics/784_1.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Dufferin\u2014Caledon"
+                }
+            },
+            "name": "Kyle Seeback",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marc-serre/",
+            "image": "/media/polpics/marc-serre.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Nickel Belt"
+                }
+            },
+            "name": "Marc Serr\u00e9",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/judy-sgro/",
+            "image": "/media/polpics/judy-sgro.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Humber River\u2014Black Creek"
+                }
+            },
+            "name": "Judy Sgro",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/terry-sheehan/",
+            "image": "/media/polpics/terry-sheehan.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Sault Ste. Marie"
+                }
+            },
+            "name": "Terry Sheehan",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/doug-shipley/",
+            "image": "/media/polpics/doug-shipley.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Barrie\u2014Springwater\u2014Oro-Medonte"
+                }
+            },
+            "name": "Doug Shipley",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/sonia-sidhu/",
+            "image": "/media/polpics/sonia-sidhu.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Brampton South"
+                }
+            },
+            "name": "Sonia Sidhu",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/maninder-sidhu/",
+            "image": "/media/polpics/maninder-sidhu.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Brampton East"
+                }
+            },
+            "name": "Maninder Sidhu",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/francesco-sorbara/",
+            "image": "/media/polpics/francesco-sorbara.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Vaughan\u2014Woodbridge"
+                }
+            },
+            "name": "Francesco Sorbara",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/charles-sousa/",
+            "image": null,
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Mississauga\u2014Lakeshore"
+                }
+            },
+            "name": "Charles Sousa",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jenna-sudds/",
+            "image": "/media/polpics/jenna-sudds.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Kanata\u2014Carleton"
+                }
+            },
+            "name": "Jenna Sudds",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/filomena-tassi/",
+            "image": "/media/polpics/filomena-tassi.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Hamilton West\u2014Ancaster\u2014Dundas"
+                }
+            },
+            "name": "Filomena Tassi",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/leah-taylor-roy/",
+            "image": "/media/polpics/leah-taylor-roy.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Aurora\u2014Oak Ridges\u2014Richmond Hill"
+                }
+            },
+            "name": "Leah Taylor Roy",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ryan-turnbull/",
+            "image": "/media/polpics/ryan-turnbull.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Whitby"
+                }
+            },
+            "name": "Ryan Turnbull",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rechie-valdez/",
+            "image": "/media/polpics/rechie-valdez.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Mississauga\u2014Streetsville"
+                }
+            },
+            "name": "Rechie Valdez",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/tony-van-bynen/",
+            "image": "/media/polpics/tony-van-bynen.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Newmarket\u2014Aurora"
+                }
+            },
+            "name": "Tony Van Bynen",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/anita-vandenbeld/",
+            "image": "/media/polpics/anita-vandenbeld.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Ottawa West\u2014Nepean"
+                }
+            },
+            "name": "Anita Vandenbeld",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/adam-van-koeverden/",
+            "image": "/media/polpics/adam-van-koeverden.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Milton"
+                }
+            },
+            "name": "Adam van Koeverden",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/karen-vecchio/",
+            "image": "/media/polpics/karen-vecchio.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Elgin\u2014Middlesex\u2014London"
+                }
+            },
+            "name": "Karen Vecchio",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/arif-virani/",
+            "image": "/media/polpics/arif-virani.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Parkdale\u2014High Park"
+                }
+            },
+            "name": "Arif Virani",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kevin-vuong/",
+            "image": "/media/polpics/kevin-vuong.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Spadina\u2014Fort York"
+                }
+            },
+            "name": "Kevin Vuong",
+            "current_party": {
+                "short_name": {
+                    "en": "Independent"
+                }
+            }
+        },
+        {
+            "url": "/politicians/ryan-williams/",
+            "image": "/media/polpics/ryan-williams.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Bay of Quinte"
+                }
+            },
+            "name": "Ryan Williams",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jean-yip/",
+            "image": "/media/polpics/jean-yip.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Scarborough\u2014Agincourt"
+                }
+            },
+            "name": "Jean Yip",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/salma-zahid/",
+            "image": "/media/polpics/salma-zahid.jpg",
+            "current_riding": {
+                "province": "ON",
+                "name": {
+                    "en": "Scarborough Centre"
+                }
+            },
+            "name": "Salma Zahid",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/sean-casey/",
+            "image": "/media/polpics/sean-casey.jpg",
+            "current_riding": {
+                "province": "PE",
+                "name": {
+                    "en": "Charlottetown"
+                }
+            },
+            "name": "Sean Casey",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/lawrence-macaulay/",
+            "image": "/media/polpics/lawrence-macaulay.jpg",
+            "current_riding": {
+                "province": "PE",
+                "name": {
+                    "en": "Cardigan"
+                }
+            },
+            "name": "Lawrence MacAulay",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/heath-macdonald/",
+            "image": "/media/polpics/heath-macdonald.jpg",
+            "current_riding": {
+                "province": "PE",
+                "name": {
+                    "en": "Malpeque"
+                }
+            },
+            "name": "Heath MacDonald",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/bobby-morrissey/",
+            "image": "/media/polpics/bobby-morrissey.jpg",
+            "current_riding": {
+                "province": "PE",
+                "name": {
+                    "en": "Egmont"
+                }
+            },
+            "name": "Bobby Morrissey",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/xavier-barsalou-duval/",
+            "image": "/media/polpics/xavier-barsalou-duval.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Pierre-Boucher\u2014Les Patriotes\u2014Verch\u00e8res"
+                }
+            },
+            "name": "Xavier Barsalou-Duval",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mario-beaulieu/",
+            "image": "/media/polpics/mario-beaulieu.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "La Pointe-de-l'\u00cele"
+                }
+            },
+            "name": "Mario Beaulieu",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rachel-bendayan/",
+            "image": "/media/polpics/rachel-bendayan.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Outremont"
+                }
+            },
+            "name": "Rachel Bendayan",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/stephane-bergeron/",
+            "image": "/media/polpics/3849.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Montarville"
+                }
+            },
+            "name": "St\u00e9phane Bergeron",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/luc-berthold/",
+            "image": "/media/polpics/luc-berthold.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "M\u00e9gantic\u2014L'\u00c9rable"
+                }
+            },
+            "name": "Luc Berthold",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/sylvie-berube/",
+            "image": "/media/polpics/sylvie-berube.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Abitibi\u2014Baie-James\u2014Nunavik\u2014Eeyou"
+                }
+            },
+            "name": "Sylvie B\u00e9rub\u00e9",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marie-claude-bibeau/",
+            "image": "/media/polpics/marie-claude-bibeau.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Compton\u2014Stanstead"
+                }
+            },
+            "name": "Marie-Claude Bibeau",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/yves-francois-blanchet/",
+            "image": "/media/polpics/yves-francois-blanchet.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Beloeil\u2014Chambly"
+                }
+            },
+            "name": "Yves-Fran\u00e7ois Blanchet",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/maxime-blanchette-joncas/",
+            "image": "/media/polpics/maxime-blanchette-joncas.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Rimouski-Neigette\u2014T\u00e9miscouata\u2014Les Basques"
+                }
+            },
+            "name": "Maxime Blanchette-Joncas",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/alexandre-boulerice/",
+            "image": "/media/polpics/alexandre-boulerice.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Rosemont\u2014La Petite-Patrie"
+                }
+            },
+            "name": "Alexandre Boulerice",
+            "current_party": {
+                "short_name": {
+                    "en": "NDP"
+                }
+            }
+        },
+        {
+            "url": "/politicians/elisabeth-briere/",
+            "image": "/media/polpics/elisabeth-briere.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Sherbrooke"
+                }
+            },
+            "name": "\u00c9lisabeth Bri\u00e8re",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/alexis-brunelle-duceppe/",
+            "image": "/media/polpics/alexis-brunelle-duceppe.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Lac-Saint-Jean"
+                }
+            },
+            "name": "Alexis Brunelle-Duceppe",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/louise-chabot/",
+            "image": "/media/polpics/louise-chabot.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Th\u00e9r\u00e8se-De Blainville"
+                }
+            },
+            "name": "Louise Chabot",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/francois-philippe-champagne/",
+            "image": "/media/polpics/francois-philippe-champagne.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Saint-Maurice\u2014Champlain"
+                }
+            },
+            "name": "Fran\u00e7ois-Philippe Champagne",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/martin-champoux/",
+            "image": "/media/polpics/martin-champoux.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Drummond"
+                }
+            },
+            "name": "Martin Champoux",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/sophie-chatel/",
+            "image": "/media/polpics/sophie-chatel.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Pontiac"
+                }
+            },
+            "name": "Sophie Chatel",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/claude-debellefeuille/",
+            "image": "/media/polpics/419.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Salaberry\u2014Suro\u00eet"
+                }
+            },
+            "name": "Claude DeBellefeuille",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/gerard-deltell/",
+            "image": "/media/polpics/gerard-deltell.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Louis-Saint-Laurent"
+                }
+            },
+            "name": "G\u00e9rard Deltell",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/caroline-desbiens/",
+            "image": "/media/polpics/caroline-desbiens.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Beauport\u2014C\u00f4te-de-Beaupr\u00e9\u2014\u00cele d\u0092Orl\u00e9ans\u2014Charlevoix"
+                }
+            },
+            "name": "Caroline Desbiens",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/luc-desilets/",
+            "image": "/media/polpics/luc-desilets.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Rivi\u00e8re-des-Mille-\u00celes"
+                }
+            },
+            "name": "Luc Desilets",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/anju-dhillon/",
+            "image": "/media/polpics/anju-dhillon.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Dorval\u2014Lachine\u2014LaSalle"
+                }
+            },
+            "name": "Anju Dhillon",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/emmanuel-dubourg/",
+            "image": "/media/polpics/emmanuel-dubourg.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Bourassa"
+                }
+            },
+            "name": "Emmanuel Dubourg",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jean-yves-duclos/",
+            "image": "/media/polpics/jean-yves-duclos.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Qu\u00e9bec"
+                }
+            },
+            "name": "Jean-Yves Duclos",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/faycal-el-khoury/",
+            "image": "/media/polpics/faycal-el-khoury.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Laval\u2014Les \u00celes"
+                }
+            },
+            "name": "Fay\u00e7al El-Khoury",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/greg-fergus/",
+            "image": "/media/polpics/greg-fergus.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Hull\u2014Aylmer"
+                }
+            },
+            "name": "Greg Fergus",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rheal-fortin/",
+            "image": "/media/polpics/rheal-fortin.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Rivi\u00e8re-du-Nord"
+                }
+            },
+            "name": "Rh\u00e9al Fortin",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jean-denis-garon/",
+            "image": "/media/polpics/jean-denis-garon.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Mirabel"
+                }
+            },
+            "name": "Jean-Denis Garon",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marie-helene-gaudreau/",
+            "image": "/media/polpics/marie-helene-gaudreau.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Laurentides\u2014Labelle"
+                }
+            },
+            "name": "Marie-H\u00e9l\u00e8ne Gaudreau",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/bernard-genereux/",
+            "image": "/media/polpics/bernard-genereux.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Montmagny\u2014L'Islet\u2014Kamouraska\u2014Rivi\u00e8re-du-Loup"
+                }
+            },
+            "name": "Bernard G\u00e9n\u00e9reux",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marilene-gill/",
+            "image": "/media/polpics/marilene-gill.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Manicouagan"
+                }
+            },
+            "name": "Maril\u00e8ne Gill",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/joel-godin/",
+            "image": "/media/polpics/GodinJoel_CPC.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Portneuf\u2014Jacques-Cartier"
+                }
+            },
+            "name": "Jo\u00ebl Godin",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jacques-gourde/",
+            "image": "/media/polpics/jacques-gourde.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "L\u00e9vis\u2014Lotbini\u00e8re"
+                }
+            },
+            "name": "Jacques Gourde",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/steven-guilbeault/",
+            "image": "/media/polpics/steven-guilbeault.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Laurier\u2014Sainte-Marie"
+                }
+            },
+            "name": "Steven Guilbeault",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/anthony-housefather/",
+            "image": "/media/polpics/anthony-housefather.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Mount Royal"
+                }
+            },
+            "name": "Anthony Housefather",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/angelo-iacono/",
+            "image": "/media/polpics/angelo-iacono.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Alfred-Pellan"
+                }
+            },
+            "name": "Angelo Iacono",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/melanie-joly/",
+            "image": "/media/polpics/melanie-joly.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Ahuntsic-Cartierville"
+                }
+            },
+            "name": "M\u00e9lanie Joly",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/annie-koutrakis/",
+            "image": "/media/polpics/annie-koutrakis.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Vimy"
+                }
+            },
+            "name": "Annie Koutrakis",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/emmanuella-lambropoulos/",
+            "image": "/media/polpics/emmanuella-lambropoulos.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Saint-Laurent"
+                }
+            },
+            "name": "Emmanuella Lambropoulos",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/david-lametti/",
+            "image": "/media/polpics/david-lametti.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "LaSalle\u2014\u00c9mard\u2014Verdun"
+                }
+            },
+            "name": "David Lametti",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/andreanne-larouche/",
+            "image": "/media/polpics/andreanne-larouche.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Shefford"
+                }
+            },
+            "name": "Andr\u00e9anne Larouche",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/patricia-lattanzio/",
+            "image": "/media/polpics/patricia-lattanzio.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Saint-L\u00e9onard\u2014Saint-Michel"
+                }
+            },
+            "name": "Patricia Lattanzio",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/stephane-lauzon/",
+            "image": "/media/polpics/stephane-lauzon.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Argenteuil\u2014La Petite-Nation"
+                }
+            },
+            "name": "St\u00e9phane Lauzon",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/diane-lebouthillier/",
+            "image": "/media/polpics/diane-lebouthillier.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Gasp\u00e9sie\u2014Les-\u00celes-de-la-Madeleine"
+                }
+            },
+            "name": "Diane Lebouthillier",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/richard-lehoux/",
+            "image": "/media/polpics/richard-lehoux.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Beauce"
+                }
+            },
+            "name": "Richard Lehoux",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/sebastien-lemire/",
+            "image": "/media/polpics/sebastien-lemire.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Abitibi\u2014T\u00e9miscamingue"
+                }
+            },
+            "name": "S\u00e9bastien Lemire",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/joel-lightbound/",
+            "image": "/media/polpics/joel-lightbound.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Louis-H\u00e9bert"
+                }
+            },
+            "name": "Jo\u00ebl Lightbound",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/steven-mackinnon/",
+            "image": "/media/polpics/steven-mackinnon.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Gatineau"
+                }
+            },
+            "name": "Steven MacKinnon",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/richard-martel/",
+            "image": "/media/polpics/richard-martel.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Chicoutimi\u2014Le Fjord"
+                }
+            },
+            "name": "Richard Martel",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/soraya-martinez-ferrada/",
+            "image": "/media/polpics/soraya-martinez-ferrada.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Hochelaga"
+                }
+            },
+            "name": "Soraya Martinez Ferrada",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/alexandra-mendes/",
+            "image": "/media/polpics/alexandra-mendes.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Brossard\u2014Saint-Lambert"
+                }
+            },
+            "name": "Alexandra Mendes",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kristina-michaud/",
+            "image": "/media/polpics/kristina-michaud.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Avignon\u2014La Mitis\u2014Matane\u2014Matap\u00e9dia"
+                }
+            },
+            "name": "Kristina Michaud",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/marc-miller/",
+            "image": "/media/polpics/marc-miller.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Ville-Marie\u2014Le Sud-Ouest\u2014\u00cele-des-Soeurs"
+                }
+            },
+            "name": "Marc Miller",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/christine-normandin/",
+            "image": "/media/polpics/christine-normandin.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Saint-Jean"
+                }
+            },
+            "name": "Christine Normandin",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/pierre-paul-hus/",
+            "image": "/media/polpics/pierre-paul-hus.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Charlesbourg\u2014Haute-Saint-Charles"
+                }
+            },
+            "name": "Pierre Paul-Hus",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/monique-pauze/",
+            "image": "/media/polpics/monique-pauze.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Repentigny"
+                }
+            },
+            "name": "Monique Pauz\u00e9",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/yves-perron/",
+            "image": "/media/polpics/yves-perron.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Berthier\u2014Maskinong\u00e9"
+                }
+            },
+            "name": "Yves Perron",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/louis-plamondon/",
+            "image": "/media/polpics/louis-plamondon.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "B\u00e9cancour\u2014Nicolet\u2014Saurel"
+                }
+            },
+            "name": "Louis Plamondon",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/alain-rayes/",
+            "image": "/media/polpics/alain-rayes.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Richmond\u2014Arthabaska"
+                }
+            },
+            "name": "Alain Rayes",
+            "current_party": {
+                "short_name": {
+                    "en": "Independent"
+                }
+            }
+        },
+        {
+            "url": "/politicians/yves-robillard/",
+            "image": "/media/polpics/yves-robillard.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Marc-Aur\u00e8le-Fortin"
+                }
+            },
+            "name": "Yves Robillard",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/pablo-rodriguez/",
+            "image": "/media/polpics/pablo-rodriguez.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Honor\u00e9-Mercier"
+                }
+            },
+            "name": "Pablo Rodriguez",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/sherry-romanado/",
+            "image": "/media/polpics/sherry-romanado.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Longueuil\u2014Charles-LeMoyne"
+                }
+            },
+            "name": "Sherry Romanado",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/simon-pierre-savard-tremblay/",
+            "image": "/media/polpics/simon-pierre-savard-tremblay.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Saint-Hyacinthe\u2014Bagot"
+                }
+            },
+            "name": "Simon-Pierre Savard-Tremblay",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/francis-scarpaleggia/",
+            "image": "/media/polpics/francis-scarpaleggia.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Lac-Saint-Louis"
+                }
+            },
+            "name": "Francis Scarpaleggia",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/peter-schiefke/",
+            "image": "/media/polpics/peter-schiefke.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Vaudreuil\u2014Soulanges"
+                }
+            },
+            "name": "Peter Schiefke",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/brenda-shanahan/",
+            "image": "/media/polpics/brenda-shanahan.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Ch\u00e2teauguay\u2014Lacolle"
+                }
+            },
+            "name": "Brenda Shanahan",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/mario-simard/",
+            "image": "/media/polpics/mario-simard.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Jonqui\u00e8re"
+                }
+            },
+            "name": "Mario Simard",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/nathalie-sinclair-desgagne/",
+            "image": "/media/polpics/nathalie-sinclair-desgagne.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Terrebonne"
+                }
+            },
+            "name": "Nathalie Sinclair-Desgagn\u00e9",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/gabriel-ste-marie/",
+            "image": "/media/polpics/gabriel-ste-marie.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Joliette"
+                }
+            },
+            "name": "Gabriel Ste-Marie",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/pascale-st-onge/",
+            "image": "/media/polpics/pascale-st-onge.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Brome\u2014Missisquoi"
+                }
+            },
+            "name": "Pascale St-Onge",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/luc-theriault/",
+            "image": "/media/polpics/luc-theriault.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Montcalm"
+                }
+            },
+            "name": "Luc Th\u00e9riault",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/alain-therrien/",
+            "image": "/media/polpics/alain-therrien.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "La Prairie"
+                }
+            },
+            "name": "Alain Therrien",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/justin-trudeau/",
+            "image": "/media/polpics/justin-trudeau.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Papineau"
+                }
+            },
+            "name": "Justin Trudeau",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/denis-trudel/",
+            "image": "/media/polpics/denis-trudel.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Longueuil\u2014Saint-Hubert"
+                }
+            },
+            "name": "Denis Trudel",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/dominique-vien/",
+            "image": "/media/polpics/dominique-vien.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Bellechasse\u2014Les Etchemins\u2014L\u00e9vis"
+                }
+            },
+            "name": "Dominique Vien",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/julie-vignola/",
+            "image": "/media/polpics/julie-vignola.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Beauport\u2014Limoilou"
+                }
+            },
+            "name": "Julie Vignola",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rene-villemure/",
+            "image": "/media/polpics/rene-villemure.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Trois-Rivi\u00e8res"
+                }
+            },
+            "name": "Ren\u00e9 Villemure",
+            "current_party": {
+                "short_name": {
+                    "en": "Bloc"
+                }
+            }
+        },
+        {
+            "url": "/politicians/sameer-zuberi/",
+            "image": "/media/polpics/sameer-zuberi.jpg",
+            "current_riding": {
+                "province": "QC",
+                "name": {
+                    "en": "Pierrefonds\u2014Dollard"
+                }
+            },
+            "name": "Sameer Zuberi",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kelly-block/",
+            "image": "/media/polpics/kelly-block.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Carlton Trail\u2014Eagle Creek"
+                }
+            },
+            "name": "Kelly Block",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/rosemarie-falk/",
+            "image": "/media/polpics/rosemarie-falk.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Battlefords\u2014Lloydminster"
+                }
+            },
+            "name": "Rosemarie Falk",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/randy-hoback/",
+            "image": "/media/polpics/randy-hoback.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Prince Albert"
+                }
+            },
+            "name": "Randy Hoback",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/robert-gordon-kitchen/",
+            "image": "/media/polpics/robert-gordon-kitchen.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Souris\u2014Moose Mountain"
+                }
+            },
+            "name": "Robert Gordon Kitchen",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/michael-kram/",
+            "image": "/media/polpics/michael-kram.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Regina\u2014Wascana"
+                }
+            },
+            "name": "Michael Kram",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/jeremy-patzer/",
+            "image": "/media/polpics/jeremy-patzer.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Cypress Hills\u2014Grasslands"
+                }
+            },
+            "name": "Jeremy Patzer",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/brad-redekopp/",
+            "image": "/media/polpics/brad-redekopp.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Saskatoon West"
+                }
+            },
+            "name": "Brad Redekopp",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/andrew-scheer/",
+            "image": "/media/polpics/andrew-scheer.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Regina\u2014Qu'Appelle"
+                }
+            },
+            "name": "Andrew Scheer",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/warren-steinley/",
+            "image": "/media/polpics/warren-steinley.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Regina\u2014Lewvan"
+                }
+            },
+            "name": "Warren Steinley",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/corey-tochor/",
+            "image": "/media/polpics/corey-tochor.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Saskatoon\u2014University"
+                }
+            },
+            "name": "Corey Tochor",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/fraser-tolmie/",
+            "image": "/media/polpics/fraser-tolmie.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Moose Jaw\u2014Lake Centre\u2014Lanigan"
+                }
+            },
+            "name": "Fraser Tolmie",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/gary-vidal/",
+            "image": "/media/polpics/gary-vidal.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Desneth\u00e9\u2014Missinippi\u2014Churchill River"
+                }
+            },
+            "name": "Gary Vidal",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/cathay-wagantall/",
+            "image": "/media/polpics/cathay-wagantall.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Yorkton\u2014Melville"
+                }
+            },
+            "name": "Cathay Wagantall",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/kevin-waugh/",
+            "image": "/media/polpics/kevin-waugh.jpg",
+            "current_riding": {
+                "province": "SK",
+                "name": {
+                    "en": "Saskatoon\u2014Grasswood"
+                }
+            },
+            "name": "Kevin Waugh",
+            "current_party": {
+                "short_name": {
+                    "en": "Conservative"
+                }
+            }
+        },
+        {
+            "url": "/politicians/brendan-hanley/",
+            "image": "/media/polpics/brendan-hanley.jpg",
+            "current_riding": {
+                "province": "YT",
+                "name": {
+                    "en": "Yukon"
+                }
+            },
+            "name": "Brendan Hanley",
+            "current_party": {
+                "short_name": {
+                    "en": "Liberal"
+                }
+            }
+        }
+    ]
+}

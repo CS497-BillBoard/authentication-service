@@ -11,6 +11,7 @@ import logging
 from api.auth_service import auth_service
 from api.bills_service import bills_service, fetch_and_store_bills
 from api.register import register_service
+from utils.store_mp_info import store_mp_info
 from db.db import get_bills, store_new_bills
 
 """
@@ -44,7 +45,7 @@ def create_app():
     @app.before_first_request
     def before_first_request_func():
         logging.info("before first request called!")
-        fetch_and_store_bills()  # TODO uncomment this
+        fetch_and_store_bills()
         
 
     # TODO: remove this test route later or convert it into a health check

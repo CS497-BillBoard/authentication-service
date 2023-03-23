@@ -1,4 +1,3 @@
-from typing import Collection
 import bson
 
 from flask import current_app, session, g
@@ -49,6 +48,8 @@ def get_user_acc_db():
 def get_verification_db():
     return db["verificationDatabase"]
 
+def get_mp_db():
+    return db["mpDatabase"]
 
 def get_user_acc_collection():
     """
