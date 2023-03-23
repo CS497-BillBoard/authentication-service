@@ -41,7 +41,8 @@ def login():
                 "user_id": user["email"],
                 "verified": user["verified"],
                 "submittedVerificationPhoto": user["submittedVerificationPhoto"],
-                "is_admin": is_admin,
+                "is_admin": user.get("is_admin", False),
+                "set_riding": user.get("set_riding", False)
             }, 200
 
     return {"data": "invalid password"}, 400

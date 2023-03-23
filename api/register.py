@@ -25,6 +25,7 @@ def signUp():
             "password_hash": password_hash,
             "verified": False,
             "submittedVerificationPhoto": False,
+            "set_riding": False,
         }
 
         # validate form data
@@ -35,6 +36,38 @@ def signUp():
 
         if insert_result == -1:
             return {"error": "Email already registered to an account"}, 400
+
+        return {"status": "success"}, 200
+
+
+@register_service.route("/set-riding", methods=["POST"])
+def setRidingRequest():
+    logging.info("(register.py) /set-riding endpoint hit")
+
+    if request.method == "POST":
+        body = request.get_json()
+        print(body)
+
+        if body.get("email") is None or body.get("email") == "":
+            return {"error": "No email provided"}, 400
+
+        # check if user exists
+        if db.get_single_user(body.get("email")) is None:
+            return {"error": "No account found with email"}, 400
+        
+        if body.get("constituencyName") is None or body.get("constituencyName") == "":
+            return {"error": "No constituency name provided"}
+
+        riding_information = {
+            "set_riding": True,
+            "constituency_name": body["constituencyName"],
+            "parliament_member_name": body["parliamentMemberName"],
+        }
+
+        dbResponse = db.update_user_riding(body.get("email"), riding_information)
+
+        if type(dbResponse) == Exception:
+            return {"error": str(dbResponse)}, 400
 
         return {"status": "success"}, 200
 

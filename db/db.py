@@ -85,6 +85,7 @@ def insert_new_user(user):
         print(e)
         return -1
 
+
 def update_user(email: str, updateFieldsDict: dict):
     collection = get_user_acc_collection()
 
@@ -92,12 +93,15 @@ def update_user(email: str, updateFieldsDict: dict):
         result = collection.update_one({"email": email}, {"$set": updateFieldsDict})
 
         if result.modified_count != 1:
-            logging.info("update_user(): updated unexpected number of modified documents: " + str(result.modified_count))
+            logging.info(
+                "update_user(): updated unexpected number of modified documents: "
+                + str(result.modified_count)
+            )
             return -1
     except Exception as e:
         logging.info("update_user(): error updating user: " + str(e))
         return e
-    
+
     return 1
 
 
@@ -106,17 +110,19 @@ def get_bills():
     bills_collection = get_bills_db()["bills"]
     return list(bills_collection.find({}))  # return all bills
 
+
 def get_one_bill(legisinfo_id):
     logging.info(f"fetching bill with id {legisinfo_id} from the db")
     bills_collection: Collection = get_bills_db()["bills"]
     return bills_collection.find_one({"legisinfo_id": legisinfo_id})
+
 
 def store_new_bills(bills: list[dict]):
     """
     store all new bills in the db, where they don't exist yet
     """
     logging.info("storing new bills")
-    
+
     collection: Collection = get_bills_db()["bills"]
     inserted_bills = []
     for bill in bills:
@@ -126,6 +132,7 @@ def store_new_bills(bills: list[dict]):
 
     if len(inserted_bills) > 0:
         collection.insert_many(inserted_bills)
+
 
 def recalc_votes(up_total: int, down_total: int, prev: int, new: int):
     """
@@ -139,7 +146,8 @@ def recalc_votes(up_total: int, down_total: int, prev: int, new: int):
     up_total += 1 if new == 1 else 0
     down_total += 1 if new == -1 else 0
     return up_total, down_total
-    
+
+
 def perform_update(legisinfo_id, user_id, vote=None, comment=None):
     """
     Update a single bill with a user's vote and/or comment
@@ -152,27 +160,28 @@ def perform_update(legisinfo_id, user_id, vote=None, comment=None):
     collection: Collection = get_bills_db()["bills"]
     bill = collection.find_one({"legisinfo_id": legisinfo_id})
     user_id = str(user_id)  # mongodb only accepts strings as keys for documents
-    
+
     if vote is not None:
         # set user's vote
         previous_vote = bill["votes"][user_id] if user_id in bill["votes"] else 0
         bill["votes"][user_id] = vote
         # update total_upvotes and downvotes
-        bill["total_upvotes"], bill["total_downvotes"] = recalc_votes(bill["total_upvotes"], bill["total_downvotes"], previous_vote, vote)
-            
+        bill["total_upvotes"], bill["total_downvotes"] = recalc_votes(
+            bill["total_upvotes"], bill["total_downvotes"], previous_vote, vote
+        )
+
     if comment is not None:
         # TODO check if the user has already commented, remove existing comment subtract total_comments if they have
         if user_id in bill["comments"]:
             bill["total_comments"] -= 1
-    
+
         # add new comment, update total_comments
         bill["comments"][user_id] = comment
         bill["total_comments"] += 1
-    
+
     # update db, TODO maybe asyncrhonously and with update_one instead of replace_one?
     collection.replace_one({"legisinfo_id": legisinfo_id}, bill)
     return bill
-    
 
 
 def get_single_verification_request(email):
@@ -200,7 +209,7 @@ def add_verification_request(verification_request: dict):
     """
     # get the verificationRequests collection
     verificationRequestsCollection = get_verification_requests_collection()
-    
+
     # insert the verification request into the db
     try:
         logging.info("inserting verification request")
@@ -209,9 +218,11 @@ def add_verification_request(verification_request: dict):
     except pymongo.errors.DuplicateKeyError as e:
         print(e)
         return e
-    
+
     # update "submittedVerificationPhoto" field in accountsDatabase collection
-    result = update_user(verification_request["email"], {"submittedVerificationPhoto": True})
+    result = update_user(
+        verification_request["email"], {"submittedVerificationPhoto": True}
+    )
     if type(result) == Exception:
         logging.error(result)
         return result
@@ -246,14 +257,15 @@ def remove_verification_request(email: str):
     except Exception as e:
         logging.error(e)
         return e
-    
+
     # update "submittedVerificationPhoto" field in accountsDatabase collection
     result = update_user(email, {"submittedVerificationPhoto": False})
     if type(result) == Exception:
         logging.error(result)
         return result
-        
+
     return 1
+
 
 def update_verification_request(email: str, updatedFields: dict):
     """
@@ -261,23 +273,26 @@ def update_verification_request(email: str, updatedFields: dict):
     """
     # get the verificationRequests collection
     collection = get_verification_requests_collection()
-    
+
     # update the user's verification status to approved and store the drivers license hash
     try:
         result = collection.update_one({"email": email}, {"$set": updatedFields})
-        
+
         if result.modified_count != 1:
-            logging.info("update_verification_request(): updated unexpected number of modified documents: " + str(result.modified_count))
+            logging.info(
+                "update_verification_request(): updated unexpected number of modified documents: "
+                + str(result.modified_count)
+            )
             return -1
     except Exception as e:
         logging.error(e)
         return e
 
+
 def update_verification_status_to_approved(email: str, drivers_license_hash: str):
     """
     Updates the verification status of a user to approved
     """
-    # get the userAccounts collection
     userAccountsCollection = get_user_acc_collection()
 
     # update the user's verification status to approved and store the drivers license hash
@@ -288,7 +303,10 @@ def update_verification_status_to_approved(email: str, drivers_license_hash: str
         )
 
         if result.modified_count != 1:
-            logging.info("update_verification_status_to_approved(): updated unexpected number of modified documents: " + str(result.modified_count))
+            logging.info(
+                "update_verification_status_to_approved(): updated unexpected number of modified documents: "
+                + str(result.modified_count)
+            )
             return -1
     except Exception as e:
         logging.error(e)
@@ -301,3 +319,24 @@ def update_verification_status_to_approved(email: str, drivers_license_hash: str
         logging.error(result)
 
     return 1
+
+
+def update_user_riding(email: str, updatedFields: dict):
+    """
+    Updates the riding of a user
+    """
+
+    userAccountsCollection = get_user_acc_collection()
+
+    try:
+        result = userAccountsCollection.update_one({"email": email}, {"$set": updatedFields})
+
+        if result.modified_count != 1:
+            logging.info(
+                "update_verification_request(): updated unexpected number of modified documents: "
+                + str(result.modified_count)
+            )
+            return -1
+    except Exception as e:
+        logging.error(e)
+        return e
