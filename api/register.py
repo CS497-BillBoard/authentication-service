@@ -131,7 +131,10 @@ def updateVerificationStatus():
     {
         "email": "test@test.com",
         "status": true
-        "driversLicenseNumber": "123456789"
+        "driversLicenseNumber": "123456789",
+        "province": "ON",
+        "expiryDate": "2020-12-31",
+        "postalCode": "M5H 2N2"
     }
 
     sample request body (rejected request):
@@ -179,14 +182,39 @@ def updateVerificationStatus():
         ):
             return {"error": "No drivers license number provided"}, 400
 
+        if (
+            body.get("province") is None
+            or body.get("province") == ""
+        ):
+            return {"error": "No province provided"}, 400
+        
+        if (
+            body.get("expiryDate") is None
+            or body.get("expiryDate") == ""
+        ):
+            return {"error": "No expiry date provided"}, 400
+        
+        if (
+            body.get("postalCode") is None
+            or body.get("postalCode") == ""
+        ):
+            return {"error": "No postal code provided"}, 400
+
         email = body["email"]
+        province = body["province"]
+        expiryDate = body["expiryDate"]
+        postalCode = body["postalCode"]
+
+        # -------------------------------------------------------
+        # TODO: include province in drivers license number hash?
+        # -------------------------------------------------------
 
         # get driver's license number and salt+hash it
         byteDriversLicenseNumber = body["driversLicenseNumber"].encode("UTF-8")
         salt = bcrypt.gensalt()
         driversLicenseNumberHash = bcrypt.hashpw(byteDriversLicenseNumber, salt)
 
-        db.update_verification_status_to_approved(email, driversLicenseNumberHash)
+        db.update_verification_status_to_approved(email, driversLicenseNumberHash, expiryDate, postalCode)
 
     return {"status": "success"}, 200
 
