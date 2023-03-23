@@ -132,7 +132,7 @@ def updateVerificationStatus():
         "email": "test@test.com",
         "status": true
         "driversLicenseNumber": "123456789",
-        "province": "ON",
+        "province": "Ontario",
         "expiryDate": "2020-12-31",
         "postalCode": "M5H 2N2"
     }
