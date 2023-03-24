@@ -3,15 +3,13 @@ from flask import Flask
 from flask import render_template
 from flask.json import JSONEncoder
 from flask_cors import CORS
-from flask import Response
 from bson import json_util, ObjectId
-from datetime import datetime, timedelta
+from datetime import datetime
 import logging
 
 from api.auth_service import auth_service
-from api.bills_service import bills_service, fetch_and_store_bills
+from api.bills_service import bills_service
 from api.register import register_service
-from db.db import get_bills, store_new_bills
 
 """
 Classes for creating app and encoding data, copied from the mongodb/flask tutorial
@@ -38,14 +36,7 @@ def create_app():
     app.json_encoder = MongoJsonEncoder
     app.register_blueprint(auth_service)
     app.register_blueprint(bills_service)
-    app.register_blueprint(register_service)
-    
-    # On startup, fetch from the openparliament api and db
-    @app.before_first_request
-    def before_first_request_func():
-        logging.info("before first request called!")
-        fetch_and_store_bills()  # TODO uncomment this
-        
+    app.register_blueprint(register_service)   
 
     # TODO: remove this test route later or convert it into a health check
     @app.route('/', defaults={'path': ''})

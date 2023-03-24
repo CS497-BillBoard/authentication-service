@@ -1,4 +1,3 @@
-from typing import Collection
 import bson
 
 from flask import current_app, session, g
@@ -107,8 +106,8 @@ def update_user(email: str, updateFieldsDict: dict):
 
 def get_bills():
     logging.info("fetching bills from the db")
-    bills_collection = get_bills_db()["bills"]
-    return list(bills_collection.find({}))  # return all bills
+    bills_collection: Collection = get_bills_db()["bills"]
+    return list(bills_collection.find({}).sort("introduced",pymongo.DESCENDING))  # return most recent bills
 
 
 def get_one_bill(legisinfo_id):
