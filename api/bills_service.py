@@ -101,7 +101,7 @@ def fetch_new_bills():
     introduced_date = datetime.now().strftime("%Y-%m-01")
     params = {'format': 'json',
               'version': 'v1',
-              'limit': 30,
+              'limit': 50,
               'introduced__gte': introduced_date}
     r = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, 'bills'), params=params)
     
