@@ -241,15 +241,20 @@ def get_all_hashed_drivers_licenses():
     return collection.find({}, {"province_and_drivers_license_hash": 1})
 
 
-def add_drivers_license_hash(province_and_drivers_license_hash: str):
+def add_drivers_license_hash(provinceAndDriversLicenseHash: str, expiryYear: str):
     """
     Adds a hashed drivers license to the database
     """
     driversLicenseCollection = get_drivers_license_collection()
 
+    new_document = {
+        "province_and_drivers_license_hash": provinceAndDriversLicenseHash,
+        "expiry_year": expiryYear
+    }
+
     try:
         logging.info("inserting hashed drivers license")
-        driversLicenseCollection.insert_one(document={"province_and_drivers_license_hash": province_and_drivers_license_hash})
+        driversLicenseCollection.insert_one(document=new_document)
         logging.info("inserted hashed drivers license")
 
     except pymongo.errors.DuplicateKeyError as e:
@@ -314,9 +319,12 @@ def add_verification_request(verification_request: dict):
     return 1
 
 
-def remove_verification_request(email: str):
+def remove_verification_request(email: str, isRequestApproved: bool):
     """
     Removes a verification request from the database
+
+    email: the email of the user
+    isRequestApproved: whether or not the verification request was approved by BillBoard staff in verification process
     """
     # get the verificationRequests collection
     collection = get_verification_requests_collection()
@@ -342,11 +350,12 @@ def remove_verification_request(email: str):
         logging.error(e)
         return e
 
-    # update "submittedVerificationPhoto" field in accountsDatabase collection
-    result = update_user(email, {"submittedVerificationPhoto": False})
-    if type(result) == Exception:
-        logging.error(result)
-        return result
+    if not isRequestApproved:
+        # update "submittedVerificationPhoto" field in accountsDatabase collection
+        result = update_user(email, {"submittedVerificationPhoto": False})
+        if type(result) == Exception:
+            logging.error(result)
+            return result
 
     return 1
 
@@ -381,7 +390,7 @@ def update_verification_status_to_approved(email: str, driversLicenseHash: str, 
 
 
     # store the drivers license hash *separately* in the driversLicense collection
-    result = add_drivers_license_hash(driversLicenseHash)
+    result = add_drivers_license_hash(driversLicenseHash, expiryYear)
     if type(result) == Exception:
         logging.error(result)
         return result
@@ -404,7 +413,7 @@ def update_verification_status_to_approved(email: str, driversLicenseHash: str, 
         return e
 
     # remove the verification request from the db
-    result = remove_verification_request(email)
+    result = remove_verification_request(email, True)
 
     if type(result) == Exception:
         logging.error(result)
