@@ -35,6 +35,10 @@ def get_db():
 db = LocalProxy(get_db)
 
 
+
+# ------------------------------------------------
+# Get Database Methods
+# ------------------------------------------------
 def get_bills_db():
     """
     Method to return instance of the bills database
@@ -42,7 +46,7 @@ def get_bills_db():
     return db["billsDatabase"]
 
 
-def get_user_acc_db():
+def get_accounts_db():
     return db["accountsDatabase"]
 
 
@@ -50,12 +54,24 @@ def get_verification_db():
     return db["verificationDatabase"]
 
 
+
+# ------------------------------------------------
+# Get Collection Methods
+# ------------------------------------------------
 def get_user_acc_collection():
     """
     returns the userAccount collection
     """
 
-    collection: Collection = get_user_acc_db()["userAccounts"]
+    collection: Collection = get_accounts_db()["userAccounts"]
+    return collection
+
+def get_drivers_license_collection():
+    """
+    returns the driversLicense collection
+    """
+
+    collection: Collection = get_accounts_db()["driversLicense"]
     return collection
 
 
@@ -67,6 +83,11 @@ def get_verification_requests_collection():
     collection: Collection = get_verification_db()["verificationRequests"]
     return collection
 
+
+
+# ------------------------------------------------
+# accountsDatabase.userAccounts Collection Methods
+# ------------------------------------------------
 
 def get_single_user(emails):
 
@@ -81,8 +102,7 @@ def insert_new_user(user):
     try:
         Collection.insert_one(document=user)
     except pymongo.errors.DuplicateKeyError as e:
-
-        print(e)
+        logging.error(e)
         return -1
 
 
@@ -104,7 +124,31 @@ def update_user(email: str, updateFieldsDict: dict):
 
     return 1
 
+def update_user_riding(email: str, updatedFields: dict):
+    """
+    Updates the riding of a user
+    """
 
+    userAccountsCollection = get_user_acc_collection()
+
+    try:
+        result = userAccountsCollection.update_one({"email": email}, {"$set": updatedFields})
+
+        if result.modified_count != 1:
+            logging.info(
+                "update_verification_request(): updated unexpected number of modified documents: "
+                + str(result.modified_count)
+            )
+            return -1
+    except Exception as e:
+        logging.error(e)
+        return e
+
+
+
+# ------------------------------------------------
+# billsDatabase.bills Collection Methods
+# ------------------------------------------------
 def get_bills():
     logging.info("fetching bills from the db")
     bills_collection = get_bills_db()["bills"]
@@ -184,6 +228,45 @@ def perform_update(legisinfo_id, user_id, vote=None, comment=None):
     return bill
 
 
+
+# ------------------------------------------------------------
+# accountsDatabase.driversLicense Collection Methods
+# ------------------------------------------------------------
+def get_all_hashed_drivers_licenses():
+    """
+    Returns a list of all hashed drivers licenses in the database
+    """
+    collection = get_drivers_license_collection()
+
+    return collection.find({}, {"province_and_drivers_license_hash": 1})
+
+
+def add_drivers_license_hash(province_and_drivers_license_hash: str):
+    """
+    Adds a hashed drivers license to the database
+    """
+    driversLicenseCollection = get_drivers_license_collection()
+
+    try:
+        logging.info("inserting hashed drivers license")
+        driversLicenseCollection.insert_one(document={"province_and_drivers_license_hash": province_and_drivers_license_hash})
+        logging.info("inserted hashed drivers license")
+
+    except pymongo.errors.DuplicateKeyError as e:
+        logging.info("add_drivers_license_hash(): duplicate key error: " + str(e))
+        return e
+    
+    except Exception as e:
+        logging.info("add_drivers_license_hash(): error adding hashed driver's license: " + str(e))
+        return e
+
+    return 1
+
+
+
+# ------------------------------------------------------------
+# verificationDatabase.verificationRequests Collection Methods
+# ------------------------------------------------------------
 def get_single_verification_request(email):
 
     Collection = get_verification_requests_collection()
@@ -215,8 +298,9 @@ def add_verification_request(verification_request: dict):
         logging.info("inserting verification request")
         verificationRequestsCollection.insert_one(document=verification_request)
         logging.info("inserted verification request")
+
     except pymongo.errors.DuplicateKeyError as e:
-        print(e)
+        logging.info("add_verification_request(): error adding verification request: " + str(e))
         return e
 
     # update "submittedVerificationPhoto" field in accountsDatabase collection
@@ -289,17 +373,24 @@ def update_verification_request(email: str, updatedFields: dict):
         return e
 
 
-def update_verification_status_to_approved(email: str, driversLicenseHash: str, expiryDate: str, postalCode: str):
+def update_verification_status_to_approved(email: str, driversLicenseHash: str, expiryYear: str):
     """
     Updates the verification status of a user to approved
     """
     userAccountsCollection = get_user_acc_collection()
 
+
+    # store the drivers license hash *separately* in the driversLicense collection
+    result = add_drivers_license_hash(driversLicenseHash)
+    if type(result) == Exception:
+        logging.error(result)
+        return result
+
     # update the user's verification status to approved and store the drivers license hash
     try:
         result = userAccountsCollection.update_one(
             {"email": email},
-            {"$set": {"verified": True, "drivers_license_hash": driversLicenseHash, "expiry_date": expiryDate, "postal_code": postalCode}},
+            {"$set": {"verified": True, "expiry_year": expiryYear}},
         )
 
         if result.modified_count != 1:
@@ -307,7 +398,7 @@ def update_verification_status_to_approved(email: str, driversLicenseHash: str, 
                 "update_verification_status_to_approved(): updated unexpected number of modified documents: "
                 + str(result.modified_count)
             )
-            return -1
+
     except Exception as e:
         logging.error(e)
         return e
@@ -320,23 +411,3 @@ def update_verification_status_to_approved(email: str, driversLicenseHash: str, 
 
     return 1
 
-
-def update_user_riding(email: str, updatedFields: dict):
-    """
-    Updates the riding of a user
-    """
-
-    userAccountsCollection = get_user_acc_collection()
-
-    try:
-        result = userAccountsCollection.update_one({"email": email}, {"$set": updatedFields})
-
-        if result.modified_count != 1:
-            logging.info(
-                "update_verification_request(): updated unexpected number of modified documents: "
-                + str(result.modified_count)
-            )
-            return -1
-    except Exception as e:
-        logging.error(e)
-        return e
