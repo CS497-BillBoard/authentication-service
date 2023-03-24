@@ -172,7 +172,7 @@ def updateVerificationStatus():
             return {"error": "No status provided"}, 400
 
         if body.get("status") == False:
-            result = db.remove_verification_request(body["email"])
+            result = db.remove_verification_request(body["email"], False)
 
             if type(result) == Exception:
                 return {
