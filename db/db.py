@@ -322,7 +322,7 @@ def add_verification_request(verification_request: dict):
 def remove_verification_request(email: str, isRequestApproved: bool):
     """
     Removes a verification request from the database
-    
+
     email: the email of the user
     isRequestApproved: whether or not the verification request was approved by BillBoard staff in verification process
     """
@@ -413,7 +413,7 @@ def update_verification_status_to_approved(email: str, driversLicenseHash: str, 
         return e
 
     # remove the verification request from the db
-    result = remove_verification_request(email)
+    result = remove_verification_request(email, True)
 
     if type(result) == Exception:
         logging.error(result)
