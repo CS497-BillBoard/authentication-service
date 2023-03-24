@@ -74,6 +74,14 @@ def setRidingRequest():
 
 @register_service.route("/verification-request", methods=["GET", "POST"])
 def verificationRequest():
+    """
+    sample request body:
+    {
+        "email": "test11@test.com",
+        "driversLicenseImage": "base64 img"
+    }
+    """
+
     logging.info("(register.py) /verification-request endpoint hit")
 
     if request.method == "POST":
@@ -133,8 +141,7 @@ def updateVerificationStatus():
         "status": true
         "driversLicenseNumber": "123456789",
         "province": "Ontario",
-        "expiryDate": "2020-12-31",
-        "postalCode": "M5H 2N2"
+        "expiryYear": "2020"    
     }
 
     sample request body (rejected request):
@@ -149,6 +156,7 @@ def updateVerificationStatus():
     if request.method == "POST":
         body = request.get_json()
 
+        # Validate Request Body Data
         if body.get("email") is None or body.get("email") == "":
             return {"error": "No email provided"}, 400
 
@@ -189,32 +197,31 @@ def updateVerificationStatus():
             return {"error": "No province provided"}, 400
         
         if (
-            body.get("expiryDate") is None
-            or body.get("expiryDate") == ""
+            body.get("expiryYear") is None
+            or body.get("expiryYear") == ""
         ):
-            return {"error": "No expiry date provided"}, 400
+            return {"error": "No expiry year provided"}, 400
         
-        if (
-            body.get("postalCode") is None
-            or body.get("postalCode") == ""
-        ):
-            return {"error": "No postal code provided"}, 400
-
         email = body["email"]
+        driversLicenseNumber = body["driversLicenseNumber"]
         province = body["province"]
-        expiryDate = body["expiryDate"]
-        postalCode = body["postalCode"]
+        expiryYear = body["expiryYear"]
 
-        # -------------------------------------------------------
-        # TODO: include province in drivers license number hash?
-        # -------------------------------------------------------
-
-        # get driver's license number and salt+hash it
-        byteDriversLicenseNumber = body["driversLicenseNumber"].encode("UTF-8")
+        # get province + driver's license number and salt+hash it
+        # note: use province in the hash as well to ensure uniqueness because driver's license numbers can 
+        # be the same across diff provinces
+        stringToHash = province + " " + driversLicenseNumber
+        bytedriversLicenseNumber = stringToHash.encode("UTF-8")
         salt = bcrypt.gensalt()
-        driversLicenseNumberHash = bcrypt.hashpw(byteDriversLicenseNumber, salt)
+        driversLicenseNumberHash = bcrypt.hashpw(bytedriversLicenseNumber, salt)
 
-        db.update_verification_status_to_approved(email, driversLicenseNumberHash, expiryDate, postalCode)
+        # check that driversLicenseNumberHash does not already exist in accountsDatabase.driversLicense DB
+        exisitingdriversLicenseNumberHash = db.get_all_hashed_drivers_licenses()
+        for existingHash in exisitingdriversLicenseNumberHash:
+            if bcrypt.checkpw(driversLicenseNumberHash, existingHash):
+                return {"error": "drivers license number already exists"}, 400
+
+        db.update_verification_status_to_approved(email, driversLicenseNumberHash, expiryYear)
 
     return {"status": "success"}, 200
 
