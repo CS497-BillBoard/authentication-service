@@ -200,7 +200,6 @@ def perform_update(legisinfo_id, user_id, vote=None, comment=None):
     @param vote: the vote of the user, if none, then the user hasn't changed their vote
     @param comment: a new comment, if any. this will override the user's last comment
     """
-    # TODO
     collection: Collection = get_bills_db()["bills"]
     bill = collection.find_one({"legisinfo_id": legisinfo_id})
     user_id = str(user_id)  # mongodb only accepts strings as keys for documents
@@ -215,7 +214,7 @@ def perform_update(legisinfo_id, user_id, vote=None, comment=None):
         )
 
     if comment is not None:
-        # TODO check if the user has already commented, remove existing comment subtract total_comments if they have
+        # check if the user has already commented, subtract total_comments if they have
         if user_id in bill["comments"]:
             bill["total_comments"] -= 1
 
@@ -223,10 +222,8 @@ def perform_update(legisinfo_id, user_id, vote=None, comment=None):
         bill["comments"][user_id] = comment
         bill["total_comments"] += 1
 
-    # update db, TODO maybe asyncrhonously and with update_one instead of replace_one?
     collection.replace_one({"legisinfo_id": legisinfo_id}, bill)
     return bill
-
 
 
 # ------------------------------------------------------------
