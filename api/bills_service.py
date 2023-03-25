@@ -1,7 +1,5 @@
 from typing import Dict
-from flask import Flask, Blueprint, jsonify, render_template, abort, request
-from jinja2 import TemplateNotFound
-from flask import Response
+from flask import Flask, Blueprint, jsonify, render_template, abort, request, current_app
 import requests
 import json
 import logging
@@ -9,10 +7,29 @@ from db import db
 from utils.bill_summary import get_plain_bill_text
 from urllib.parse import urljoin
 from datetime import datetime
+from flask_jwt_extended import decode_token
 
 """
 This api is for fetching bills, either a list of them or a specific bill, with a user_id optionally
 """
+
+def get_user_id() -> int:
+    """
+    Function to authenticate user by checking jwt token
+    returns: the user_id if present or None (no user)
+    """
+    user_id = None
+    AUTHORIZATION_HEADER = 'Authorization'
+    
+    if request.headers.get(AUTHORIZATION_HEADER, None) is not None:
+        try:
+            jwtr = decode_token(request.headers.get(AUTHORIZATION_HEADER))
+            logging.info("header authz={}".format(jwtr))
+            user_id = jwtr['sub']
+        except Exception:
+            return {"data": "token present but invalid"}, 401
+    
+    return user_id
 
 # endpoint
 bills_service = Blueprint('bills_page', __name__, template_folder='templates')
@@ -28,13 +45,8 @@ def bills(bill_id=None):
     """
     logging.info("(bills_service.py) /bills endpoint hit")
     
-    try:
-        data: Dict = request.get_json()
-        user_id = data.get("user_id", None)  # TODO user must be authenticated/exist if passed
-        if user_id is not None and type(user_id) != str:
-            return {"data": "user_id must be string"}, 400
-    except Exception as e:  # no user_id passed -> unverified user
-        user_id = None  # set this in case data is None
+    # if no authorization, then it is a unverified user, return anonymous bill data
+    user_id = get_user_id()
     
     # no bill id passed, so just return all bills
     if bill_id is None:
@@ -70,11 +82,10 @@ def update_bill(bill_id):
     data: Dict = request.get_json()
     if data is None:
         return {"data": "invalid json body"}, 400
-    user_id = data.get("user_id", None)  # TODO user must be authenticated/exist
+    
+    user_id = get_user_id()
     if user_id is None:
-        return {"data": "user_id invalid or not present"}, 400
-    if type(user_id) != str:
-        return {"data": "user_id must be string"}, 400
+        return {"data": "no user token provided"}, 401
     
     ### parsing input
     user_vote = data.get("vote", None)
