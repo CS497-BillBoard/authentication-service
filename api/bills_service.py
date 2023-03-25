@@ -41,7 +41,6 @@ def bills(bill_id=None):
     Returns a list of the most recent bills in JSON format.
     bill_id is the legisinfo_id of the bill. if passed in, only a specific
     bill is returned, including all of its comments.
-    optional json body: user_id. If passed, will return that user's "view" of the bill
     """
     logging.info("(bills_service.py) /bills endpoint hit")
     
@@ -66,10 +65,8 @@ def update_bill(bill_id):
     """
     Endpoint for a single user to upvote/downvote or add a comment
     Takes in a json containing:
-     - user_id (required)
      - vote (optional)
      - comment (optional)
-    TODO must also take in a JWT
     """
     logging.info("(bills_service.py) /bills update endpoint hit")
     
@@ -104,7 +101,6 @@ def update_bill(bill_id):
 def fetch_new_bills():
     """
     fetch new bills from https://openparliament.ca/api/
-    TODO eventually this will fetch bills from the db instead of the API
     """
     # get a list of bills
     OPENPARLIAMENT_BASE_URL = "https://api.openparliament.ca"
