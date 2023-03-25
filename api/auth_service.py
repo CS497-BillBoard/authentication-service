@@ -34,7 +34,7 @@ def login():
 
         if passwordMatch:
 
-            access_token = create_access_token(identity=user["email"])
+            access_token = create_access_token(identity=user["email"], expires_delta=false)
             return {
                 "token": access_token,
                 "user_id": user["email"],
