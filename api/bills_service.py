@@ -27,7 +27,7 @@ def get_user_id() -> int:
             logging.info("header authz={}".format(jwtr))
             user_id = jwtr['sub']
         except Exception:
-            return {"data": "token present but invalid"}, 401
+            raise
     
     return user_id
 
@@ -45,7 +45,10 @@ def bills(bill_id=None):
     logging.info("(bills_service.py) /bills endpoint hit")
     
     # if no authorization, then it is a unverified user, return anonymous bill data
-    user_id = get_user_id()
+    try:
+        user_id = get_user_id()
+    except Exception:
+        return {"data": "token present but invalid"}, 401
     
     # no bill id passed, so just return all bills
     if bill_id is None:
@@ -80,7 +83,10 @@ def update_bill(bill_id):
     if data is None:
         return {"data": "invalid json body"}, 400
     
-    user_id = get_user_id()
+    try:
+        user_id = get_user_id()
+    except Exception:
+        return {"data": "token present but invalid"}, 401
     if user_id is None:
         return {"data": "no user token provided"}, 401
     
