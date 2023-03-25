@@ -8,6 +8,7 @@ import logging
 from db import db
 from utils.bill_summary import get_plain_bill_text
 from urllib.parse import urljoin
+from datetime import datetime
 
 """
 This api is for fetching bills, either a list of them or a specific bill, with a user_id optionally
@@ -97,10 +98,11 @@ def fetch_new_bills():
     # get a list of bills
     OPENPARLIAMENT_BASE_URL = "https://api.openparliament.ca"
     
+    introduced_date = datetime.now().strftime("%Y-%m-01")
     params = {'format': 'json',
               'version': 'v1',
-              'limit': 30,
-              'introduced__gte':'2023-01-01'}
+              'limit': 50,
+              'introduced__gte': introduced_date}
     r = requests.get(urljoin(OPENPARLIAMENT_BASE_URL, 'bills'), params=params)
     
     if (r.status_code >= 400):  # status codes above 400 indicate an error
