@@ -90,9 +90,13 @@ def verificationRequest():
         if body.get("email") is None or body.get("email") == "":
             return {"error": "No email provided"}, 400
 
-        # check if user exists
-        if db.get_single_user(body["email"]) is None:
+        # check if user exists and that user is not verified
+        userAccount = db.get_single_user(body["email"])
+        if userAccount is None:
             return {"error": "No account found with email"}, 400
+        
+        if userAccount["verified"] == True:
+            return {"error": "Account already verified"}, 400
 
         if (
             body.get("driversLicenseImage") is None
@@ -132,6 +136,39 @@ def verificationRequest():
     return {"status": "success"}, 200
 
 
+def addSuspiciousFlagToUser(email):
+    result = db.update_user(email, {"suspicious": True})
+
+    if type(result) == Exception:
+        logging.error(result)
+        return result
+    
+    return
+
+
+def removeRejectedVerificationRequest(email):
+    """
+    Removes a verification request from the database and marks the user as suspicious
+    """
+    result = db.remove_verification_request(email, False)
+
+    if type(result) == Exception:
+        return {
+            "error": "Error removing verification request from db: "
+            + str(result)
+        }, 400
+    
+    result = addSuspiciousFlagToUser(email)
+    if type(result) == Exception:
+        logging.error(result)
+    
+    return {
+        "status": "success",
+        "msg": "rejected verification - removed request from db",
+    }, 200
+
+
+
 @register_service.route("/update-verification-status", methods=["POST"])
 def updateVerificationStatus():
     """
@@ -160,9 +197,13 @@ def updateVerificationStatus():
         if body.get("email") is None or body.get("email") == "":
             return {"error": "No email provided"}, 400
 
-        # check if user exists
-        if db.get_single_user(body["email"]) is None:
+        # check if user exists and that user is not verified
+        userAccount = db.get_single_user(body["email"])
+        if userAccount is None:
             return {"error": "No account found with email"}, 400
+        
+        if userAccount["verified"] == True:
+            return {"error": "Account already verified"}, 400
 
         # check if verification request exists
         if db.get_single_verification_request(body["email"]) is None:
@@ -172,17 +213,7 @@ def updateVerificationStatus():
             return {"error": "No status provided"}, 400
 
         if body.get("status") == False:
-            result = db.remove_verification_request(body["email"], False)
-
-            if type(result) == Exception:
-                return {
-                    "error": "Error removing verification request from db: "
-                    + str(result)
-                }, 400
-            return {
-                "status": "success",
-                "msg": "rejected verification - removed request from db",
-            }, 200
+            return removeRejectedVerificationRequest(body["email"])
 
         if (
             body.get("driversLicenseNumber") is None
@@ -210,15 +241,20 @@ def updateVerificationStatus():
         # get province + driver's license number and salt+hash it
         # note: use province in the hash as well to ensure uniqueness because driver's license numbers can 
         # be the same across diff provinces
-        stringToHash = province + " " + driversLicenseNumber
-        bytedriversLicenseNumber = stringToHash.encode("UTF-8")
+        plaintextStringToHash = province + " " + driversLicenseNumber
+        bytedriversLicenseNumber = plaintextStringToHash.encode("UTF-8")
         salt = bcrypt.gensalt()
         driversLicenseNumberHash = bcrypt.hashpw(bytedriversLicenseNumber, salt)
 
         # check that driversLicenseNumberHash does not already exist in accountsDatabase.driversLicense DB
         exisitingdriversLicenseNumberHash = db.get_all_hashed_drivers_licenses()
         for existingHash in exisitingdriversLicenseNumberHash:
-            if bcrypt.checkpw(driversLicenseNumberHash, existingHash):
+            if bcrypt.checkpw(bytedriversLicenseNumber, existingHash.get("province_and_drivers_license_hash")):
+
+                result = removeRejectedVerificationRequest(email)
+                if result[1] != 200:
+                    return result
+
                 return {"error": "drivers license number already exists"}, 400
 
         db.update_verification_status_to_approved(email, driversLicenseNumberHash, expiryYear)
