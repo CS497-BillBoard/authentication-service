@@ -13,6 +13,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from bson.errors import InvalidId
 import pymongo
+import certifi
 
 """
 This file has code from the MongoDB tutorial at https://www.mongodb.com/compatibility/setting-up-flask-with-mongodb
@@ -26,7 +27,7 @@ def get_db():
     db = getattr(g, "_database", None)
 
     if db is None:
-        db = g._database = MongoClient(current_app.config["MONGO_URI"])
+        db = g._database = MongoClient(current_app.config["MONGO_URI"], tlsCAFile=certifi.where())
 
     return db
 
