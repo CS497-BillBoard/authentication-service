@@ -10,6 +10,7 @@ import logging
 from api.auth_service import auth_service
 from api.bills_service import bills_service
 from api.register import register_service
+from api.user_service import user_service
 
 """
 Classes for creating app and encoding data, copied from the mongodb/flask tutorial
@@ -37,8 +38,9 @@ def create_app():
     app.register_blueprint(auth_service)
     app.register_blueprint(bills_service)
     app.register_blueprint(register_service)   
+    app.register_blueprint(user_service)
 
-    # TODO: remove this test route later or convert it into a health check
+    # health check
     @app.route('/', defaults={'path': ''})
     @app.route('/<path:path>')
     def test_route(path):
