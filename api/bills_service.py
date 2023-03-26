@@ -116,7 +116,7 @@ def update_bill(bill_id):
     if updated_bill is None:
         return {"data": "bill does not exist"}, 400
     
-    return return_info_one_bill(updated_bill, user_id, user_riding), 200
+    return return_info_one_bill(updated_bill, True, user_id, user_riding), 200
 
 
 def fetch_new_bills():
@@ -244,8 +244,8 @@ def return_info_one_bill(bill, get_comments=False, user_id=None, riding=None):
     total_comments = riding_info.get("total_comments", 0)
     user_vote = riding_info["votes"].get(user_id, 0) if "votes" in riding_info else 0
     comments = {}
-    if get_comments and bill.get(riding, None) is not None:
-        comments = hide_users_ids_comments(bill["riding"]["comments"], user_id)
+    if get_comments:
+        comments = hide_users_ids_comments(riding_info.get("comments", {}), user_id)
 
     returned_info = {
         "legisinfo_id": bill["legisinfo_id"],
