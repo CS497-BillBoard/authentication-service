@@ -192,7 +192,7 @@ def recalc_votes(up_total: int, down_total: int, prev: int, new: int):
     return up_total, down_total
 
 
-def perform_update(legisinfo_id, user_id, vote=None, comment=None):
+def perform_update(legisinfo_id, user_id, riding, vote=None, comment=None):
     """
     Update a single bill with a user's vote and/or comment
     @param legisinfo_id: the id of the bill
@@ -204,25 +204,37 @@ def perform_update(legisinfo_id, user_id, vote=None, comment=None):
     bill = collection.find_one({"legisinfo_id": legisinfo_id})
     user_id = str(user_id)  # mongodb only accepts strings as keys for documents
 
+    # create new riding info on bill if it doesn't exist
+    if riding not in bill["ridings"]:
+        bill["ridings"][riding] = {
+            "total_upvotes": 0,
+            "total_downvotes": 0,
+            "total_comments": 0,
+            "comments": {},
+            "votes": {}
+        }
+    
+    riding_info = bill["ridings"][riding]
+    
     if vote is not None:
         # set user's vote
-        previous_vote = bill["votes"][user_id] if user_id in bill["votes"] else 0
-        bill["votes"][user_id] = vote
+        previous_vote = riding_info["votes"][user_id] if user_id in riding_info["votes"] else 0
+        riding_info["votes"][user_id] = vote
         # update total_upvotes and downvotes
-        bill["total_upvotes"], bill["total_downvotes"] = recalc_votes(
-            bill["total_upvotes"], bill["total_downvotes"], previous_vote, vote
+        riding_info["total_upvotes"], riding_info["total_downvotes"] = recalc_votes(
+            riding_info["total_upvotes"], bill["total_downvotes"], previous_vote, vote
         )
 
     if comment is not None:
         # check if the user has already commented, subtract total_comments if they have
-        if user_id in bill["comments"]:
-            bill["total_comments"] -= 1
+        if user_id in riding_info["comments"]:
+            riding_info["total_comments"] -= 1
 
         # add new comment, update total_comments
-        bill["comments"][user_id] = comment
-        bill["total_comments"] += 1
+        riding_info["comments"][user_id] = comment
+        riding_info["total_comments"] += 1
 
-    collection.replace_one({"legisinfo_id": legisinfo_id}, bill)
+    collection.replace_one({"legisinfo_id": legisinfo_id}, riding_info)
     return bill
 
 

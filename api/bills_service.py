@@ -31,6 +31,10 @@ def get_user_id() -> int:
     
     return user_id
 
+def get_user_riding(user_id) -> str:
+    user = db.get_single_user(user_id)
+    return user["constituency_name"]
+
 # endpoint
 bills_service = Blueprint('bills_page', __name__, template_folder='templates')
 
@@ -50,9 +54,16 @@ def bills(bill_id=None):
     except Exception:
         return {"data": "token present but invalid"}, 401
     
+    user_riding = None
+    if user_id is not None:
+        try:
+            user_riding = get_user_riding(user_id)
+        except Exception:
+            return {"data": "user riding not found"}, 400
+    
     # no bill id passed, so just return all bills
     if bill_id is None:
-        return get_all_bills(user_id)
+        return get_all_bills(user_id, user_riding)
 
     # bill id passed, check it
     try:
@@ -60,7 +71,7 @@ def bills(bill_id=None):
     except Exception:
         return {"data": "invalid id passed"}, 400
         
-    return get_one_bill(bill_id, user_id)
+    return get_one_bill(bill_id, user_id, user_riding)
 
 # endpoint if the user upvotes or downvotes or comments
 @bills_service.route('/bills/<bill_id>', methods=["PUT", "POST"])
@@ -90,6 +101,11 @@ def update_bill(bill_id):
     if user_id is None:
         return {"data": "no user token provided"}, 401
     
+    try:
+        user_riding = get_user_riding(user_id)
+    except Exception:
+        return {"data": "user riding not found"}, 400
+    
     ### parsing input
     user_vote = data.get("vote", None)
     user_comment = data.get("comment", None)
@@ -97,16 +113,17 @@ def update_bill(bill_id):
         if abs(user_vote) > 1:  # sanity check on the vote, it must be -1, 0, or 1
             return {"data": "invalid argument for vote"}, 400
     
-    updated_bill = db.perform_update(bill_id, user_id, user_vote, user_comment)
+    updated_bill = db.perform_update(bill_id, user_id, user_vote, user_comment, user_riding)
     if updated_bill is None:
         return {"data": "bill does not exist"}, 400
     
-    return return_info_one_bill(updated_bill, user_id), 200
+    return return_info_one_bill(updated_bill, user_id, user_riding), 200
 
 
 def fetch_new_bills():
     """
     fetch new bills from https://openparliament.ca/api/
+    and returns a new bill dictionary representing it
     """
     # get a list of bills
     OPENPARLIAMENT_BASE_URL = "https://api.openparliament.ca"
@@ -147,6 +164,7 @@ def fetch_new_bills():
         # add the short title if it exists, otherwise use the regular name
         bill_name = bill_info['short_title']['en'] if bill_info['short_title']['en'] != "" else bill_info['name']['en']
         
+        # create a new bill object from the returned api info
         returned_bill_data.append(
             {
                 "legisinfo_id": bill_info['legisinfo_id'],
@@ -154,12 +172,18 @@ def fetch_new_bills():
                 "name": bill_name,
                 "summary": summary,
                 "introduced": bill_info['introduced'],
-                "total_upvotes": 0,
-                "total_downvotes": 0,
-                "total_comments": 0,
-                "comments": {},  # format of comments is {user_id: comment, user_id2: comment, ...}
-                "votes": {},  # format is {user_id: -1 | 0 | 1, user_id2: -1 | 0 | 1 ...}  to indicate they unvoted or downvoted this bill
-                              # if a user has never voted on the bill, they won't be here either
+                "ridings": {
+                    # comments and votes
+                }
+                # format of comments/votes is:
+                    # riding_name: { 
+                    #   "comments": {user_id: comment, user_id2: comment, ...},
+                    #   "votes": {user_id: -1 | 0 | 1, user_id2: -1 | 0 | 1 ...} }  to indicate they unvoted or downvoted this bill
+                    #   "total_upvotes": 0,
+                    #   "total_downvotes": 0,
+                    #   "total_comments": 0,
+                    # }
+                
             }
         )    
     
@@ -202,45 +226,42 @@ def hide_users_ids_comments(comments: Dict, user_id=None):
         ]
     return hidden_comments
 
-def get_all_bills(user_id=None):
+def get_all_bills(user_id=None, riding=None):
     bills = db.get_bills()
-    returned_info = [
-        {
-            "legisinfo_id": bill["legisinfo_id"],
-            "full_text_url": bill["full_text_url"],
-            "name": bill["name"],
-            "summary": bill["summary"],
-            "introduced": bill["introduced"],
-            "total_upvotes": bill["total_upvotes"],
-            "total_downvotes": bill["total_downvotes"],
-            "total_comments": bill["total_comments"],
-            # user upvote/downvote status, if provided
-            "user_vote": bill["votes"][user_id] if user_id is not None and user_id in bill["votes"] else 0
-        } for bill in bills
-    ]
+
+    returned_info = []
+    for bill in bills:
+        returned_info.append(return_info_one_bill(bill, user_id, riding))
+
     return returned_info, 200
     
-def return_info_one_bill(bill, user_id=None):
+def return_info_one_bill(bill, get_comments=False, user_id=None, riding=None):
     """
-    Helper function to only return neccessary fields from one bill
+    Helper function to only return neccessary fields from one bill, for a single riding
     """
-    print("USER ID: ", user_id)
-    print("comments: ", bill["comments"])
+    total_upvotes = bill["riding"]["total_upvotes"] if riding in bill else 0
+    total_downvotes = bill["riding"]["total_upvotes"] if riding in bill else 0
+    total_comments = bill["riding"]["total_comments"] if riding in bill else 0
+    user_vote = bill["riding"]["votes"].get(user_id, 0) if riding in bill else 0
+    comments = {}
+    if get_comments and bill.get(riding, None) is not None:
+        comments = hide_users_ids_comments(bill["riding"]["comments"], user_id)
     returned_info = {
         "legisinfo_id": bill["legisinfo_id"],
         "full_text_url": bill["full_text_url"],
         "name": bill["name"],
         "summary": bill["summary"],
         "introduced": bill["introduced"],
-        "total_upvotes": bill["total_upvotes"],
-        "total_downvotes": bill["total_downvotes"],
-        "total_comments": bill["total_comments"],
-        "comments": hide_users_ids_comments(bill["comments"], user_id),
-        "user_vote": bill["votes"][user_id] if user_id is not None and user_id in bill["votes"] else 0
-    }
+        "total_upvotes": total_upvotes,
+        "total_downvotes": total_downvotes,
+        "total_comments": total_comments,
+        "comments": comments,
+        # user upvote/downvote status, if user and riding provided
+        "user_vote": user_vote
+    } 
     return returned_info
 
-def get_one_bill(bill_id, user_id=None):
+def get_one_bill(bill_id, user_id=None, riding=None):
     """
     Returns information about a specific bill, include all comments
     if user_id is provided, it will show the vote ("agree/disagree") state and also what they commented
@@ -248,5 +269,5 @@ def get_one_bill(bill_id, user_id=None):
     bill = db.get_one_bill(bill_id)
     if bill is None:
         return {"data": "no bill found with the given id"}, 400
-    return return_info_one_bill(bill, user_id), 200
+    return return_info_one_bill(bill, True, user_id, riding), 200
 
