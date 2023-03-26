@@ -3,9 +3,9 @@ from flask import Flask
 from flask import render_template
 from flask.json import JSONEncoder
 from flask_cors import CORS
-from flask import Response
 from bson import json_util, ObjectId
-from datetime import datetime, timedelta
+from datetime import datetime
+import logging
 
 from api.auth_service import auth_service
 from api.bills_service import bills_service
@@ -36,9 +36,7 @@ def create_app():
     app.json_encoder = MongoJsonEncoder
     app.register_blueprint(auth_service)
     app.register_blueprint(bills_service)
-    app.register_blueprint(register_service)
-    
-    # TODO on startup, simultaneously fetch from the openparliament api and db
+    app.register_blueprint(register_service)   
 
     # TODO: remove this test route later or convert it into a health check
     @app.route('/', defaults={'path': ''})

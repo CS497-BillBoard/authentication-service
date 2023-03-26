@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, render_template, abort, jsonify, request
 from jinja2 import TemplateNotFound
 import requests
 import logging
+
 # from db.db import get_user_acc_collection, get_single_user
 from db import db
 from flask_jwt_extended import create_access_token
@@ -10,8 +11,6 @@ import bcrypt
 """
 This api is for handling authentication for users who are already registered.
 """
-
-# TODO database stuff
 
 # endpoint
 auth_service = Blueprint("auth_page", __name__, template_folder="templates")
@@ -34,31 +33,17 @@ def login():
 
         if passwordMatch:
 
-            access_token = create_access_token(identity=user["email"], expires_delta=false)
+            access_token = create_access_token(identity=user["email"])
+            is_admin = user.get("is_admin", False)
+
             return {
                 "token": access_token,
                 "user_id": user["email"],
                 "verified": user["verified"],
                 "submittedVerificationPhoto": user["submittedVerificationPhoto"],
+                "is_admin": user.get("is_admin", False),
+                "set_riding": user.get("set_riding", False)
             }, 200
 
     return {"data": "invalid password"}, 400
 
-
-@auth_service.route("/test-get-collection", methods=["GET", "POST"])
-def test_get_collection():
-    """
-    Inserts a comment into the comments collection, with the following fields:
-
-    - "name"
-    - "email"
-    - "movie_id"
-    - "text"
-    - "date"
-
-    Name and email must be retrieved from the "user" object.
-    """
-    logging.info("(auth_service.py) /test-get-collection endpoint hit")
-    
-    logging.info("ACCOUNT COLLECTION: ", db.get_user_acc_collection())
-    return {"data": ""}, 200  # TODO
