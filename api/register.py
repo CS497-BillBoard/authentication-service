@@ -28,10 +28,6 @@ def signUp():
             "set_riding": False,
         }
 
-        # validate form data
-        # TODO: check if email is valid and not duplicate
-        # TODO: check if password is valid (not empty, etc.)
-
         insert_result = db.insert_new_user(user)
 
         if insert_result == -1:
@@ -122,7 +118,7 @@ def verificationRequest():
         print("VERIFICATION REQUEST: ", verification_request)
         dbResponse = db.add_verification_request(verification_request)
 
-        # TODO: need to add policy to db that documents that still exist after 30 days are deleted (to ensure user data privacy)
+        # note: there is a policy in the db that documents which still exist after 30 days are deleted (to ensure user data privacy)
 
         if type(dbResponse) == Exception:
             return {
@@ -294,8 +290,7 @@ def driversLicenseInfo():
             "driversLicenseBase64": body["driversLicenseBase64"],
         }
 
-        # TODO: remove the line below once testing of this endpoint is complete
-        db.update_verification_request(body["email"], {"mongo-trigger": True})
+        db.update_verification_request(body["email"], {"image-sent-for-ai-parsing": True})
 
         response = requests.post(AZURE_CUSTOM_AI_BUILDER_MODEL_URL, json=request_body)
 
