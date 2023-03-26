@@ -24,7 +24,6 @@ def get_user_id() -> int:
     if request.headers.get(AUTHORIZATION_HEADER, None) is not None:
         try:
             jwtr = decode_token(request.headers.get(AUTHORIZATION_HEADER))
-            logging.info("header authz={}".format(jwtr))
             user_id = jwtr['sub']
         except Exception:
             raise
@@ -113,7 +112,7 @@ def update_bill(bill_id):
         if abs(user_vote) > 1:  # sanity check on the vote, it must be -1, 0, or 1
             return {"data": "invalid argument for vote"}, 400
     
-    updated_bill = db.perform_update(bill_id, user_id, user_vote, user_comment, user_riding)
+    updated_bill = db.perform_update(bill_id, user_id, user_riding, user_vote, user_comment)
     if updated_bill is None:
         return {"data": "bill does not exist"}, 400
     
@@ -231,7 +230,7 @@ def get_all_bills(user_id=None, riding=None):
 
     returned_info = []
     for bill in bills:
-        returned_info.append(return_info_one_bill(bill, user_id, riding))
+        returned_info.append(return_info_one_bill(bill, user_id=user_id, riding=riding))
 
     return returned_info, 200
     
@@ -239,13 +238,15 @@ def return_info_one_bill(bill, get_comments=False, user_id=None, riding=None):
     """
     Helper function to only return neccessary fields from one bill, for a single riding
     """
-    total_upvotes = bill["riding"]["total_upvotes"] if riding in bill else 0
-    total_downvotes = bill["riding"]["total_upvotes"] if riding in bill else 0
-    total_comments = bill["riding"]["total_comments"] if riding in bill else 0
-    user_vote = bill["riding"]["votes"].get(user_id, 0) if riding in bill else 0
+    riding_info = bill["ridings"].get(riding, {})
+    total_upvotes = riding_info.get("total_upvotes", 0)
+    total_downvotes = riding_info.get("total_downvotes", 0)
+    total_comments = riding_info.get("total_comments", 0)
+    user_vote = riding_info["votes"].get(user_id, 0) if "votes" in riding_info else 0
     comments = {}
     if get_comments and bill.get(riding, None) is not None:
         comments = hide_users_ids_comments(bill["riding"]["comments"], user_id)
+
     returned_info = {
         "legisinfo_id": bill["legisinfo_id"],
         "full_text_url": bill["full_text_url"],
@@ -258,7 +259,9 @@ def return_info_one_bill(bill, get_comments=False, user_id=None, riding=None):
         "comments": comments,
         # user upvote/downvote status, if user and riding provided
         "user_vote": user_vote
-    } 
+    }
+    if riding:
+        returned_info["riding"] = riding
     return returned_info
 
 def get_one_bill(bill_id, user_id=None, riding=None):

@@ -218,11 +218,11 @@ def perform_update(legisinfo_id, user_id, riding, vote=None, comment=None):
     
     if vote is not None:
         # set user's vote
-        previous_vote = riding_info["votes"][user_id] if user_id in riding_info["votes"] else 0
+        previous_vote = riding_info["votes"].get(user_id, 0)
         riding_info["votes"][user_id] = vote
         # update total_upvotes and downvotes
         riding_info["total_upvotes"], riding_info["total_downvotes"] = recalc_votes(
-            riding_info["total_upvotes"], bill["total_downvotes"], previous_vote, vote
+            riding_info["total_upvotes"], riding_info["total_downvotes"], previous_vote, vote
         )
 
     if comment is not None:
@@ -234,7 +234,7 @@ def perform_update(legisinfo_id, user_id, riding, vote=None, comment=None):
         riding_info["comments"][user_id] = comment
         riding_info["total_comments"] += 1
 
-    collection.replace_one({"legisinfo_id": legisinfo_id}, riding_info)
+    collection.replace_one({"legisinfo_id": legisinfo_id}, bill)
     return bill
 
 
