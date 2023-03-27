@@ -56,7 +56,7 @@ jwt = JWTManager(app)
 def update_db_bills():
     with app.app_context():
         logging.info("updating the db with new bills!")
-        fetch_and_store_bills()  # TODO uncomment this
+        fetch_and_store_bills()
         logging.info("finished updating the db.")
 
 if __name__ == "__main__":
