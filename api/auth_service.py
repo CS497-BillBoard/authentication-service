@@ -33,7 +33,9 @@ def login():
 
         if passwordMatch:
 
-            access_token = create_access_token(identity=user["email"])
+            access_token = create_access_token(
+                identity=user["email"], expires_delta=False
+            )
             is_admin = user.get("is_admin", False)
 
             return {
@@ -42,8 +44,7 @@ def login():
                 "verified": user["verified"],
                 "submittedVerificationPhoto": user["submittedVerificationPhoto"],
                 "is_admin": user.get("is_admin", False),
-                "set_riding": user.get("set_riding", False)
+                "set_riding": user.get("set_riding", False),
             }, 200
 
     return {"data": "invalid password"}, 400
-
