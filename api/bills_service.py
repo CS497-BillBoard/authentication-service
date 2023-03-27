@@ -109,8 +109,11 @@ def update_bill(bill_id):
     user_vote = data.get("vote", None)
     user_comment = data.get("comment", None)
     if user_vote is not None:
-        if abs(user_vote) > 1:  # sanity check on the vote, it must be -1, 0, or 1
-            return {"data": "invalid argument for vote"}, 400
+        try:
+            if abs(user_vote) > 1:  # sanity check on the vote, it must be -1, 0, or 1
+                raise ValueError
+        except Exception:
+            return {"data": "invalid argument or type for vote"}, 400
     
     updated_bill = db.perform_update(bill_id, user_id, user_riding, user_vote, user_comment)
     if updated_bill is None:
