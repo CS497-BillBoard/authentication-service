@@ -3,7 +3,6 @@ import bcrypt
 import requests
 import logging
 from db import db
-from bson.objectid import ObjectId
 
 register_service = Blueprint("register_page", __name__, template_folder="templates")
 
