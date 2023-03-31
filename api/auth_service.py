@@ -34,13 +34,13 @@ def login():
         if passwordMatch:
 
             access_token = create_access_token(
-                identity=user["email"], expires_delta=False
+                identity=str(user["_id"]), expires_delta=False
             )
             is_admin = user.get("is_admin", False)
 
             return {
                 "token": access_token,
-                "user_id": user["email"],
+                "user_id": user["_id"],
                 "verified": user["verified"],
                 "submittedVerificationPhoto": user["submittedVerificationPhoto"],
                 "is_admin": user.get("is_admin", False),

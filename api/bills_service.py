@@ -31,7 +31,7 @@ def get_user_id() -> int:
     return user_id
 
 def get_user_riding(user_id) -> str:
-    user = db.get_single_user(user_id)
+    user = db.get_single_user_by_id(user_id)
     return user["constituency_name"]
 
 # endpoint

@@ -95,6 +95,19 @@ def get_single_user(emails):
 
     return Collection.find_one({"email": emails})
 
+def get_single_user_by_id(id):
+    """
+    returns a single user by their id
+    """
+
+    Collection = get_user_acc_collection()
+
+    try:
+        return Collection.find_one({"_id": ObjectId(id)})
+    except InvalidId as e:
+        logging.error(e)
+        return None
+
 
 def insert_new_user(user):
     Collection = get_user_acc_collection()
@@ -106,11 +119,11 @@ def insert_new_user(user):
         return -1
 
 
-def update_user(email: str, updateFieldsDict: dict):
+def update_user(id: str, updateFieldsDict: dict):
     collection = get_user_acc_collection()
 
     try:
-        result = collection.update_one({"email": email}, {"$set": updateFieldsDict})
+        result = collection.update_one({"_id": ObjectId(id)}, {"$set": updateFieldsDict})
 
         if result.modified_count != 1:
             logging.info(
@@ -124,7 +137,7 @@ def update_user(email: str, updateFieldsDict: dict):
 
     return 1
 
-def update_user_riding(email: str, updatedFields: dict):
+def update_user_riding_by_id(id: str, updatedFields: dict):
     """
     Updates the riding of a user
     """
@@ -132,16 +145,18 @@ def update_user_riding(email: str, updatedFields: dict):
     userAccountsCollection = get_user_acc_collection()
 
     try:
-        result = userAccountsCollection.update_one({"email": email}, {"$set": updatedFields})
+        print("updating user with id: " + str(id))
+
+        result = userAccountsCollection.update_one({"_id": ObjectId(id)}, {"$set": updatedFields})
 
         if result.modified_count != 1:
             logging.info(
-                "update_verification_request(): updated unexpected number of modified documents: "
+                "update_user_by_id(): updated unexpected number of modified documents: "
                 + str(result.modified_count)
             )
             return -1
     except Exception as e:
-        logging.error(e)
+        logging.error("update_user_by_id(): error updating user: " + str(e))
         return e
 
 
@@ -281,11 +296,11 @@ def add_drivers_license_hash(provinceAndDriversLicenseHash: str, expiryYear: str
 # ------------------------------------------------------------
 # verificationDatabase.verificationRequests Collection Methods
 # ------------------------------------------------------------
-def get_single_verification_request(email):
+def get_single_verification_request(userAccountsId):
 
     Collection = get_verification_requests_collection()
 
-    return Collection.find_one({"email": email})
+    return Collection.find_one({"userAccountsId": ObjectId(userAccountsId)})
 
 
 def get_all_verification_requests():
@@ -319,7 +334,7 @@ def add_verification_request(verification_request: dict):
 
     # update "submittedVerificationPhoto" field in accountsDatabase collection
     result = update_user(
-        verification_request["email"], {"submittedVerificationPhoto": True}
+        verification_request["userAccountsId"], {"submittedVerificationPhoto": True}
     )
     if type(result) == Exception:
         logging.error(result)
@@ -328,11 +343,11 @@ def add_verification_request(verification_request: dict):
     return 1
 
 
-def remove_verification_request(email: str, isRequestApproved: bool):
+def remove_verification_request(userAccountsId: str, isRequestApproved: bool):
     """
     Removes a verification request from the database
 
-    email: the email of the user
+    userAccountsId: the _id of the user's Document in accountsDatabase.userAccounts Collection in MongoDB
     isRequestApproved: whether or not the verification request was approved by BillBoard staff in verification process
     """
     # get the verificationRequests collection
@@ -340,18 +355,18 @@ def remove_verification_request(email: str, isRequestApproved: bool):
 
     # remove the verification request from the db
     try:
-        result = collection.delete_one({"email": email})
+        result = collection.delete_one({"userAccountsId": ObjectId(userAccountsId)})
 
         if result.deleted_count == 0:
             logging.info(
-                "remove_verification_request(): no verification request found for email: "
-                + email
+                "remove_verification_request(): no verification request found for userAccountsId: "
+                + userAccountsId
             )
             return -1
         elif result.deleted_count > 1:
             logging.info(
-                "remove_verification_request(): multiple verification requests found for email: "
-                + email
+                "remove_verification_request(): multiple verification requests found for userAccountsId: "
+                + userAccountsId
             )
             return -2
 
@@ -361,7 +376,7 @@ def remove_verification_request(email: str, isRequestApproved: bool):
 
     if not isRequestApproved:
         # update "submittedVerificationPhoto" field in accountsDatabase collection
-        result = update_user(email, {"submittedVerificationPhoto": False})
+        result = update_user(userAccountsId, {"submittedVerificationPhoto": False})
         if type(result) == Exception:
             logging.error(result)
             return result
@@ -369,7 +384,7 @@ def remove_verification_request(email: str, isRequestApproved: bool):
     return 1
 
 
-def update_verification_request(email: str, updatedFields: dict):
+def update_verification_request(userAccountsId: str, updatedFields: dict):
     """
     Updates verification request
     """
@@ -378,7 +393,7 @@ def update_verification_request(email: str, updatedFields: dict):
 
     # update the user's verification status to approved and store the drivers license hash
     try:
-        result = collection.update_one({"email": email}, {"$set": updatedFields})
+        result = collection.update_one({"userAccountsId": ObjectId(userAccountsId)}, {"$set": updatedFields})
 
         if result.modified_count != 1:
             logging.info(
@@ -391,7 +406,7 @@ def update_verification_request(email: str, updatedFields: dict):
         return e
 
 
-def update_verification_status_to_approved(email: str, driversLicenseHash: str, expiryYear: str):
+def update_verification_status_to_approved(userAccountsId: str, driversLicenseHash: str, expiryYear: str):
     """
     Updates the verification status of a user to approved
     """
@@ -407,7 +422,7 @@ def update_verification_status_to_approved(email: str, driversLicenseHash: str, 
     # update the user's verification status to approved and store the drivers license hash
     try:
         result = userAccountsCollection.update_one(
-            {"email": email},
+            {"_id": ObjectId(userAccountsId)},
             {"$set": {"verified": True, "expiry_year": expiryYear}},
         )
 
@@ -422,7 +437,7 @@ def update_verification_status_to_approved(email: str, driversLicenseHash: str, 
         return e
 
     # remove the verification request from the db
-    result = remove_verification_request(email, True)
+    result = remove_verification_request(userAccountsId, True)
 
     if type(result) == Exception:
         logging.error(result)

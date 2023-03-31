@@ -59,13 +59,15 @@ def update_db_bills():
         fetch_and_store_bills()
         logging.info("finished updating the db.")
 
+# start the scheduler
+scheduler.add_job(id = 'Bill Update Task', func=update_db_bills, trigger="interval", hours=24)
+scheduler.start()
+
+
 if __name__ == "__main__":
     # set logging level to DEBUG if running it locally (not on azure)
     logging.basicConfig(level=logging.DEBUG)
 
-    # start the scheduler
-    scheduler.add_job(id = 'Bill Update Task', func=update_db_bills, trigger="interval", hours=24)
-    scheduler.start()
     # run app locally
-    app.run()
+    app.run(port=8000)
 

@@ -6,19 +6,19 @@ from db import db
 
 user_service = Blueprint("user_page", __name__, template_folder="templates")
 
-@user_service.route('/user-info/', defaults={'email': None}, methods=["GET"])
-@user_service.route("/user-info/<email>", methods=["GET"])
-def get_user(email=None):
+@user_service.route('/user-info/', defaults={'id': None}, methods=["GET"])
+@user_service.route("/user-info/<id>", methods=["GET"])
+def get_user(id=None):
     """
     This endpoint is for getting a user's information
     sample request body:
     {
-        "email": "test@gmail.com"
+        "id": "64209dc50c078a1bc328b7z3"
     }
 
     sample response:
     {
-        "email": "test@gmail.com",
+        "id": "64209dc50c078a1bc328b7z3",
         "parliament_member_name": "John Doe",
         "constituency_name": "Toronto"
     }
@@ -28,16 +28,16 @@ def get_user(email=None):
     logging.info("(user_service.py) /get-user endpoint hit")
         
     if request.method == "GET":
-        if email is None or email == "":
-            return {"error": "No email provided"}, 400
+        if id is None or id == "":
+            return {"error": "No id provided"}, 400
         
-        userAccount = db.get_single_user(email)
+        userAccount = db.get_single_user_by_id(id)
 
         if userAccount is None:
-            return {"error": "No user account found with email: " + email}, 400
+            return {"error": "No user account found with id: " + id}, 400
         
         return {
-            "email": email,
+            "id": id,
             "parliament_member_name": userAccount.get("parliament_member_name", ""),
             "constituency_name": userAccount.get("constituency_name", "")
         }

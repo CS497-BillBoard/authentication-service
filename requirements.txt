@@ -33,3 +33,5 @@ urllib3==1.26.14
 Werkzeug==2.2.3
 yarg==0.1.9
 zipp==3.15.0
+bson==0.5.10
+
