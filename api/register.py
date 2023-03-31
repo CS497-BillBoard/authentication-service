@@ -128,7 +128,7 @@ def verificationRequest():
 
         if type(dbResponse) == Exception:
             return {
-                "error": "Verification request associated with this email already exists: "
+                "error": "Verification request associated with this userAccountsId already exists: "
                 + str(dbResponse)
             }, 400
 
