@@ -3,6 +3,7 @@ import bcrypt
 import requests
 import logging
 from db import db
+from bson.objectid import ObjectId
 
 register_service = Blueprint("register_page", __name__, template_folder="templates")
 
@@ -44,12 +45,12 @@ def setRidingRequest():
         body = request.get_json()
         print(body)
 
-        if body.get("email") is None or body.get("email") == "":
-            return {"error": "No email provided"}, 400
+        if body.get("userAccountsId") is None or body.get("userAccountsId") == "":
+            return {"error": "No userAccountsId provided"}, 400
 
         # check if user exists
-        if db.get_single_user(body.get("email")) is None:
-            return {"error": "No account found with email"}, 400
+        if db.get_single_user_by_id(body.get("userAccountsId")) is None:
+            return {"error": "No account found with provided userAccountsId"}, 400
         
         if body.get("constituencyName") is None or body.get("constituencyName") == "":
             return {"error": "No constituency name provided"}
@@ -60,10 +61,15 @@ def setRidingRequest():
             "parliament_member_name": body["parliamentMemberName"],
         }
 
-        dbResponse = db.update_user_riding(body.get("email"), riding_information)
+        dbResponse = db.update_user_riding_by_id(body.get("userAccountsId"), riding_information)
 
         if type(dbResponse) == Exception:
+            logging.error("Error: " + str(dbResponse))
             return {"error": str(dbResponse)}, 400
+        
+        if dbResponse == -1:
+            logging.error("Error: no account found with provided userAccountsId")
+            return {"error": "No account found with provided userAccountsId"}, 400
 
         return {"status": "success"}, 200
 
@@ -73,7 +79,7 @@ def verificationRequest():
     """
     sample request body:
     {
-        "email": "test11@test.com",
+        "userAccountsId": "64209dc50c078a1bc328b7x9",
         "driversLicenseImage": "base64 img"
     }
     """
@@ -83,13 +89,13 @@ def verificationRequest():
     if request.method == "POST":
         body = request.get_json()
 
-        if body.get("email") is None or body.get("email") == "":
-            return {"error": "No email provided"}, 400
+        if body.get("userAccountsId") is None or body.get("userAccountsId") == "":
+            return {"error": "No userAccountsId provided"}, 400
 
         # check if user exists and that user is not verified
-        userAccount = db.get_single_user(body["email"])
+        userAccount = db.get_single_user_by_id(body["userAccountsId"])
         if userAccount is None:
-            return {"error": "No account found with email"}, 400
+            return {"error": "No account found with provided userAccountsId"}, 400
         
         if userAccount["verified"] == True:
             return {"error": "Account already verified"}, 400
@@ -110,7 +116,7 @@ def verificationRequest():
             return {"error": "No user photo provided"}, 400
 
         verification_request = {
-            "email": body["email"],
+            "userAccountsId": body["userAccountsId"],
             "drivers_license_image": body["driversLicenseImage"],
             "selfie_image": body["selfieImage"],
         }
@@ -132,8 +138,8 @@ def verificationRequest():
     return {"status": "success"}, 200
 
 
-def addSuspiciousFlagToUser(email):
-    result = db.update_user(email, {"suspicious": True})
+def addSuspiciousFlagToUser(userAccountsId):
+    result = db.update_user(userAccountsId, {"suspicious": True})
 
     if type(result) == Exception:
         logging.error(result)
@@ -142,11 +148,11 @@ def addSuspiciousFlagToUser(email):
     return
 
 
-def removeRejectedVerificationRequest(email):
+def removeRejectedVerificationRequest(userAccountsId):
     """
     Removes a verification request from the database and marks the user as suspicious
     """
-    result = db.remove_verification_request(email, False)
+    result = db.remove_verification_request(userAccountsId, False)
 
     if type(result) == Exception:
         return {
@@ -154,7 +160,7 @@ def removeRejectedVerificationRequest(email):
             + str(result)
         }, 400
     
-    result = addSuspiciousFlagToUser(email)
+    result = addSuspiciousFlagToUser(userAccountsId)
     if type(result) == Exception:
         logging.error(result)
     
@@ -170,7 +176,7 @@ def updateVerificationStatus():
     """
     sample request body (approved request):
     {
-        "email": "test@test.com",
+        "userAccountsId": "test@test.com",
         "status": true
         "driversLicenseNumber": "123456789",
         "province": "Ontario",
@@ -179,7 +185,7 @@ def updateVerificationStatus():
 
     sample request body (rejected request):
     {
-        "email": "test@test.com",
+        "userAccountsId": "test@test.com",
         "status": false
     }
 
@@ -190,26 +196,26 @@ def updateVerificationStatus():
         body = request.get_json()
 
         # Validate Request Body Data
-        if body.get("email") is None or body.get("email") == "":
-            return {"error": "No email provided"}, 400
+        if body.get("userAccountsId") is None or body.get("userAccountsId") == "":
+            return {"error": "No userAccountsId provided"}, 400
 
         # check if user exists and that user is not verified
-        userAccount = db.get_single_user(body["email"])
+        userAccount = db.get_single_user_by_id(body["userAccountsId"])
         if userAccount is None:
-            return {"error": "No account found with email"}, 400
+            return {"error": "No account found with userAccountsId"}, 400
         
         if userAccount["verified"] == True:
             return {"error": "Account already verified"}, 400
 
         # check if verification request exists
-        if db.get_single_verification_request(body["email"]) is None:
-            return {"error": "No verification request found with email"}, 400
+        if db.get_single_verification_request(body["userAccountsId"]) is None:
+            return {"error": "No verification request found with userAccountsId"}, 400
 
         if body.get("status") is None or body.get("status") == "":
             return {"error": "No status provided"}, 400
 
         if body.get("status") == False:
-            return removeRejectedVerificationRequest(body["email"])
+            return removeRejectedVerificationRequest(body["userAccountsId"])
 
         if (
             body.get("driversLicenseNumber") is None
@@ -229,7 +235,7 @@ def updateVerificationStatus():
         ):
             return {"error": "No expiry year provided"}, 400
         
-        email = body["email"]
+        userAccountsId = body["userAccountsId"]
         driversLicenseNumber = body["driversLicenseNumber"]
         province = body["province"]
         expiryYear = body["expiryYear"]
@@ -247,13 +253,13 @@ def updateVerificationStatus():
         for existingHash in exisitingdriversLicenseNumberHash:
             if bcrypt.checkpw(bytedriversLicenseNumber, existingHash.get("province_and_drivers_license_hash")):
 
-                result = removeRejectedVerificationRequest(email)
+                result = removeRejectedVerificationRequest(userAccountsId)
                 if result[1] != 200:
                     return result
 
                 return {"error": "drivers license number already exists"}, 400
 
-        db.update_verification_status_to_approved(email, driversLicenseNumberHash, expiryYear)
+        db.update_verification_status_to_approved(userAccountsId, driversLicenseNumberHash, expiryYear)
 
     return {"status": "success"}, 200
 
@@ -263,7 +269,7 @@ def driversLicenseInfo():
     """
     sample request body:
     {
-      "email": "test@test.com",
+      "userAccountsId": "64209dc50c078a1bc328b7z3",
       "driversLicenseBase64": "base64 string"
     }
     """
@@ -276,8 +282,8 @@ def driversLicenseInfo():
     if request.method == "POST":
         body = request.get_json()
 
-        if body.get("email") is None or body.get("email") == "":
-            return {"error": "No email provided"}, 400
+        if body.get("userAccountsId") is None or body.get("userAccountsId") == "":
+            return {"error": "No userAccountsId provided"}, 400
 
         if (
             body.get("driversLicenseBase64") is None
@@ -286,11 +292,11 @@ def driversLicenseInfo():
             return {"error": "No drivers license image provided"}, 400
 
         request_body = {
-            "emailAddress": body["email"],
+            "userAccountsId": body["userAccountsId"],
             "driversLicenseBase64": body["driversLicenseBase64"],
         }
 
-        db.update_verification_request(body["email"], {"image-sent-for-ai-parsing": True})
+        db.update_verification_request(body["userAccountsId"], {"image-sent-for-ai-parsing": True})
 
         response = requests.post(AZURE_CUSTOM_AI_BUILDER_MODEL_URL, json=request_body)
 
@@ -302,9 +308,9 @@ def driversLicenseInfo():
 
         response_body = response.json()
 
-        response_body.pop("emailAddress")
+        response_body.pop("userAccountsId")
         predictedDriversLicenseInfo = {"predicted-drivers-license-info": response_body}
 
-        db.update_verification_request(body["email"], predictedDriversLicenseInfo)
+        db.update_verification_request(body["userAccountsId"], predictedDriversLicenseInfo)
 
     return {"status": "success"}, 200
