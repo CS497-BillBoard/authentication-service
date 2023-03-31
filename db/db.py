@@ -322,6 +322,8 @@ def add_verification_request(verification_request: dict):
     # get the verificationRequests collection
     verificationRequestsCollection = get_verification_requests_collection()
 
+    verification_request["userAccountsId"] = ObjectId(verification_request["userAccountsId"])
+
     # insert the verification request into the db
     try:
         logging.info("inserting verification request")
@@ -334,7 +336,7 @@ def add_verification_request(verification_request: dict):
 
     # update "submittedVerificationPhoto" field in accountsDatabase collection
     result = update_user(
-        verification_request["userAccountsId"], {"submittedVerificationPhoto": True}
+        str(verification_request["userAccountsId"]), {"submittedVerificationPhoto": True}
     )
     if type(result) == Exception:
         logging.error(result)
