@@ -1,12 +1,7 @@
-import bson
-
 from flask import current_app, session, g
-from gridfs import Database
 from werkzeug.local import LocalProxy
 from flask_pymongo import PyMongo
 import logging
-from pymongo.errors import DuplicateKeyError, OperationFailure
-from typing import TypedDict
 from pymongo.collection import Collection
 from pymongo import MongoClient
 from bson.objectid import ObjectId
