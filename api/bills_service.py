@@ -1,7 +1,6 @@
 from typing import Dict
 from flask import Flask, Blueprint, jsonify, render_template, abort, request, current_app
 import requests
-import json
 import logging
 from db import db
 from utils.bill_summary import get_plain_bill_text
@@ -109,6 +108,8 @@ def update_bill(bill_id):
     user_vote = data.get("vote", None)
     user_comment = data.get("comment", None)
     if user_vote is not None:
+        if type(user_vote) != int:
+            return {"data": "vote not an integer"}, 400
         if abs(user_vote) > 1:  # sanity check on the vote, it must be -1, 0, or 1
             return {"data": "invalid argument for vote"}, 400
     

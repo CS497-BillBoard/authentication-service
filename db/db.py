@@ -1,6 +1,5 @@
 from flask import current_app, session, g
 from werkzeug.local import LocalProxy
-from flask_pymongo import PyMongo
 import logging
 from pymongo.collection import Collection
 from pymongo import MongoClient

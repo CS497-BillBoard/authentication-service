@@ -1,6 +1,4 @@
 from flask import Flask, Blueprint, render_template, abort, jsonify, request
-from jinja2 import TemplateNotFound
-import requests
 import logging
 
 # from db.db import get_user_acc_collection, get_single_user

@@ -2,9 +2,6 @@ import logging
 import configparser
 import os
 import ssl
-from flask import Flask
-from flask import Blueprint, render_template, abort
-from jinja2 import TemplateNotFound
 from flask_jwt_extended import JWTManager
 from flask_apscheduler import APScheduler
 from api.bills_service import fetch_and_store_bills
