@@ -120,7 +120,7 @@ def verificationRequest():
             "selfie_image": body["selfieImage"],
         }
 
-        print("VERIFICATION REQUEST: ", verification_request)
+        #print("VERIFICATION REQUEST: ", verification_request)
         dbResponse = db.add_verification_request(verification_request)
 
         # note: there is a policy in the db that documents which still exist after 30 days are deleted (to ensure user data privacy)
