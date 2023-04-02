@@ -281,8 +281,6 @@ def driversLicenseInfo():
     if request.method == "POST":
         body = request.get_json()
 
-        logging.info("request body:\n", body)
-
         if body.get("userAccountsId") is None or body.get("userAccountsId") == "":
             return {"error": "No userAccountsId provided"}, 400
 
@@ -293,15 +291,13 @@ def driversLicenseInfo():
             return {"error": "No drivers license image provided"}, 400
 
         request_body = {
-            "userAccountsId": body["userAccountsId"],
+            "userAccountsId": str(body["userAccountsId"]),
             "driversLicenseBase64": body["driversLicenseBase64"],
         }
 
-        db.update_verification_request(body["userAccountsId"], {"image-sent-for-ai-parsing": True})
+        db.update_verification_request(request_body["userAccountsId"], {"image-sent-for-ai-parsing": True})
 
         response = requests.post(AZURE_CUSTOM_AI_BUILDER_MODEL_URL, json=request_body)
-
-        logging.info("response from custom AI builder model:\n", response.json())
 
         if response.status_code != 200:
             return {
@@ -314,7 +310,7 @@ def driversLicenseInfo():
         response_body.pop("userAccountsId")
         predictedDriversLicenseInfo = {"predicted-drivers-license-info": response_body}
 
-        res = db.update_verification_request(body["userAccountsId"], predictedDriversLicenseInfo)
+        res = db.update_verification_request(request_body["userAccountsId"], predictedDriversLicenseInfo)
         
         logging.info("updated verification request in db:\n", res)
 
