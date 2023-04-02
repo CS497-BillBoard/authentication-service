@@ -281,7 +281,9 @@ def driversLicenseInfo():
     if request.method == "POST":
         body = request.get_json()
 
-        if body.get("userAccountsId") is None or body.get("userAccountsId") == "":
+        print("USER ACC ID: ", body.get("userAccountsId"))
+
+        if body.get("userAccountsId").get("$oid") is None or body.get("userAccountsId").get("$oid") == "":
             return {"error": "No userAccountsId provided"}, 400
 
         if (
@@ -291,7 +293,7 @@ def driversLicenseInfo():
             return {"error": "No drivers license image provided"}, 400
 
         request_body = {
-            "userAccountsId": str(body["userAccountsId"]),
+            "userAccountsId": str(body["userAccountsId"].get('$oid')),
             "driversLicenseBase64": body["driversLicenseBase64"],
         }
 
