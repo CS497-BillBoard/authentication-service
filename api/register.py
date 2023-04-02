@@ -314,6 +314,6 @@ def driversLicenseInfo():
 
         res = db.update_verification_request(request_body["userAccountsId"], predictedDriversLicenseInfo)
         
-        logging.info("updated verification request in db:\n", res)
+        logging.info("updated verification request in db")
 
     return {"status": "success"}, 200
