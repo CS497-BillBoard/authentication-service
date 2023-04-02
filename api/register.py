@@ -281,6 +281,8 @@ def driversLicenseInfo():
     if request.method == "POST":
         body = request.get_json()
 
+        logging.info("request body:\n", body)
+
         if body.get("userAccountsId") is None or body.get("userAccountsId") == "":
             return {"error": "No userAccountsId provided"}, 400
 
@@ -299,6 +301,8 @@ def driversLicenseInfo():
 
         response = requests.post(AZURE_CUSTOM_AI_BUILDER_MODEL_URL, json=request_body)
 
+        logging.info("response from custom AI builder model:\n", response.json())
+
         if response.status_code != 200:
             return {
                 "error": "Error calling custom AI builder model: "
@@ -310,6 +314,8 @@ def driversLicenseInfo():
         response_body.pop("userAccountsId")
         predictedDriversLicenseInfo = {"predicted-drivers-license-info": response_body}
 
-        db.update_verification_request(body["userAccountsId"], predictedDriversLicenseInfo)
+        res = db.update_verification_request(body["userAccountsId"], predictedDriversLicenseInfo)
+        
+        logging.info("updated verification request in db:\n", res)
 
     return {"status": "success"}, 200
