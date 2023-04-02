@@ -281,8 +281,6 @@ def driversLicenseInfo():
     if request.method == "POST":
         body = request.get_json()
 
-        print("USER ACC ID: ", body.get("userAccountsId"))
-
         if body.get("userAccountsId").get("$oid") is None or body.get("userAccountsId").get("$oid") == "":
             return {"error": "No userAccountsId provided"}, 400
 
