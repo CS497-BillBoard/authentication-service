@@ -252,9 +252,9 @@ def updateVerificationStatus():
         for existingHash in exisitingdriversLicenseNumberHash:
             if bcrypt.checkpw(bytedriversLicenseNumber, existingHash.get("province_and_drivers_license_hash")):
 
-                result = removeRejectedVerificationRequest(userAccountsId)
-                if result[1] != 200:
-                    return result
+                # result = removeRejectedVerificationRequest(userAccountsId)
+                # if result[1] != 200:
+                #     return result
 
                 return {"error": "drivers license number already exists"}, 400
 
