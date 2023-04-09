@@ -1,4 +1,5 @@
 # authentication-service
+This backend service was made as part of our project for CS 497 (Special Topics in CS - CS capstone).
 
 ## Environment Details
 - Python 3.9.10
