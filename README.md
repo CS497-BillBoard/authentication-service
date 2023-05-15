@@ -1,5 +1,5 @@
 # authentication-service
-This backend service was made as part of our project for CS 497 (Special Topics in CS - CS capstone).
+This backend service was made as part of our project for CS 497 (Special Topics in CS - CS capstone). The code for the React Native front-end can be found [here](https://github.com/CS497-BillBoard/frontend).
 
 ## Environment Details
 - Python 3.9.10
